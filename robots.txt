@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://i4ox.github.io/retype-i4ox-notes/sitemap.xml.gz

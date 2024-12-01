@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-root" content="/retype-i4ox-notes">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.786402239105">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.6.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Git | i4ox Docs</title>
+    <meta name="title" content="Git | i4ox Docs">
+    <meta name="description" content="Git можно установить либо из официального репозитория:">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/devops/git/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/devops/git/">
+    <meta property="og:title" content="Git | i4ox Docs">
+    <meta property="og:description" content="Git можно установить либо из официального репозитория:">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/devops/git/">
+    <meta property="twitter:title" content="Git | i4ox Docs">
+    <meta property="twitter:description" content="Git можно установить либо из официального репозитория:">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../uploads/logo.svg" rel="icon">
+    <link href="../../resources/css/retype.css?v=3.6.0.786402239105" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.786402239105" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.786402239105" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.786402239105" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
+                            <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../uploads/logo.svg">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../uploads/logo.svg">
+                            </span>
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Notes by i4ox (Test)</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                                <!-- Page content  -->
+<doc-anchor-target id="git" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git">#</doc-anchor-trigger>
+        <span>Git</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="установка-git">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-git">#</doc-anchor-trigger>
+        <span>Установка git</span>
+    </h2>
+</doc-anchor-target>
+<p>Git можно установить либо из официального репозитория:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt-get install -y git</code></pre>
+</doc-codeblock></div>
+<p>Либо из исходников:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt-get install -y install-info dh-autoreconf libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev sciidoc xmlto docbook2x
+sudo ln -s /usr/bin/db2x_docbook2texi /usr/bin/docbook2x-texi
+tar -zxf git-2.39.2.tar.gz
+cd git-2.39.2
+make configure
+./configure --prefix=/usr
+make all doc info
+sudo make install install-doc install-html install-info</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="настройка-git">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#настройка-git">#</doc-anchor-trigger>
+        <span>Настройка git</span>
+    </h2>
+</doc-anchor-target>
+<p>Настройка git происходит через <code v-pre>git config</code>.</p>
+<doc-anchor-target id="хранения-настроек">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#хранения-настроек">#</doc-anchor-trigger>
+        <span>Хранения настроек</span>
+    </h3>
+</doc-anchor-target>
+<p>Настройки могут храниться в трех местах:</p>
+<ol>
+<li><code v-pre>/etc/gitconfig</code>, если использовать <code v-pre>git config --system</code>;</li>
+<li><code v-pre>~/.gitconfig</code> если использовать <code v-pre>git config --global</code>;</li>
+<li><code v-pre>.git/config</code> если использовать <code v-pre>git config --local</code>.</li>
+</ol>
+<p>Чтобы просмотреть все существующие настройки:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --list --show-origin</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="username-и-useremail">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#username-и-useremail">#</doc-anchor-trigger>
+        <span>user.name и user.email</span>
+    </h3>
+</doc-anchor-target>
+<p>Первое, что следует настроить эту имя и почту пользователя. Например:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --global user.name &quot;John Doe&quot;
+git config --global user.email &quot;qJkZK@example.com&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="coreeditor">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#coreeditor">#</doc-anchor-trigger>
+        <span>core.editor</span>
+    </h3>
+</doc-anchor-target>
+<p>Git нам позволяет явно указать редактор, который стоит использовать для коммитов, разрешения конфликтов и так далее.
+По-умолчанию значение считывается из переменной среды <code v-pre>$EDITOR</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --global core.editor nvim</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="committemplate">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#committemplate">#</doc-anchor-trigger>
+        <span>commit.template</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет задать шаблон для коммита.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --global commit.template ~/.gitmessage</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="corepager">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#corepager">#</doc-anchor-trigger>
+        <span>core.pager</span>
+    </h3>
+</doc-anchor-target>
+<p>Определяет какая программа будет использована для разбиения текста на страницы.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --global core.pager nvimpager</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="mergetool">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mergetool">#</doc-anchor-trigger>
+        <span>merge.tool</span>
+    </h3>
+</doc-anchor-target>
+<p>Указывает на инструмент, который надо использовать для команды <code v-pre>mergetool</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --global merge.tool nvimdiff</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="diffexternal">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#diffexternal">#</doc-anchor-trigger>
+        <span>diff.external</span>
+    </h3>
+</doc-anchor-target>
+<p>Указывает на инструмент, который надо использовать для сравнения.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --global diff.external nvimdiff</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="initdefaultbranch">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#initdefaultbranch">#</doc-anchor-trigger>
+        <span>init.defaultBranch</span>
+    </h3>
+</doc-anchor-target>
+<p>Ветка, с которой проект создается по-умолчанию.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --global init.defaultBranch main</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="pullrebase">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pullrebase">#</doc-anchor-trigger>
+        <span>pull.rebase</span>
+    </h3>
+</doc-anchor-target>
+<p>Какое поведение git использовать при получении изменений.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --global pull.rebase false # способ по-умолчанию
+git config --global pull.rebase true # с использованием перебазирования</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="alias">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#alias">#</doc-anchor-trigger>
+        <span>alias.*</span>
+    </h3>
+</doc-anchor-target>
+<p>Git позволяет создавать псевдонимы. Например:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.st status</code></pre>
+</doc-codeblock></div>
+<p>Советуется добавить:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+git config --global alias.visual '!nvim -c Neogit' # Поменяйте на свой редактор</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="coreexcludesfile">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#coreexcludesfile">#</doc-anchor-trigger>
+        <span>core.excludesfile</span>
+    </h3>
+</doc-anchor-target>
+<p>Какие файлы стоит игнорировать в проектах.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --global core.excludesfile ~/.gitignore_global</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="colorui">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#colorui">#</doc-anchor-trigger>
+        <span>color.ui</span>
+    </h3>
+</doc-anchor-target>
+<p>Стоит ли подсвечивать большую часть вывода.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --global color.ui true
+git config --global color.ui false</code></pre>
+</doc-codeblock></div>
+<p>Можно отдельно для разных элементов: <em>color.branch</em>, <em>color.diff</em>, <em>color.interactive</em>, <em>color.status</em>.</p>
+<doc-anchor-target id="команды-git">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#команды-git">#</doc-anchor-trigger>
+        <span>Команды git</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="git-help">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-help">#</doc-anchor-trigger>
+        <span>git help</span>
+    </h3>
+</doc-anchor-target>
+<p>Выводит справочную информацию о той или иной команде.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git help add</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-config">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-config">#</doc-anchor-trigger>
+        <span>git config</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет взаимодействовать с конфигурацией git.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git config --global user.name &quot;John Doe&quot;
+git config --global user.email &quot;qJkZK@example.com&quot;
+git config --list --show-origin</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-init">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-init">#</doc-anchor-trigger>
+        <span>git init</span>
+    </h3>
+</doc-anchor-target>
+<p>Инициализирует новый проект.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git init</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-add">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-add">#</doc-anchor-trigger>
+        <span>git add</span>
+    </h3>
+</doc-anchor-target>
+<p>Индексирует указанные файлы.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git add --all # Все файлы
+git add *.md # С определенным расширением
+git add . # Все файлы в корне(кроме скрытых)
+git add README.md # Определенный файл/директория
+git add -i # Интерактивный режим</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-commit">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-commit">#</doc-anchor-trigger>
+        <span>git commit</span>
+    </h3>
+</doc-anchor-target>
+<p>Делает коммит с проиндексированными файлами.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git commit
+git commit -m &quot;commit message&quot; # Добавляет сообщение к комиту
+git commit -a # Заставляет проиндексировать файлы ранее проиндексированные в предыдущих коммитах
+git commit --amend # Отменяет предыдущий коммит, переопределяет его</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-clone">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-clone">#</doc-anchor-trigger>
+        <span>git clone</span>
+    </h3>
+</doc-anchor-target>
+<p>Клонирует существующий репозиторий.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git clone https://github.com/i4ox/dotfiles.git # По https
+git clone git@github.com:i4ox/dotfiles.git # По ssh
+git clone git@github.com:i4ox/dotfiles.git ~/Projects/dotfiles # Клонирование в определенное место</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-status">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-status">#</doc-anchor-trigger>
+        <span>git status</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет просматривать состояние файлов(Untracked, Unmodified, Modified, Staged).</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git status
+git status -s # Сокращенный вывод
+git status content/ # Проверить статус определенного файла или файлов в директории</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-diff">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-diff">#</doc-anchor-trigger>
+        <span>git diff</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет просматривать отдельные файлы на изменение содержимого.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git diff
+git diff --staged #(--cached) Только по отношению к файлам с состоянием Staged
+git diff README.md # Для конкретного файла или директории    </code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-rm">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-rm">#</doc-anchor-trigger>
+        <span>git rm</span>
+    </h3>
+</doc-anchor-target>
+<p>Удаление файла из индексации репозитория.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git rm README.md
+git rm -f README.md # Удалить принудительно</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-mv">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-mv">#</doc-anchor-trigger>
+        <span>git mv</span>
+    </h3>
+</doc-anchor-target>
+<p>Команда чтобы переименовать файл.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git mv README.md README</code></pre>
+</doc-codeblock></div>
+<p>Является alias для команд ниже:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">mv README.md README
+git rm README.md
+git add README</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-log">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-log">#</doc-anchor-trigger>
+        <span>git log</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет просматривать историю коммитов.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git log
+git log --graph --decorate --oneline # Чаще всего используется
+git log --stat # Краткая статистика</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-restore--git-reset">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-restore--git-reset">#</doc-anchor-trigger>
+        <span>git restore / git reset</span>
+    </h3>
+</doc-anchor-target>
+<p><code v-pre>git restore</code> это современная замена <code v-pre>git reset</code>.</p>
+<p>Отменяет индексацию файла.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git add README.md
+git restore --staged README.md</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-remote">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-remote">#</doc-anchor-trigger>
+        <span>git remote</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет взаимодействовать с удаленными репозиториями.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git remote # выведет названия доступных удаленных репозиториев
+git remote -v # выведет адреса привязанные к репозиторию
+git remote add origin https://github.com/i4ox/dotfiles.git # Позволяет добавить удаленный репозиторий под именем origin
+git remote show origin # позволяет просматривать удаленный репозиторий
+git remote rename origin i4ox # Позволяет переименовать удаленный репозиторий
+git remote remove i4ox # Позволяет удалить удаленный репозиторий</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-fetch">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-fetch">#</doc-anchor-trigger>
+        <span>git fetch</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет подгрузить изменение с определенного удаленного репозитория.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git fetch origin
+git remote add i4ox https://github.com/i4ox/dotfiles.git
+git fetch i4ox</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-pull">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-pull">#</doc-anchor-trigger>
+        <span>git pull</span>
+    </h3>
+</doc-anchor-target>
+<p>Тот же <code v-pre>git fetch</code>, но для основного сервера, как правило, и более прост в использовании.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git pull</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-push">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-push">#</doc-anchor-trigger>
+        <span>git push</span>
+    </h3>
+</doc-anchor-target>
+<p>Отправка изменений в удаленный репозиторий.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git push origin master # Сначала указывается репозиторий, потом ветка
+git push origin v1.1 # Отправляем тег
+git push origin --tags # Отправляем все теги
+git push origin --follow-tags # Отправляет только обычные теги(аннотированные)
+git push origin :refs/tags/v1.1 # Удаляем тег. Способ №1
+git push origin --delete v1.1 # Удаляем тег. Способ №2
+git push origin --delete old_branch # Удаляет старую ветку</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-tag">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-tag">#</doc-anchor-trigger>
+        <span>git tag</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет задавать теги.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git tag v1.1-lw # создает легковестный тег, без дополнительной информации
+git tag -a v1.1 # создает обычный(аннотированный) тег
+git tag -a v1.1 -m &quot;v1.1&quot; # создает обычный тег с сообщением
+git tag -a v1.0 9fceb02 # создаем отложенный тег, тег заданный уже созданному коммиту
+git tag -d v1.1 # Удаление тега</code></pre>
+</doc-codeblock></div>
+<p>Теги нужно отдельно отправлять в удаленный репозиторий. Смотрите команду <code v-pre>git push</code>.</p>
+<p>Также обратите внимание на удаление тега на удаленном репозитории, также через команду <code v-pre>git push</code>.</p>
+<doc-anchor-target id="git-show">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-show">#</doc-anchor-trigger>
+        <span>git show</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет просматривать информацию о файлах, деревьях, тегах и коммитах.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git show v1.1
+git show HEAD@{5} # Просматреть HEAD пять шагов тому назад
+git show HEAD^ # Просматреть предыдущий коммит</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-checkout">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-checkout">#</doc-anchor-trigger>
+        <span>git checkout</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет переключаться между ветками.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git checkout v1.1 # Переключение на тег
+git checkout -b new_version v1.1 # Создает новую ветку, которая сместится, если создать коммит, условоно это будет v1.1.1
+git checkout --track i4ox/v1.1 # Будет отслежить i4ox/v1.1 вместо origin/v1.1</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-branch">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-branch">#</doc-anchor-trigger>
+        <span>git branch</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет создать новую ветку.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git branch testing # Создает новую ветку с названием testing
+git branch --all # Выводит все ветки
+git branch -d testing # Удаляет ветку
+git branch -v # Позволяет просмотреть последний коммит на каждой из веток
+git branch --merged # Показывает ветки, которые уже слиты с текущей
+git branch --no-merged # Показывает ветки, которые не слиты с текущей
+git branch --move old_name new_name # Позволяет переименовать ветку(локально)
+git branch -u i4ox/testing # Позволяет создать ветку и подключить её к удаленному репозиторию</code></pre>
+</doc-codeblock></div>
+<p>Новую ветку, созданную командой <code v-pre>git branch --move</code>, надо отправить в удаленный репозиторий.</p>
+<doc-anchor-target id="git-merge">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-merge">#</doc-anchor-trigger>
+        <span>git merge</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет провести слияние веток.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git merge testing # Делает слияние текущей ветки с веткой testing</code></pre>
+</doc-codeblock></div>
+<p>Иногда Git не может сам решить конфликты, и оставляет маркеры для того, чтобы их можно было разрешить вручную.</p>
+<p>Пример:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-markup"><code v-pre class="language-markup">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:index.html
+&lt;div id=&quot;footer&quot;&gt;contact : email.support@github.com&lt;/div&gt;
+=======
+&lt;div id=&quot;footer&quot;&gt;
+please contact us at support@github.com
+&lt;/div&gt;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; iss53:index.html</code></pre>
+</doc-codeblock></div>
+<p>В этом примере произошел конфликт текущей ветки с веткой iss53 в файле index.html.</p>
+<doc-anchor-target id="git-mergetool">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-mergetool">#</doc-anchor-trigger>
+        <span>git mergetool</span>
+    </h3>
+</doc-anchor-target>
+<p>Открывает инструмент для разрешения конфликтов.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git mergetool</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-ls-remote">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-ls-remote">#</doc-anchor-trigger>
+        <span>git ls-remote</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет просмотреть все удаленный ссылки в удаленном репозитории.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git ls-remove git@github.com:i4ox/dotfiles</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-rebase">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-rebase">#</doc-anchor-trigger>
+        <span>git rebase</span>
+    </h3>
+</doc-anchor-target>
+<p>Накладывает все коммиты одной ветки поверх коммитов другой ветки.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git rebase master server
+git rebase --onto master server client # Берем изменения из client, которых  нету в server и применяем их к мастер
+git rebase -i HEAD~3 # Обьединение последних трех коммитов, создание нового # Обьединение последних трех коммитов, создание нового</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-daemon">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-daemon">#</doc-anchor-trigger>
+        <span>git daemon</span>
+    </h3>
+</doc-anchor-target>
+<p>Используется для настройки демона Git.</p>
+<p>Флаги:</p>
+<ul>
+<li>reuseaddr: перезапускает сервер без ожидания таймаута существующих подключений.</li>
+<li>base-path: указывается путь, где хранятся проекты. Путь будет автоматически подставляться, то есть вместо <code v-pre>/srv/git/nvops.git</code> можно будет использовать <code v-pre>nvops.git</code>.</li>
+<li>export-all: экспортирует все проекты в директории <code v-pre>/srv/git/</code>.</li>
+</ul>
+<p><strong>P.S</strong>: <code v-pre>base-path</code> влияет на <code v-pre>git://</code>.</p>
+<p><strong>P.P.S</strong>: вместо <code v-pre>export-all</code> можно добавлять в каждый репозиторий файл <code v-pre>git-daemon-export-ok</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git daemon --reuseaddr --export-all --base-path=/srv/git/ /srv/git/</code></pre>
+</doc-codeblock></div>
+<p>Однако команду выше стоит запускать через сервис. Как это делать можно посмотреть в пункте <code v-pre>серверный git</code>.</p>
+<doc-anchor-target id="git-instaweb">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-instaweb">#</doc-anchor-trigger>
+        <span>git instaweb</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет запустить веб-сервер для просмотра экземпляра GitWeb для текущего репозитория.</p>
+<doc-anchor-target id="git-reflog">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-reflog">#</doc-anchor-trigger>
+        <span>git reflog</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет просматривать журнул с привязкой к ссылкам:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git reflog</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-stash">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-stash">#</doc-anchor-trigger>
+        <span>git stash</span>
+    </h3>
+</doc-anchor-target>
+<p>Позволяет сохранить работу для того, чтобы вернуться к ней позже:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git stash # Прячем изменения в специальное хранилище
+git stash list # Список припрятанных изменений
+git stash apply # Востановление изменений из хранилища
+git stash --patch # В интерактивном режиме спрашивает что оставить, а что спрятать
+git stash branch testchanges # Создает отдельную ветку из спрятанных решений
+git stash --all # удаляет все, но с сохранением этого в виде припрятанных изменений</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-clean">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-clean">#</doc-anchor-trigger>
+        <span>git clean</span>
+    </h3>
+</doc-anchor-target>
+<p>Удаляет непроиндексированные файлы:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git clean
+git clean -d # Удаляет непроиндексированные файлы
+git clean -f # Принудительное удаление
+git clean -n # Позволяет лишь просматреть что будет удалено
+git clean -x # Позволяет удалить все файлы, которые не попадают под другие критерии
+git clean -i # Интерактивный режим</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-grep">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-grep">#</doc-anchor-trigger>
+        <span>git grep</span>
+    </h3>
+</doc-anchor-target>
+<p>Аналог <em>grep</em>, но для рабочего пространства git и поиска по его деревьям:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git grep --break --heading &lt;QUERY&gt; # Выводит в более читаемом виде</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="git-filter-branch">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#git-filter-branch">#</doc-anchor-trigger>
+        <span>git filter-branch</span>
+    </h3>
+</doc-anchor-target>
+<p>Является сторонней утилитой - <a href="https://github.com/newren/git-filter-repo">https://github.com/newren/git-filter-repo</a>.</p>
+<p>Используется для изменения истории коммитов.</p>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../devops/docker/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Docker</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../devops/ssh/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">SSH</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© 2024 Notes by i4ox. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Git", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+</body>
+</html>
