@@ -1,0 +1,15 @@
+---
+input: .
+output: .retype
+url: # Add your website address here
+branding:
+  title: Notes by i4ox
+  label: Docs
+  logo: uploads/logo.svg
+favicon: uploads/logo.svg
+gravatar:
+  enabled: true
+meta:
+  title: " | i4ox Docs"
+footer:
+  copyright: "&copy; {{ year }} Notes by i4ox. All rights reserved."
