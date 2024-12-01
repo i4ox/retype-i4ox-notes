@@ -3,7 +3,7 @@ input: .
 output: .retype
 url: https://i4ox.github.io/retype-i4ox-notes/
 branding:
-  title: Notes by i4ox
+  title: Notes by i4ox (Test)
   label: Docs
   logo: uploads/logo.svg
 favicon: uploads/logo.svg
