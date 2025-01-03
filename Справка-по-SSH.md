@@ -82,3 +82,27 @@ ssh -L 9000:localhost:8000 user@server
 ```
 
 Командой выше мы создали подключение через SSH-туннель, с пробросом внешнего 8000 порта на локальный 9000 порт. И после этого ***НЕ ЗАКРЫВАЯ*** соединения, в другой вкладке терминала мы сможет обращаться по этому порту.
+
+## Моя конфигурация клиента SSH
+
+Ниже расположен пример моей конфигурации Linux
+
+```txt
+Host github
+  HostName www.github.com
+  Port 22
+  User git
+  IdentityFile ~/.ssh/github
+
+Host forgejo
+  HostName git.adevteam.com
+  Port 22
+  User git
+  IdentityFile ~/.ssh/forgejo
+
+Host *
+  AddKeysToAgent yes
+  IgnoreUnknown UseKeychain
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+```
