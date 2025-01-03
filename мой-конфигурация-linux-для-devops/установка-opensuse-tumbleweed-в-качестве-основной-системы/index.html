@@ -4,40 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/retype-i4ox-notes">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.788260767454">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.789206119905">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
-    <title>Docker | i4ox Docs</title>
-    <meta name="title" content="Docker | i4ox Docs">
-    <meta name="description" content="Существует несколько способов установки Docker:">
+    <title>Установка OpenSuse Tumbleweed | i4ox Docs</title>
+    <meta name="title" content="Установка OpenSuse Tumbleweed | i4ox Docs">
+    <meta name="description" content="Я буду ставить OpenSuse без установщика, то есть через консоль.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/devops/docker/">
+    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/мой-конфигурация-linux-для-devops/установка-opensuse-tumbleweed-в-качестве-основной-системы/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/devops/docker/">
-    <meta property="og:title" content="Docker | i4ox Docs">
-    <meta property="og:description" content="Существует несколько способов установки Docker:">
+    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/мой-конфигурация-linux-для-devops/установка-opensuse-tumbleweed-в-качестве-основной-системы/">
+    <meta property="og:title" content="Установка OpenSuse Tumbleweed | i4ox Docs">
+    <meta property="og:description" content="Я буду ставить OpenSuse без установщика, то есть через консоль.">
+    <meta property="og:image" content="https://i4ox.github.io/retype-i4ox-notes/uploads/opensuse_install_1.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/devops/docker/">
-    <meta property="twitter:title" content="Docker | i4ox Docs">
-    <meta property="twitter:description" content="Существует несколько способов установки Docker:">
+    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/мой-конфигурация-linux-для-devops/установка-opensuse-tumbleweed-в-качестве-основной-системы/">
+    <meta property="twitter:title" content="Установка OpenSuse Tumbleweed | i4ox Docs">
+    <meta property="twitter:description" content="Я буду ставить OpenSuse без установщика, то есть через консоль.">
+    <meta property="twitter:image" content="https://i4ox.github.io/retype-i4ox-notes/uploads/opensuse_install_1.png">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.788260767454" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.789206119905" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.788260767454" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.789206119905" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.788260767454" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.788260767454" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.789206119905" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.789206119905" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -156,29 +158,26 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="docker" class="break-words">
+<doc-anchor-target id="установка-opensuse-tumbleweed" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#docker">#</doc-anchor-trigger>
-        <span>Docker</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-opensuse-tumbleweed">#</doc-anchor-trigger>
+        <span>Установка OpenSuse Tumbleweed</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="установка-docker">
+<doc-anchor-target id="создание-загрузочного-usb-накопителя">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-docker">#</doc-anchor-trigger>
-        <span>Установка Docker</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#создание-загрузочного-usb-накопителя">#</doc-anchor-trigger>
+        <span>Создание загрузочного USB накопителя</span>
     </h2>
 </doc-anchor-target>
-<p>Существует несколько способов установки Docker:</p>
-<ul>
-<li>Через пакетный менеджер, такие как apt-get, pacman, dnf, brew;</li>
-<li>Установить Docker Desktop и docker установится сам;</li>
-<li>Через скрипт с сайта <a href="https://get.docker.com">https://get.docker.com</a>.</li>
-</ul>
-<p>Рекомендуется использовать последний способ, он и описан ниже:</p>
+<doc-anchor-target id="установка-live-cd-образа">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-live-cd-образа">#</doc-anchor-trigger>
+        <span>Установка Live CD образа</span>
+    </h3>
+</doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">curl https://get.docker.com &gt; /tmp/install.sh
-sudo chmod +x /tmp/install.sh
-/tmp/install.sh</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">wget https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-XFCE-Live-x86_64-Current.iso</code></pre>
 </doc-codeblock></div>
 <div class="flex mb-6">
     <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
@@ -193,38 +192,261 @@ sudo chmod +x /tmp/install.sh
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-<p>Не используйте sid для Debian, если хотите использовать способ выше.</p>
+<p>Я буду ставить OpenSuse без установщика, то есть через консоль.</p>
         </div>
     </div>
 </div>
-<p>Альтернативный способ:</p>
+<doc-anchor-target id="сжениеburn-iso-образа">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сжениеburn-iso-образа">#</doc-anchor-trigger>
+        <span>Сжение(Burn) ISO образа</span>
+    </h3>
+</doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash"># Add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-# Add the repository to Apt sources:
-echo \
-  &quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
-  $(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;) stable&quot; | \
-  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
-sudo apt-get update
-
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">sudo dd bs=4M if=/path/to/iso of=/dev/sdX &amp;&amp; sync</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="запуск-docker-без-sudo">
+<doc-anchor-target id="процесс-установки">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#запуск-docker-без-sudo">#</doc-anchor-trigger>
-        <span>Запуск Docker без sudo</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#процесс-установки">#</doc-anchor-trigger>
+        <span>Процесс установки</span>
     </h2>
 </doc-anchor-target>
-<p>Нужно просто добавить пользователя в нужную группу, а затем перезапустить docker.</p>
+<doc-anchor-target id="запуск-live-cd">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#запуск-live-cd">#</doc-anchor-trigger>
+        <span>Запуск Live CD</span>
+    </h3>
+</doc-anchor-target>
+<p>Как и с любой другой операционной системой или дистрибутивом Linux,
+мы должны войти в загрузочный образ ISO.</p>
+<p>После того как мы это сделаем перед нами появится XFCE рабочий стол.</p>
+<p><figure class="content-center">
+    <img src="../../uploads/opensuse_install_1.png" alt="Запущенный Live CD">
+    <figcaption class="caption">Запущенный Live CD</figcaption>
+</figure>
+</p>
+<p>После этого требуется лишь открыть браузер с этим руководством и терминал.</p>
+<doc-anchor-target id="опционально-настройка-ssh-для-доступа-к-системе">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#опционально-настройка-ssh-для-доступа-к-системе">#</doc-anchor-trigger>
+        <span>(Опционально) Настройка SSH для доступа к системе</span>
+    </h3>
+</doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo usermod -aG docker $USER
-sudo systemctl restart docker</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">sudo passwd linux
+sudo systemctl start sshd</code></pre>
+</doc-codeblock></div>
+<p>Далее просто используем <code v-pre>ssh linux@x.x.x.x</code>.</p>
+<doc-anchor-target id="обновление-live-cd">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#обновление-live-cd">#</doc-anchor-trigger>
+        <span>Обновление Live CD</span>
+    </h3>
+</doc-anchor-target>
+<p>Я считаю необходимым обновить весь инструментарий Live CD до последних версий.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo zypper refresh
+sudo zypper update</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="установка-локалей">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-локалей">#</doc-anchor-trigger>
+        <span>Установка локалей</span>
+    </h3>
+</doc-anchor-target>
+<p>Без настройки локалей будет возникать ряд ошибок во время установки.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo zypper install glibc-locale glibc-i18ndata glibc-gconv-modules-extra
+sudo localedef -i en_US -f UTF-8 en_US.UTF-8</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="подготовка-разделов-на-жестком-диске">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#подготовка-разделов-на-жестком-диске">#</doc-anchor-trigger>
+        <span>Подготовка разделов на жестком диске</span>
+    </h3>
+</doc-anchor-target>
+<p>Для начала требуется узнать наименование необходимого жесткого диска.
+Делается это при помощи команды <code v-pre>lsblk</code>.</p>
+<p><figure class="content-center">
+    <img src="../../uploads/opensuse_install_2.png" alt="Запуск команды lsblk">
+    <figcaption class="caption">Запуск команды lsblk</figcaption>
+</figure>
+</p>
+<p>Далее при помощи утилиты <code v-pre>cfdisk</code> необходимо настроить разделы на данном диске.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo cfdisk /dev/sda</code></pre>
+</doc-codeblock></div>
+<p>Нам предложат выбрать тип системы, для UEFI выбираем <code v-pre>gpt</code>.</p>
+<p><figure class="content-center">
+    <img src="../../uploads/opensuse_install_3.png" alt="Выбор типа файловой системы">
+    <figcaption class="caption">Выбор типа файловой системы</figcaption>
+</figure>
+</p>
+<p>После чего создаем новый раздел и вводим количество необходимой памяти.</p>
+<p><figure class="content-center">
+    <img src="../../uploads/opensuse_install_4.png" alt="Создание раздела">
+    <figcaption class="caption">Создание раздела</figcaption>
+</figure>
+</p>
+<p>А также меняем тип раздела при необходимости.</p>
+<p><figure class="content-center">
+    <img src="../../uploads/opensuse_install_5.png" alt="Выбор типа раздела">
+    <figcaption class="caption">Выбор типа раздела</figcaption>
+</figure>
+</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Нам нужно три раздела:</p>
+<ol>
+<li>1G - EFI Filesystem</li>
+<li>4G - Linux swap</li>
+<li>+100% - Linux filesystem</li>
+</ol>
+        </div>
+    </div>
+</div>
+<p>Далее выбираем <code v-pre>Write</code> подтверждаем создание разделов и выходим.</p>
+<p>Теперь при помощи все той же команды <code v-pre>lsblk</code>,
+мы можем увидеть, что разделы успешно создались.</p>
+<p><figure class="content-center">
+    <img src="../../uploads/opensuse_install_6.png" alt="Созданные разделы">
+    <figcaption class="caption">Созданные разделы</figcaption>
+</figure>
+</p>
+<doc-anchor-target id="форматирование-разделов">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#форматирование-разделов">#</doc-anchor-trigger>
+        <span>Форматирование разделов</span>
+    </h3>
+</doc-anchor-target>
+<p>Для <strong>/</strong> разделов я буду использовать <code v-pre>ext4</code> файловую систему.</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Вероятно позже добавлю настройку <code v-pre>xfs</code> и <code v-pre>btrfs</code>.
+Крайне сомнительно, но может быть появится <code v-pre>bcachefs</code>.</p>
+        </div>
+    </div>
+</div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo mkfs.vfat -n EFI /dev/sda1
+sudo mkfs.ext4 -L root /dev/sda3
+sudo mkswap -L swap /dev/sda2
+sudo swapon /dev/sda2</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="монтирование-разделов">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#монтирование-разделов">#</doc-anchor-trigger>
+        <span>Монтирование разделов</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># Монтирование основных разделов
+sudo mkdir -p /mnt/os
+sudo mount /dev/sda3 /mnt/os
+sudo mkdir -p /mnt/os/boot/efi
+sudo mount /dev/sda1 /mnt/os/boot/efi
+
+# Необходимый для операционной системы шлак
+sudo mkdir /mnt/os/{proc,sys,dev,run}
+sudo mount --types proc /proc /mnt/os/proc
+sudo mount --rbind /sys /mnt/os/sys
+sudo mount --make-rslave /mnt/os/sys
+sudo mount --rbind /dev /mnt/os/dev
+sudo mount --make-rslave /mnt/os/dev
+sudo mount --bind /run /mnt/os/run
+sudo mount --make-slave /mnt/os/run</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="установка-базовой-системы">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-базовой-системы">#</doc-anchor-trigger>
+        <span>Установка базовой системы</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo zypper --root /mnt/os ar --refresh https://download.opensuse.org/tumbleweed/repo/oss/ oss
+sudo zypper --root /mnt/os in kernel-default grub2-x86_64-efi zypper bash man vim shadow util-linux
+sudo zypper --root /mnt/os in --no-recommends NetworkManager</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="chrooting">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#chrooting">#</doc-anchor-trigger>
+        <span>Chrooting</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo chroot /mnt/os /bin/bash
+source /etc/profile
+export PS1=&quot;(chroot) ${PS1}&quot;</code></pre>
+</doc-codeblock></div>
+<p>После чего перед нами будет терминал следующего вида.</p>
+<p><figure class="content-center">
+    <img src="../../uploads/opensuse_install_7.png" alt="Запущенный chroot">
+    <figcaption class="caption">Запущенный chroot</figcaption>
+</figure>
+</p>
+<doc-anchor-target id="настройка-fstab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#настройка-fstab">#</doc-anchor-trigger>
+        <span>Настройка fstab</span>
+    </h3>
+</doc-anchor-target>
+<p>Для начала нам надо получить UUID всех трех разделов.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">echo &quot;$(blkid)&quot; &gt;&gt; /etc/fstab</code></pre>
+</doc-codeblock></div>
+<p>После чего мы открываем файл <code v-pre>/etc/fstab</code> и редактируем его по примеру ниже.
+Не забывая вставлять нужные UUID.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">UUID=[...]   /boot/efi    vfat    defaults,noatime     0 2
+UUID=[...]   none         swap    sw                   0 0
+UUID=[...]   /            ext4    noatime              0 1</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="установка-grub">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-grub">#</doc-anchor-trigger>
+        <span>Установка grub</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">dracut -f
+grub2-install --efi-directory=/boot/efi --target=x86_64-efi --bootloader-id=opensuse
+grub2-mkconfig -o /boot/grub2/grub.cfg
+passwd</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="загрузка-в-систему">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#загрузка-в-систему">#</doc-anchor-trigger>
+        <span>Загрузка в систему</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">exit
+umount -l /mnt/os/dev/{/shm,/pts,}
+umount -R /mnt/os
+reboot
+sudo systemctl enable --now NetworkManager</code></pre>
 </doc-codeblock></div>
 
                                 
@@ -245,7 +467,7 @@ sudo systemctl restart docker</code></pre>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../devops/git/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../справка-по-git/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
                                                 <span class="block mt-1">Git</span>
@@ -263,7 +485,7 @@ sudo systemctl restart docker</code></pre>
                                     <ul class="flex flex-wrap items-center text-sm">
                                     </ul>
                                 </div>
-                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© 2024 Notes by i4ox. All rights reserved.</p></div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© 2025 Notes by i4ox. All rights reserved.</p></div>
                             </footer>
                         </div>
                     </div>
@@ -292,6 +514,6 @@ sudo systemctl restart docker</code></pre>
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Docker", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Установка OpenSuse Tumbleweed", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
