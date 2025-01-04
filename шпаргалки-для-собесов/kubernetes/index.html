@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-root" content="/retype-i4ox-notes">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.789306818519">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.6.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Шпаргалка по Kubernetes | i4ox Docs</title>
+    <meta name="title" content="Шпаргалка по Kubernetes | i4ox Docs">
+    <meta name="description" content="Kubernetes- инфраструктурная платформа, содержащая в себе фреймворк для декларативного управления конфигурациями приложений на основе контейнеризации...">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/шпаргалки-для-собесов/kubernetes/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/шпаргалки-для-собесов/kubernetes/">
+    <meta property="og:title" content="Шпаргалка по Kubernetes | i4ox Docs">
+    <meta property="og:description" content="Kubernetes- инфраструктурная платформа, содержащая в себе фреймворк для декларативного управления конфигурациями приложений на основе контейнеризации...">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/шпаргалки-для-собесов/kubernetes/">
+    <meta property="twitter:title" content="Шпаргалка по Kubernetes | i4ox Docs">
+    <meta property="twitter:description" content="Kubernetes- инфраструктурная платформа, содержащая в себе фреймворк для декларативного управления конфигурациями приложений на основе контейнеризации...">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../uploads/logo.svg" rel="icon">
+    <link href="../../resources/css/retype.css?v=3.6.0.789306818519" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.789306818519" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.789306818519" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.789306818519" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
+                            <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../uploads/logo.svg">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../uploads/logo.svg">
+                            </span>
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Notes by i4ox</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                                <!-- Page content  -->
+<doc-anchor-target id="шпаргалка-по-kubernetes" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#шпаргалка-по-kubernetes">#</doc-anchor-trigger>
+        <span>Шпаргалка по Kubernetes</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="что-такое-kubernetes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-kubernetes">#</doc-anchor-trigger>
+        <span>Что такое Kubernetes?</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Kubernetes</strong> - инфраструктурная платформа, содержащая в себе фреймворк для декларативного управления конфигурациями приложений на основе контейнеризации и виртуализации.
+Она является де-факто стандартом для оркестрации контейнеров, предоставляя богатый функционал для управления инфраструктурой, сетями, хранением данных и приложениями.</p>
+<doc-anchor-target id="что-такое-pod">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-pod">#</doc-anchor-trigger>
+        <span>Что такое POD?</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Pod</strong> - минимальная единица развертывания в Kubernetes, которая предоставляет собой группу контейнеров, объединенных общей сетью(общий localhost, общий внешний IP) и общими ресурсами.
+Контейнеры внутри POD работают в тесной связке.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  - name: php-fpm
+    image: php:fpm</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="для-чего-при-старте-podа-создается-контейнер-с-процессом-pause">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#для-чего-при-старте-podа-создается-контейнер-с-процессом-pause">#</doc-anchor-trigger>
+        <span>Для чего при старте PODа создается контейнер с процессом pause?</span>
+    </h3>
+</doc-anchor-target>
+<p>Для того чтобы создать сетевую изоляцию Kubernetes при старте POD&#x27;а запускает специальный контейнер <code v-pre>pause</code>.
+Он отвечает за управление сетью и обеспечивает контейнерам внутри POD&#x27;а возможность взаимодействовать через localhost.
+Он не выполняет реальную работу, а является посредником при сетевом взаимодействии.</p>
+<doc-anchor-target id="как-можно-запускать-поды">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#как-можно-запускать-поды">#</doc-anchor-trigger>
+        <span>Как можно запускать поды?</span>
+    </h3>
+</doc-anchor-target>
+<p>POD&#x27;ы обычно запускаются с помощью <strong>workloads</strong>, которые обеспечивают управление жизненным циклом POD&#x27;ов.</p>
+<p>Примеры:</p>
+<ol>
+<li><em><strong>(ReplicationController)</strong></em> <strong>Deployment</strong> - для развертывания и управления репликами POD&#x27;ов с возможность откатов.</li>
+<li><strong>StatefulSet</strong> - для приложений с состоянием, которые требуют уникальности и постоянства идентификаторов.</li>
+<li><strong>DaemonSet</strong> - для запуска одного POD&#x27;а на каждом узле кластера.</li>
+<li><strong>Job</strong> - для запуска одноразовых задач.</li>
+<li><strong>CronJob</strong> - для запуска задач по расписанию.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: myapp:v1</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="в-чем-разница-между-deployment-и-statefulset">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#в-чем-разница-между-deployment-и-statefulset">#</doc-anchor-trigger>
+        <span>В чем разница между Deployment и StatefulSet?</span>
+    </h2>
+</doc-anchor-target>
+<ol>
+<li>В именах: у первого некий случайный хэш, у второго - порядковый номер.</li>
+<li>В работе с дисками: StatefulSet дожидается пока POD с таким же именем завершит работы, чтобы занять тот диск, который был к нему привязан.</li>
+<li>В стратегиях перезапуска POD&#x27;ов при обновлении.</li>
+</ol>
+<doc-anchor-target id="что-такое-replicaset">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-replicaset">#</doc-anchor-trigger>
+        <span>Что такое ReplicaSet?</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>ReplicaSet</strong> - это объект, который управляет количеством реплик POD&#x27;ов в Kubernetes.
+ReplicaSet гарантирует, что в любой момент времени будет существовать определенное количество копий POD&#x27;ов.
+В Kubernetes обычно используют Deployment, который управляет ReplicaSet.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: myapp:v1</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="что-такое-kubernetes-probes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-kubernetes-probes">#</doc-anchor-trigger>
+        <span>Что такое Kubernetes probes?</span>
+    </h2>
+</doc-anchor-target>
+<p>Проверки состояния контейнера - механизмы для мониторинга состояния приложений и контейнеров.</p>
+<p>Kubernetes поддерживает три вида проверок:</p>
+<ol>
+<li><strong>Startup probe</strong> - проверка, которая используется для определения, когда контейнер полностью инициализировался. Если эта проверка не проходит, другие пробы не выполняются.</li>
+<li><strong>Readiness probe</strong> - проверка готовности контейнера к обслуживанию трафика.
+Если она не проходит, контейнер не будет получать трафик.</li>
+<li><strong>Liveness probe</strong> - проверка живости контейнера.
+Если она не проходит, контейнер перезапускается.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  containers:
+  - name: myapp
+    image: myapp:v1
+    livenessProbe:
+      httpGet:
+        path: /health
+        port: 8080
+      initialDelaySeconds: 3
+      periodSeconds: 5
+    readinessProbe:
+      httpGet:
+        path: /readiness
+        port: 8080
+      initialDelaySeconds: 5
+      periodSeconds: 5</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="какие-хорошие-практики-существуют-при-создании-проб">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#какие-хорошие-практики-существуют-при-создании-проб">#</doc-anchor-trigger>
+        <span>Какие хорошие практики существуют при создании проб?</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Пробы должны проверять рабочие и критические компоненты приложения, чтобы гарантировать, что приложение может обрабатывать запросы пользователя.</li>
+<li>Пробы не должны быть слишком частыми или тяжелыми, чтобы не создавать дополнительную нагрузку на систему.</li>
+<li>Пробы не должны зависеть от внешних сервисов, если только это не критично для работы приложения.</li>
+<li>Используйте сквозные проверки, если приложение имеет несколько взаимосвязанных сервисов.</li>
+</ul>
+<doc-anchor-target id="что-такое-pod-disruption-budget">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-pod-disruption-budget">#</doc-anchor-trigger>
+        <span>Что такое Pod Disruption Budget?</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Pod Disruption Budget (PDB)</strong> - механизм, который гарантирует, что в кластере всегда будет доступно минимальное количество POD&#x27;ов для определенного приложения.
+PDB помогает предотвратить слишком большое количество перерывов в работе приложения при обслуживании или удалении POD&#x27;ов.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: myapp-pdb
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: myapp</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="что-такое-priority-classes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-priority-classes">#</doc-anchor-trigger>
+        <span>Что такое priority classes?</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Priority Classes</strong> - механизм, который позволяет назначать приоритеты POD&#x27;ам, чтобы Kubernetes мог управлять распределением ресурсов между POD&#x27;ами с разными приоритетами, особеннос в случае нехватки ресурсов.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: high-priority
+value: 1000000
+globalDefault: false
+description: &quot;This priority class is for critical workloads&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="что-такое-pod-eviction">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-pod-eviction">#</doc-anchor-trigger>
+        <span>Что такое POD eviction?</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Eviction</strong> - процесс удаления POD&#x27;ов с узлов, когда ресурсы на узле становятся дефицитными(нехватки памяти или диска).
+Kubernetes может эвакуировать POD&#x27;ы с низким приоритетом, чтобы освободить ресурсы для более важных приложений.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">kubectl drain &lt;node-name&gt; --ignore-daemonsets</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="каким-образом-можно-управлять-размещением-podов-на-конкретных-нодах-кластера-k8s">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#каким-образом-можно-управлять-размещением-podов-на-конкретных-нодах-кластера-k8s">#</doc-anchor-trigger>
+        <span>Каким образом можно управлять размещением PODов на конкретных нодах кластера k8s?</span>
+    </h2>
+</doc-anchor-target>
+<ol>
+<li><strong>NodeSelector/Node Affinity</strong> - позволяет указать, на каких узлах можно запускать POD&#x27;ы, основываясь на метках нод.</li>
+<li><strong>Taints/Tolerations</strong> - механизм, который запрещает или разрешает запуск POD&#x27;ов на определенных узлах в зависимости от их меток.</li>
+<li><strong>Pod Affinity/Anti-Affinity</strong> - механизм, позволяющий задавать правила для размещения POD&#x27;ов на одних или разных узлах в зависимости от меток.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: &quot;disktype&quot;
+            operator: In
+            values:
+            - ssd
+  containers:
+  - name: myapp
+    image: myapp:v1</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="каким-образом-можно-управлять-вычислительными-ресурсами-в-k8s">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#каким-образом-можно-управлять-вычислительными-ресурсами-в-k8s">#</doc-anchor-trigger>
+        <span>Каким образом можно управлять вычислительными ресурсами в k8s?</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Resources requests</strong> и <strong>limits</strong> позволяют управлять количеством ресурсов, которое контейнер может использовать.</p>
+<ul>
+<li><strong>Request</strong> - минимальное количество ресурсов, которое контейнер гарантировано получит.</li>
+<li><strong>Limits</strong> - максимальное количество ресурсов, которое контейнер может использовать.</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  containers:
+  - name: myapp
+    image: myapp:v1
+    resources:
+      requests:
+        memory: &quot;64Mi&quot;
+        cpu: &quot;250m&quot;
+      limits:
+        memory: &quot;128Mi&quot;
+        cpu: &quot;500m&quot;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="что-такое-kubernetes-service">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-kubernetes-service">#</doc-anchor-trigger>
+        <span>Что такое Kubernetes service?</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Service</strong> - абстракция, которая позволяет организовывать доступ к приложениям, работающим в Kubernetes, через постоянный IP-адрес или DNS-имя.
+Сервис может выполнять балансировку трафика между POD&#x27;ами.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  selector:
+    app: myapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="каким-образом-можно-предоставить-приложение-которые-работает-в-кластере-пользователям">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#каким-образом-можно-предоставить-приложение-которые-работает-в-кластере-пользователям">#</doc-anchor-trigger>
+        <span>Каким образом можно предоставить приложение, которые работает в кластере, пользователям?</span>
+    </h2>
+</doc-anchor-target>
+<p>Если приложение работает по HTTP, то можно использовать <code v-pre>Ingress-контроллер</code>.
+Ingress позволяет маршрутизировать HTTP/HTTPS-трафик от пользователей к приложениям в кластере.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myapp-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: myapp.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: myapp-service
+            port:
+              number: 80</code></pre>
+</doc-codeblock></div>
+<p>Если приложение работает по бинарному протоколу(PostgreSQL), то обычно используют Service с типом <strong>NodePort</strong> или <strong>LoadBalancer</strong>, чтобы сделать его доступным извне.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  type: NodePort
+  ports:
+    - port: 5432
+      targetPort: 5432
+      nodePort: 30000
+  selector:
+    app: postgres</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="почему-ingress-удобен">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#почему-ingress-удобен">#</doc-anchor-trigger>
+        <span>Почему Ingress удобен?</span>
+    </h3>
+</doc-anchor-target>
+<p>Используя Ingress, можно управлять маршрутизацией трафика для всех приложений внутри кластера через одну точку входа.
+Это позволяет эффективно управлять HTTP/HTTPS-трафиком, используя такие функции как:</p>
+<ul>
+<li>Балансировка нагрузки</li>
+<li>Поддержка HTTPS</li>
+<li>Маршрутизация по поддоменам или URL</li>
+<li>Поддержка канареечных развертываний</li>
+</ul>
+<doc-anchor-target id="каким-образом-организована-сеть-в-k8s">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#каким-образом-организована-сеть-в-k8s">#</doc-anchor-trigger>
+        <span>Каким образом организована сеть в k8s?</span>
+    </h2>
+</doc-anchor-target>
+<p>В Kubernetes существует три типа сети:</p>
+<ul>
+<li><strong>Node Network</strong> - сеть, в которую объединены ноды.
+В зависимости от использования CNI-плагина, ноды могут работать только в одной подсети, либо в нескольких.</li>
+<li><strong>Pod Network</strong> - сеть, в которой получают IP-адреса запускаемые PODы.</li>
+<li><strong>Service Network</strong> - сеть, в которой получают адреса Kubernetes services.</li>
+</ul>
+<p>Pod network и service network орнанизуются при помощи так называемых CNI-плагинов.</p>
+<doc-anchor-target id="что-такое-cni-плагин-и-для-чего-он-нужен">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-cni-плагин-и-для-чего-он-нужен">#</doc-anchor-trigger>
+        <span>Что такое CNI-плагин и для чего он нужен?</span>
+    </h2>
+</doc-anchor-target>
+<p>CNI расшифровывается как <strong>Container Network Interface</strong>.
+Он представляет собой некий уровень абстракции над реализацией сети.
+Мы может работать с верхнеуровневыми абстракциями вроде &quot;IP-адрес POD&#x27;а&quot;, Endpoint.
+За то как это будет реализовано на физическом уровне отвечают CNI-плагины, которые реализуют разный функционал и показывают разную сетевую производительность.</p>
+<p>Примеры CNI-плагинов:</p>
+<ul>
+<li><a href="https://github.com/flannel-io/flannel">Flannel</a></li>
+<li><a href="https://github.com/projectcalico/calico">Calico</a></li>
+<li><a href="https://github.com/cilium/cilium">Cilium</a></li>
+</ul>
+<doc-anchor-target id="что-такое-egress">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-egress">#</doc-anchor-trigger>
+        <span>Что такое EGRESS?</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>EGRESS</strong> - возможность назначить внешний IP-адрес для исходящего за пределы кластера k8s трафика приложений.
+Поддержка EGRESS должна быть реализована на уровне CNI-плагина и может быть описана специальным объектом на уровне неймспейса.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress
+  namespace: my-namespace
+spec:
+  podSelector:
+    matchLabels:
+      app: my-app
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="как-мы-можем-ограничить-трафик-в-kubernetes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#как-мы-можем-ограничить-трафик-в-kubernetes">#</doc-anchor-trigger>
+        <span>Как мы можем ограничить трафик в Kubernetes?</span>
+    </h2>
+</doc-anchor-target>
+<p>Для ограничения трафика от приложений используется объект <strong>NetworkPolicy</strong>.
+При помощи него мы можем ограничивать входящий и исходящий трафик на уровне неймспейса и компонентов, описанных в нем.
+Его поддержка должна быть реализована на уровне CNI-плагина.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-specific
+  namespace: my-namespace
+spec:
+  podSelector:
+    matchLabels:
+      app: my-app
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              role: frontend</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="что-такое-service-mesh-и-для-чего-он-нужен">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-service-mesh-и-для-чего-он-нужен">#</doc-anchor-trigger>
+        <span>Что такое Service Mesh и для чего он нужен?</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Service Mesh</strong> - паттерн, позволяющий более гибко управлять трафиком в Kubernetes.
+Servise Mesh состоит из:</p>
+<ul>
+<li><em>control plane</em>, который собирает информацию о кластере k8s</li>
+<li>запущенных в нем приложениях</li>
+<li>дополнительных объектов, которые могут быть описаны для дополнительной конфигурации</li>
+<li>sidecar-контейнеров, которые инжектятся в POD&#x27;ы автоматически при помощи <em>mutation webhook</em>.</li>
+</ul>
+<p><strong>Sidecar-контейнеры</strong>  - reverse-прокси, перехватывающие входящий и исходящий трафик приложений в контейнерах и управляющие им в зависимости от полученной из <em>control plane</em> конфигурации.</p>
+<p>Основные задачи для Service Mesh:</p>
+<ul>
+<li>Гарантий доставки трафика до приложений(retry, timeouts, circuit breaker)</li>
+<li>Увеличение безопасности при помощи шифрования трафика, верификации трафика на основе сертификатов, реализация дополнительных правил и разрешений на передачу трафика</li>
+<li>Реализация переключения трафика при <em>canary</em>, <em>a/b</em>, <em>blue/green</em> стратегий деплоя.</li>
+</ul>
+<p>Недостатки:</p>
+<ul>
+<li>Избыточная сложность</li>
+<li>Повышенная ресурсоемкость</li>
+<li>Накладные расходы</li>
+</ul>
+<doc-anchor-target id="в-чем-отличие-меток-от-аннотаций">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#в-чем-отличие-меток-от-аннотаций">#</doc-anchor-trigger>
+        <span>В чем отличие меток от аннотаций?</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Метки</strong> используются для реализации механизмов поиска и группировки объектов.
+<strong>Аннотации</strong> используются для описания метаинформации на объекте.</p>
+<doc-anchor-target id="из-каких-компонентов-состоит-k8s-и-каково-их-назначение">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#из-каких-компонентов-состоит-k8s-и-каково-их-назначение">#</doc-anchor-trigger>
+        <span>Из каких компонентов состоит k8s и каково их назначение?</span>
+    </h2>
+</doc-anchor-target>
+<p>Kubernetes состоит из <em>control plane</em> и <em>data plane</em>.</p>
+<p><strong>Control Plane</strong> - управляющий контур, который запускается в пределах нод, называемых <em>master</em>,
+и может запускаться как одиночном режиме(<em>single master</em>), так и в распределенном(<em>multi master</em>).</p>
+<p>Control plane содержит:</p>
+<ul>
+<li><strong>ETCD</strong> - хранилище конфигурации кластера</li>
+<li><strong>Kubernetes API</strong> - предоставляет API, посредством которого взаимодействуют компоненты k8s,
+а также клиенты находящиеся внутри и вне кластера.</li>
+<li><strong>Kubernetes Controller Manager</strong> - реализует концепцию контроллеров, которые управляют базовыми сущностями кластеров.</li>
+<li><strong>Kubernetes scheduler</strong> - выбирает ноды, на которых нужно запускать PODы.</li>
+<li><strong>Cloud controller manager</strong> - используется для реализации функций работы с облаком.</li>
+</ul>
+<p><strong>Data plane</strong> - компоненты, которые запущены на каждой ноде.</p>
+<ul>
+<li><strong>kubelet</strong> - следит за изменениями конфигурации ноды, применяет конфигурации, делает пробы контейнеров, отчитывается о статусе контейнеров, работает с CRI-плагином и реализует функции запуска и остановки контейнеров.</li>
+<li><strong>kube-proxy</strong> - отвечает за сетевой компонент. Работает с CNI-плагином и обеспечивает функционрирование сущности <em>Service</em> в пределах своей ноды.</li>
+</ul>
+<doc-anchor-target id="что-такое-kube-proxy-и-для-чего-он-нужен">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-kube-proxy-и-для-чего-он-нужен">#</doc-anchor-trigger>
+        <span>Что такое kube-proxy и для чего он нужен?</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>kube-proxy</strong> - компонент <em>data plane</em>, который работает на каждой ноде.
+Он взаимодействеут с CNI-плагином, обеспечивая функционирование <em>pod network</em>.
+А также обеспечивает функционирование описанных в кластере сервисов в пределах своей ноды.
+В зависимости от режима выступает либо в роли прокси, либо как контроллер правил IPTABLES/IPVS.</p>
+<doc-anchor-target id="что-такое-cri">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-cri">#</doc-anchor-trigger>
+        <span>Что такое CRI?</span>
+    </h2>
+</doc-anchor-target>
+<p>CRI расшифровыется как <strong>Container Runtime Interface</strong>.
+Это спецификация, описывающая некий уровень абстракции, который позволяет унифицированно использовать разные версии ПО для работы с контейнерами, например <em>containerd</em> или <em>CRI-O</em>.</p>
+<doc-anchor-target id="какие-типы-volumов-можно-использовать-в-kubernetes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#какие-типы-volumов-можно-использовать-в-kubernetes">#</doc-anchor-trigger>
+        <span>Какие типы volum&#x27;ов можно использовать в Kubernetes?</span>
+    </h2>
+</doc-anchor-target>
+<ol>
+<li>hostpath, но тогда POD должен быть привязан к ноде.</li>
+<li>local-storage - автоматически привязывает POD, который его использует, к нужной ноже.</li>
+</ol>
+<p>Также можно использовать сетевые диски при помощи CSI-плагинов.</p>
+<doc-anchor-target id="что-такое-csi-плагин">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-csi-плагин">#</doc-anchor-trigger>
+        <span>Что такое CSI-плагин?</span>
+    </h2>
+</doc-anchor-target>
+<p>CSI расшифровывается как <strong>Container Storage Interface</strong>.
+Это абстракция, позволяющая унифицированно использовать сетевые файловые системы, построенные на разных технологических базах.</p>
+<p>Мы описываем <em>storageClass</em>, соответствующий дискам определенного типа, и деплоим в кластер <em>provisioner</em>.</p>
+<p><strong>Provisioner</strong> - специальное ПО, которое может заказывать сетевые диски в системе, способной их предоставлять.</p>
+<p>Далее мы описываем объект <em>persistentVolumeClaim</em> с указанием нужного <em>storageClass</em>.</p>
+<p>Provisioner при появлении <em>PVC</em> заказывает диск нужного размера в системе, которая их предоставляет, создает объект <em>persistentVolume</em> и привязывает его к <em>PVC</em>.
+Когда происходит запуск POD&#x27;а на ноде, соотвествующий диск монтируется на нужную ноду по определенному пути, и этот путь монтируется на файловую систему PODа.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml"># Storage Class
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: fast
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2
+
+---
+# PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: fast</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="каким-образом-мы-можем-разделить-права-на-kubernetes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#каким-образом-мы-можем-разделить-права-на-kubernetes">#</doc-anchor-trigger>
+        <span>Каким образом мы можем разделить права на Kubernetes?</span>
+    </h2>
+</doc-anchor-target>
+<p>Для разделения прав в Kubernetes применяется механизм <strong>Role Based Access Control(RBAC)</strong>.
+В рамках него есть три группы сущностей:</p>
+<ul>
+<li><em>user</em> или <em>service account</em> - который описывает субъект доступа.</li>
+<li><em>role</em> или <em>cluster role</em> - который описывает разрешения.</li>
+<li><em>roleBinding</em> или <em>clusterRoleBinding</em> - который привязывает списки разрешений к субъекту.</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml"># Role
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: my-namespace
+  name: pod-reader
+rules:
+  - apiGroups: [&quot;&quot;]
+    resources: [&quot;pods&quot;]
+    verbs: [&quot;get&quot;, &quot;list&quot;, &quot;watch&quot;]
+
+---
+# Role Binding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-pods
+  namespace: my-namespace
+subjects:
+  - kind: User
+    name: example-user
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: pod-reader
+  apiGroup: rbac.authorization.k8s.io</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="в-чем-отличие-service-account-от-user">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#в-чем-отличие-service-account-от-user">#</doc-anchor-trigger>
+        <span>В чем отличие service account от user?</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>User</strong> не имеет записей в Kubernetes API, управление осуществляется внешними механизмами.
+Они предназначены для событий вне кластера.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: my-service-account
+  namespace: my-namespace</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="какие-механизмы-аутентификации-используются-в-kubernetes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#какие-механизмы-аутентификации-используются-в-kubernetes">#</doc-anchor-trigger>
+        <span>Какие механизмы аутентификации используются в Kubernetes?</span>
+    </h2>
+</doc-anchor-target>
+<p>Kubernetes может использовать:</p>
+<ul>
+<li>сертификаты X509</li>
+<li>Bearer-токены</li>
+<li>аутентифицирующий прокси</li>
+<li>HTTP Basic Auth</li>
+</ul>
+<p>При помощи этих механизмов можно реализовывать большое количество схем авторизации: от статичного файла с паролями до OpenID OAuth2.</p>
+<p>Более того, допускается применение нескольких схем авторизации одновременно.
+По умолчанию используются:</p>
+<ul>
+<li>service account tokens - для Service Accounts</li>
+<li>X509 - для Users</li>
+</ul>
+<doc-anchor-target id="что-такое-namespace-в-k8s-и-для-чего-он-нужен">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-namespace-в-k8s-и-для-чего-он-нужен">#</doc-anchor-trigger>
+        <span>Что такое namespace в k8s и для чего он нужен?</span>
+    </h2>
+</doc-anchor-target>
+<p>Участвует в формировании DNS-имен внутри кластера. <code v-pre>[service name].[namespace].[суффикс кластера]</code>.</p>
+<p>Суффикс по-умолчанию: <em>svc.cluster.local</em>.</p>
+<doc-anchor-target id="что-такое-финалайзеры-и-для-чего-они-нужны">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-финалайзеры-и-для-чего-они-нужны">#</doc-anchor-trigger>
+        <span>Что такое финалайзеры и для чего они нужны?</span>
+    </h2>
+</doc-anchor-target>
+<p>Это специальные ключи в манифесте объекта, описывающие действия, которые требуется совершить до удаления обзъекта.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-yaml"><code v-pre class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+  namespace: my-namespace
+  finalizers:
+    - my-finalizer.kubernetes.io
+data:
+  key: value</code></pre>
+</doc-codeblock></div>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../шпаргалки-для-собесов/helm/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Шпаргалка по Helm</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../справка-по-git/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Git</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© 2025 Notes by i4ox. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Шпаргалка по Kubernetes", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+</body>
+</html>
