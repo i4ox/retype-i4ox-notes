@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/retype-i4ox-notes">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.789306818519">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.789403569569">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -34,12 +34,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.789306818519" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.789403569569" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.789306818519" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.789403569569" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.789306818519" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.789306818519" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.789403569569" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.789403569569" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -330,28 +330,27 @@ sudo localedef -i en_US -f UTF-8 en_US.UTF-8</code></pre>
         <span>Форматирование разделов</span>
     </h3>
 </doc-anchor-target>
-<p>Для <strong>/</strong> разделов я буду использовать <code v-pre>ext4</code> файловую систему.</p>
-<div class="flex mb-6">
-    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
-    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
-        <div class="flex items-center ml-4 h-7">
-            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
-                <g fill="currentColor"><g>
-                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
-                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                </g></g>
-            </svg>
-        </div>
-        <div class="pr-5 ml-3 w-full">
-<p>Вероятно позже добавлю настройку <code v-pre>xfs</code> и <code v-pre>btrfs</code>.
-Крайне сомнительно, но может быть появится <code v-pre>bcachefs</code>.</p>
-        </div>
-    </div>
-</div>
+<doc-anchor-target id="ext4">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ext4">#</doc-anchor-trigger>
+        <span>ext4</span>
+    </h4>
+</doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">sudo mkfs.vfat -n EFI /dev/sda1
 sudo mkfs.ext4 -L root /dev/sda3
+sudo mkswap -L swap /dev/sda2
+sudo swapon /dev/sda2</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="btrfs">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#btrfs">#</doc-anchor-trigger>
+        <span>btrfs</span>
+    </h4>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo mkfs.vfat -n EFI /dev/sda1
+sudo mkfs.btrfs -L root /dev/sda2
 sudo mkswap -L swap /dev/sda2
 sudo swapon /dev/sda2</code></pre>
 </doc-codeblock></div>
@@ -361,10 +360,103 @@ sudo swapon /dev/sda2</code></pre>
         <span>Монтирование разделов</span>
     </h3>
 </doc-anchor-target>
+<doc-anchor-target id="ext4-1">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ext4-1">#</doc-anchor-trigger>
+        <span>ext4</span>
+    </h4>
+</doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash"># Монтирование основных разделов
 sudo mkdir -p /mnt/os
 sudo mount /dev/sda3 /mnt/os
+sudo mkdir -p /mnt/os/boot/efi
+sudo mount /dev/sda1 /mnt/os/boot/efi
+
+# Необходимый для операционной системы шлак
+sudo mkdir /mnt/os/{proc,sys,dev,run}
+sudo mount --types proc /proc /mnt/os/proc
+sudo mount --rbind /sys /mnt/os/sys
+sudo mount --make-rslave /mnt/os/sys
+sudo mount --rbind /dev /mnt/os/dev
+sudo mount --make-rslave /mnt/os/dev
+sudo mount --bind /run /mnt/os/run
+sudo mount --make-slave /mnt/os/run</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="btrfs-1">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#btrfs-1">#</doc-anchor-trigger>
+        <span>btrfs</span>
+    </h4>
+</doc-anchor-target>
+<p>Сначала надо создать все необходимые разделы.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo mkdir -p /mnt/os
+sudo mount /dev/sda3 /mnt/os
+sudo btrfs subvolume create /mnt/os/@
+sudo btrfs subvolume create /mnt/os/@/.snapshots
+sudo mkdir /mnt/os/@/.snapshots/1
+sudo btrfs subvolume create /mnt/os/@/.snapshots/1/snapshot
+sudo mkdir -p /mnt/os/@/boot/grub2/
+sudo btrfs subvolume create /mnt/os/@/boot/grub2/i386-pc
+sudo btrfs subvolume create /mnt/os/@/boot/grub2/x86_64-efi
+sudo btrfs subvolume create /mnt/os/@/home
+sudo btrfs subvolume create /mnt/os/@/opt
+sudo btrfs subvolume create /mnt/os/@/root
+sudo btrfs subvolume create /mnt/os/@/srv
+sudo btrfs subvolume create /mnt/os/@/tmp
+sudo mkdir /mnt/os/@/usr/
+sudo btrfs subvolume create /mnt/os/@/usr/local
+sudo btrfs subvolume create /mnt/os/@/var</code></pre>
+</doc-codeblock></div>
+<p>Затем для btrfs отключить функционал <code v-pre>Copy-On-Write</code>.
+Чтобы улучшить производительность для VM и баз данных.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo chattr +C /mnt/os/@/var</code></pre>
+</doc-codeblock></div>
+<p>Далее необходимо создать конфигурацию для <em>snapper</em>.
+Вместо <em>$DATE</em> поставьте текущую дату и время. Например: <code v-pre>2025-01-05T15:30:00</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-markup"><code v-pre class="language-markup">&lt;!--/mnt/os/@/.snapshots/1/info.xml--&gt;
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;snapshot&gt;
+  &lt;type&gt;single&lt;/type&gt;
+  &lt;num&gt;1&lt;/num&gt;
+  &lt;date&gt;$DATE&lt;/date&gt;
+  &lt;description&gt;first root filesystem&lt;/description&gt;
+&lt;/snapshot&gt;</code></pre>
+</doc-codeblock></div>
+<p>Устанавливаем этот снимок системы по-умолчанию для файловой системы root.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo btrfs subvolume set-default $(btrfs subvolume list /mnt/os | grep &quot;@/.snapshots/1/snapshot&quot; | grep -oP '(?&lt;=ID )[0-9]+') /mnt/os
+sudo umount /mnt/os
+sudo mount /dev/sda3 /mnt/os</code></pre>
+</doc-codeblock></div>
+<p>Далее создает нужные директории.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo mkdir /mnt/os/.snapshots
+sudo mkdir -p /mnt/os/boot/grub2/i386-pc
+sudo mkdir -p /mnt/os/boot/grub2/x86_64-efi
+sudo mkdir /mnt/os/home
+sudo mkdir /mnt/os/opt
+sudo mkdir /mnt/os/root
+sudo mkdir /mnt/os/srv
+sudo mkdir /mnt/os/tmp
+sudo mkdir -p /mnt/os/usr/local
+sudo mkdir /mnt/os/var</code></pre>
+</doc-codeblock></div>
+<p>И теперь наконец-то монтирование системы.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo mount /dev/sda1 /mnt/os/.snapshots -o subvol=@/.snapshots
+sudo mount /dev/sda1 /mnt/os/boot/grub2/i386-pc -o subvol=@/boot/grub2/i386-pc
+sudo mount /dev/sda1 /mnt/os/boot/grub2/x86_64-efi -o subvol=@/boot/grub2/x86_64-efi
+sudo mount /dev/sda1 /mnt/os/home -o subvol=@/home
+sudo mount /dev/sda1 /mnt/os/opt -o subvol=@/opt
+sudo mount /dev/sda1 /mnt/os/root -o subvol=@/root
+sudo mount /dev/sda1 /mnt/os/srv -o subvol=@/srv
+sudo mount /dev/sda1 /mnt/os/tmp -o subvol=@/tmp
+sudo mount /dev/sda1 /mnt/os/usr/local -o subvol=@/usr/local
+sudo mount /dev/sda1 /mnt/os/var -o subvol=@/var
 sudo mkdir -p /mnt/os/boot/efi
 sudo mount /dev/sda1 /mnt/os/boot/efi
 
@@ -388,6 +480,10 @@ sudo mount --make-slave /mnt/os/run</code></pre>
 <pre class="language-bash"><code v-pre class="language-bash">sudo zypper --root /mnt/os ar --refresh https://download.opensuse.org/tumbleweed/repo/oss/ oss
 sudo zypper --root /mnt/os in kernel-default grub2-x86_64-efi zypper bash man vim shadow util-linux
 sudo zypper --root /mnt/os in --no-recommends NetworkManager</code></pre>
+</doc-codeblock></div>
+<p>Для btrfs также:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo zypper --root /mnt/os in grub2-snapper-plugin btrfsprogs</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="chrooting">
     <h3>
@@ -418,10 +514,25 @@ export PS1=&quot;(chroot) ${PS1}&quot;</code></pre>
 </doc-codeblock></div>
 <p>После чего мы открываем файл <code v-pre>/etc/fstab</code> и редактируем его по примеру ниже.
 Не забывая вставлять нужные UUID.</p>
+<p>Для <em>ext4</em>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">UUID=[...]   /boot/efi    vfat    defaults,noatime     0 2
-UUID=[...]   none         swap    sw                   0 0
-UUID=[...]   /            ext4    noatime              0 1</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">UUID=[...]   /boot/efi      vfat    defaults,noatime     0 2
+UUID=[...]   none           swap    sw                   0 0
+UUID=[...]   /              ext4    noatime              0 1</code></pre>
+</doc-codeblock></div>
+<p>Для <em>btrfs subvolumes</em>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">UUID=[UUID_EFI]   /boot/efi      vfat    defaults,noatime     0 2
+UUID=[UUID_SMAP]  none           swap    sw                   0 0
+UUID=[UUID_BTRFS] /              btrfs   subvol=@,compress=zstd,noatime    0 1
+UUID=[UUID_BTRFS] /.snapshots    btrfs   subvol=@/.snapshots,noatime       0 2
+UUID=[UUID_BTRFS] /home          btrfs   subvol=@/home,compress=zstd,noatime 0 2
+UUID=[UUID_BTRFS] /opt           btrfs   subvol=@/opt,compress=zstd,noatime  0 2
+UUID=[UUID_BTRFS] /root          btrfs   subvol=@/root,compress=zstd,noatime 0 2
+UUID=[UUID_BTRFS] /srv           btrfs   subvol=@/srv,compress=zstd,noatime  0 2
+UUID=[UUID_BTRFS] /tmp           btrfs   subvol=@/tmp,noatime              0 2
+UUID=[UUID_BTRFS] /usr/local     btrfs   subvol=@/usr/local,compress=zstd,noatime 0 2
+UUID=[UUID_BTRFS] /var           btrfs   subvol=@/var,noatime</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="установка-grub">
     <h3>
@@ -467,10 +578,10 @@ sudo systemctl enable --now NetworkManager</code></pre>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../шпаргалки-для-собесов/helm/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../шпаргалки/git/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Шпаргалка по Helm</span>
+                                                <span class="block mt-1">Git</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
