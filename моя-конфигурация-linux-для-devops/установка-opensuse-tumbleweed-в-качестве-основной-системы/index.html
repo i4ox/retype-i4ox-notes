@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/retype-i4ox-notes">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.789420092002">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.789595019630">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -34,12 +34,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.789420092002" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.789595019630" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.789420092002" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.789595019630" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.789420092002" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.789420092002" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.789595019630" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.789595019630" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -309,9 +309,9 @@ sudo localedef -i en_US -f UTF-8 en_US.UTF-8</code></pre>
         <div class="pr-5 ml-3 w-full">
 <p>Нам нужно три раздела:</p>
 <ol>
-<li>1G - EFI Filesystem</li>
-<li>4G - Linux swap</li>
-<li>+100% - Linux filesystem</li>
+<li>1G - EFI Filesystem - vfat</li>
+<li>500MB - /boot - xfs</li>
+<li>+100% - Linux filesystem - xfs</li>
 </ol>
         </div>
     </div>
@@ -324,6 +324,28 @@ sudo localedef -i en_US -f UTF-8 en_US.UTF-8</code></pre>
     <figcaption class="caption">Созданные разделы</figcaption>
 </figure>
 </p>
+<doc-anchor-target id="настройка-шифрования">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#настройка-шифрования">#</doc-anchor-trigger>
+        <span>Настройка шифрования</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo cryptsetup luksFormat /dev/sda3
+sudo cryptsetup open /dev/sda3 lvm</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="настройка-lvm">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#настройка-lvm">#</doc-anchor-trigger>
+        <span>Настройка LVM</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo pvcreate /dev/mapper/lvm
+sudo vgcreate vg0 /dev/mapper/lvm
+sudo lvcreate -L 4G -n swap vg0
+sudo lvcreate -l 100%FREE -n root vg0</code></pre>
+</doc-codeblock></div>
 <doc-anchor-target id="форматирование-разделов">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#форматирование-разделов">#</doc-anchor-trigger>
@@ -332,9 +354,10 @@ sudo localedef -i en_US -f UTF-8 en_US.UTF-8</code></pre>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">sudo mkfs.vfat -n EFI /dev/sda1
-sudo mkfs.ext4 -L root /dev/sda3
-sudo mkswap -L swap /dev/sda2
-sudo swapon /dev/sda2</code></pre>
+sudo mkfs.xfs -L boot /dev/sda2
+sudo mkfs.xfs -L root /dev/vg0/root
+sudo mkswap -L swap /dev/vg0/swap
+sudo swapon /dev/vg0/swap</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="монтирование-разделов">
     <h3>
@@ -345,8 +368,10 @@ sudo swapon /dev/sda2</code></pre>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash"># Монтирование основных разделов
 sudo mkdir -p /mnt/os
-sudo mount /dev/sda3 /mnt/os
-sudo mkdir -p /mnt/os/boot/efi
+sudo mount /dev/vg0/root /mnt/os
+sudo mkdir /mnt/os/boot/
+sudo mount /dev/sda2 /mnt/os/boot
+sudo mkdir /mnt/os/boot/efi
 sudo mount /dev/sda1 /mnt/os/boot/efi
 
 # Необходимый для операционной системы шлак
@@ -367,7 +392,7 @@ sudo mount --make-slave /mnt/os/run</code></pre>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">sudo zypper --root /mnt/os ar --refresh https://download.opensuse.org/tumbleweed/repo/oss/ oss
-sudo zypper --root /mnt/os in kernel-default grub2-x86_64-efi zypper bash man vim shadow util-linux
+sudo zypper --root /mnt/os in kernel-default refind zypper bash man vim shadow util-linux opendoas booster cryptsetup lvm2 xfsprogs
 sudo zypper --root /mnt/os in --no-recommends NetworkManager</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="chrooting">
@@ -399,23 +424,96 @@ export PS1=&quot;(chroot) ${PS1}&quot;</code></pre>
 </doc-codeblock></div>
 <p>После чего мы открываем файл <code v-pre>/etc/fstab</code> и редактируем его по примеру ниже.
 Не забывая вставлять нужные UUID.</p>
-<p>Для <em>ext4</em>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">UUID=[...]   /boot/efi      vfat    defaults,noatime     0 2
-UUID=[...]   none           swap    sw                   0 0
-UUID=[...]   /              ext4    noatime              0 1</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">UUID=[UUID_EFI]    /boot/efi      vfat    defaults,noatime     0 2
+UUID=[UUID_BOOT]   /boot          xfs     defaults,noatime     0 2
+UUID=[UUID_ROOT]   /              xfs     defaults,noatime     0 1
+UUID=[UUID_SWAP]   none           swap    sw                   0 0</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="установка-grub">
+<doc-anchor-target id="настройка-crypttab">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-grub">#</doc-anchor-trigger>
-        <span>Установка grub</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#настройка-crypttab">#</doc-anchor-trigger>
+        <span>Настройка crypttab</span>
     </h3>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">dracut -f
-grub2-install --efi-directory=/boot/efi --target=x86_64-efi --bootloader-id=opensuse
-grub2-mkconfig -o /boot/grub2/grub.cfg
-passwd</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">vim /etc/crypttab
+    lvm /dev/sda3 none luks</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="настройка-booster">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#настройка-booster">#</doc-anchor-trigger>
+        <span>Настройка booster</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">vim /etc/booster.yaml
+    universal: false
+    modules:
+      - cryptsetup
+      - lvm
+      - xfs
+      - vfat
+    cmdline:
+      - quiet
+      - splash
+      - rd.luks.uuid=&lt;UUID вашего зашифрованного раздела&gt;
+      - root=/dev/mapper/vg0-root
+      - resume=/dev/mapper/vg0-swap</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="сборка-initramfs">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сборка-initramfs">#</doc-anchor-trigger>
+        <span>Сборка initramfs</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">booster -force</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="проверка-работоспособности-booster-при-пересборке-ядра">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#проверка-работоспособности-booster-при-пересборке-ядра">#</doc-anchor-trigger>
+        <span>Проверка работоспособности booster при пересборке ядра</span>
+    </h4>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">zypper remove dracut
+vim /etc/kernel/install.d/90-booster-initramfs
+    #!/bin/bash
+
+    # Скрипт для пересборки initramfs через booster
+    KERNEL_VERSION=&quot;$1&quot;
+
+    if [ -z &quot;$KERNEL_VERSION&quot; ]; then
+        echo &quot;Kernel version not specified.&quot;
+        exit 1
+    fi
+
+    echo &quot;Using booster to rebuild initramfs for kernel: $KERNEL_VERSION&quot;
+    booster -force
+chmod +x /etc/kernel/install.d/90-booster-initramfs</code></pre>
+</doc-codeblock></div>
+<p>Сам тест:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo zypper install --force kernel-default
+ls -l /boot/booster.initramfs</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="установка-refind">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-refind">#</doc-anchor-trigger>
+        <span>Установка rEFInd</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">refind-install --usedefault /dev/sda1
+vim /boot/efi/EFI/refind/refind.conf
+    timeout 10
+    menuentry &quot;OpenSUSE Tumbleweed (LVM + LUKS)&quot; {
+        volume root
+        loader /boot/vmlinuz
+        initrd /boot/booster.initramfs
+        options &quot;root=/dev/mapper/vg0-root rw quiet splash rd.luks.uuid=&lt;UUID&gt;&quot;
+    }</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="загрузка-в-систему">
     <h3>
