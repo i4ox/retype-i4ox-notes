@@ -85,9 +85,9 @@ sudo cfdisk /dev/sda
 
 !!!
 Нам нужно три раздела:
-1. 1G - EFI Filesystem
-2. 4G - Linux swap
-3. +100% - Linux filesystem
+1. 1G - EFI Filesystem - vfat
+2. 500MB - /boot - xfs
+3. +100% - Linux filesystem - xfs
 !!!
 
 Далее выбираем `Write` подтверждаем создание разделов и выходим.
@@ -97,13 +97,30 @@ sudo cfdisk /dev/sda
 
 ![Созданные разделы](../uploads/opensuse_install_6.png)
 
+### Настройка шифрования
+
+```sh
+sudo cryptsetup luksFormat /dev/sda3
+sudo cryptsetup open /dev/sda3 lvm
+```
+
+### Настройка LVM
+
+```sh
+sudo pvcreate /dev/mapper/lvm
+sudo vgcreate vg0 /dev/mapper/lvm
+sudo lvcreate -L 4G -n swap vg0
+sudo lvcreate -l 100%FREE -n root vg0
+```
+
 ### Форматирование разделов
 
 ```sh
 sudo mkfs.vfat -n EFI /dev/sda1
-sudo mkfs.ext4 -L root /dev/sda3
-sudo mkswap -L swap /dev/sda2
-sudo swapon /dev/sda2
+sudo mkfs.xfs -L boot /dev/sda2
+sudo mkfs.xfs -L root /dev/vg0/root
+sudo mkswap -L swap /dev/vg0/swap
+sudo swapon /dev/vg0/swap
 ```
 
 ### Монтирование разделов
@@ -111,8 +128,10 @@ sudo swapon /dev/sda2
 ```sh
 # Монтирование основных разделов
 sudo mkdir -p /mnt/os
-sudo mount /dev/sda3 /mnt/os
-sudo mkdir -p /mnt/os/boot/efi
+sudo mount /dev/vg0/root /mnt/os
+sudo mkdir /mnt/os/boot/
+sudo mount /dev/sda2 /mnt/os/boot
+sudo mkdir /mnt/os/boot/efi
 sudo mount /dev/sda1 /mnt/os/boot/efi
 
 # Необходимый для операционной системы шлак
@@ -130,7 +149,7 @@ sudo mount --make-slave /mnt/os/run
 
 ```sh
 sudo zypper --root /mnt/os ar --refresh https://download.opensuse.org/tumbleweed/repo/oss/ oss
-sudo zypper --root /mnt/os in kernel-default grub2-x86_64-efi zypper bash man vim shadow util-linux
+sudo zypper --root /mnt/os in kernel-default refind zypper bash man vim shadow util-linux opendoas booster cryptsetup lvm2 xfsprogs
 sudo zypper --root /mnt/os in --no-recommends NetworkManager
 ```
 
@@ -157,21 +176,83 @@ echo "$(blkid)" >> /etc/fstab
 После чего мы открываем файл `/etc/fstab` и редактируем его по примеру ниже.
 Не забывая вставлять нужные UUID.
 
-Для *ext4*:
-
 ```sh
-UUID=[...]   /boot/efi      vfat    defaults,noatime     0 2
-UUID=[...]   none           swap    sw                   0 0
-UUID=[...]   /              ext4    noatime              0 1
+UUID=[UUID_EFI]    /boot/efi      vfat    defaults,noatime     0 2
+UUID=[UUID_BOOT]   /boot          xfs     defaults,noatime     0 2
+UUID=[UUID_ROOT]   /              xfs     defaults,noatime     0 1
+UUID=[UUID_SWAP]   none           swap    sw                   0 0
 ```
 
-### Установка grub
+### Настройка crypttab
 
 ```sh
-dracut -f
-grub2-install --efi-directory=/boot/efi --target=x86_64-efi --bootloader-id=opensuse
-grub2-mkconfig -o /boot/grub2/grub.cfg
-passwd
+vim /etc/crypttab
+    lvm /dev/sda3 none luks
+```
+
+### Настройка booster
+
+```sh
+vim /etc/booster.yaml
+    universal: false
+    modules:
+      - cryptsetup
+      - lvm
+      - xfs
+      - vfat
+    cmdline:
+      - quiet
+      - splash
+      - rd.luks.uuid=<UUID вашего зашифрованного раздела>
+      - root=/dev/mapper/vg0-root
+      - resume=/dev/mapper/vg0-swap
+```
+
+### Сборка initramfs
+
+```sh
+booster -force
+```
+
+#### Проверка работоспособности booster при пересборке ядра
+
+```sh
+zypper remove dracut
+vim /etc/kernel/install.d/90-booster-initramfs
+    #!/bin/bash
+
+    # Скрипт для пересборки initramfs через booster
+    KERNEL_VERSION="$1"
+
+    if [ -z "$KERNEL_VERSION" ]; then
+        echo "Kernel version not specified."
+        exit 1
+    fi
+
+    echo "Using booster to rebuild initramfs for kernel: $KERNEL_VERSION"
+    booster -force
+chmod +x /etc/kernel/install.d/90-booster-initramfs
+```
+
+Сам тест:
+
+```sh
+sudo zypper install --force kernel-default
+ls -l /boot/booster.initramfs
+```
+
+### Установка rEFInd
+
+```sh
+refind-install --usedefault /dev/sda1
+vim /boot/efi/EFI/refind/refind.conf
+    timeout 10
+    menuentry "OpenSUSE Tumbleweed (LVM + LUKS)" {
+        volume root
+        loader /boot/vmlinuz
+        initrd /boot/booster.initramfs
+        options "root=/dev/mapper/vg0-root rw quiet splash rd.luks.uuid=<UUID>"
+    }
 ```
 
 ### Загрузка в систему
