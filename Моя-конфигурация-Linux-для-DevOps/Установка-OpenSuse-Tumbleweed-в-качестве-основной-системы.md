@@ -149,7 +149,7 @@ sudo mount --make-slave /mnt/os/run
 
 ```sh
 sudo zypper --root /mnt/os ar --refresh https://download.opensuse.org/tumbleweed/repo/oss/ oss
-sudo zypper --root /mnt/os in kernel-default refind zypper bash man vim shadow util-linux opendoas booster cryptsetup lvm2 xfsprogs
+sudo zypper --root /mnt/os in kernel-default grub2-x86_64-efi zypper bash man vim shadow util-linux cryptsetup lvm2 xfsprogs
 sudo zypper --root /mnt/os in --no-recommends NetworkManager
 ```
 
@@ -187,72 +187,18 @@ UUID=[UUID_SWAP]   none           swap    sw                   0 0
 
 ```sh
 vim /etc/crypttab
-    lvm /dev/sda3 none luks
+    lvm UUID=[UUID_LUKS] none luks
 ```
 
-### Настройка booster
+### Установка grub
 
 ```sh
-vim /etc/booster.yaml
-    universal: false
-    modules:
-      - cryptsetup
-      - lvm
-      - xfs
-      - vfat
-    cmdline:
-      - quiet
-      - splash
-      - rd.luks.uuid=<UUID вашего зашифрованного раздела>
-      - root=/dev/mapper/vg0-root
-      - resume=/dev/mapper/vg0-swap
-```
-
-### Сборка initramfs
-
-```sh
-booster -force
-```
-
-#### Проверка работоспособности booster при пересборке ядра
-
-```sh
-zypper remove dracut
-vim /etc/kernel/install.d/90-booster-initramfs
-    #!/bin/bash
-
-    # Скрипт для пересборки initramfs через booster
-    KERNEL_VERSION="$1"
-
-    if [ -z "$KERNEL_VERSION" ]; then
-        echo "Kernel version not specified."
-        exit 1
-    fi
-
-    echo "Using booster to rebuild initramfs for kernel: $KERNEL_VERSION"
-    booster -force
-chmod +x /etc/kernel/install.d/90-booster-initramfs
-```
-
-Сам тест:
-
-```sh
-sudo zypper install --force kernel-default
-ls -l /boot/booster.initramfs
-```
-
-### Установка rEFInd
-
-```sh
-refind-install --usedefault /dev/sda1
-vim /boot/efi/EFI/refind/refind.conf
-    timeout 10
-    menuentry "OpenSUSE Tumbleweed (LVM + LUKS)" {
-        volume root
-        loader /boot/vmlinuz
-        initrd /boot/booster.initramfs
-        options "root=/dev/mapper/vg0-root rw quiet splash rd.luks.uuid=<UUID>"
-    }
+sudo nano /etc/default/grub
+    GRUB_CMDLINE_LINUX="rd.luks.uuid=<UUID> root=/dev/mapper/rootvg-rootvol"
+dracut -f
+grub2-mkconfig -o /boot/grub2/grub.cfg
+grub2-install --efi-directory=/boot/efi --target=x86_64-efi --bootloader-id=opensuse
+passwd
 ```
 
 ### Загрузка в систему
