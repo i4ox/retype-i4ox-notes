@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/retype-i4ox-notes">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.789597064152">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.789667066618">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -12,6 +12,7 @@
     <!-- Primary Meta Tags -->
     <title>Настройка OpenSuse Tumbleweed после установки | i4ox Docs</title>
     <meta name="title" content="Настройка OpenSuse Tumbleweed после установки | i4ox Docs">
+    <meta name="description" content="Ghostty- это эмулятор терминала, который отличается тем, что он быстрый, многофункциональный и нативный.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/моя-конфигурация-linux-для-devops/настройка-opensuse-tumbleweed-после-установки/">
@@ -20,21 +21,23 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/моя-конфигурация-linux-для-devops/настройка-opensuse-tumbleweed-после-установки/">
     <meta property="og:title" content="Настройка OpenSuse Tumbleweed после установки | i4ox Docs">
+    <meta property="og:description" content="Ghostty- это эмулятор терминала, который отличается тем, что он быстрый, многофункциональный и нативный.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/моя-конфигурация-linux-для-devops/настройка-opensuse-tumbleweed-после-установки/">
     <meta property="twitter:title" content="Настройка OpenSuse Tumbleweed после установки | i4ox Docs">
+    <meta property="twitter:description" content="Ghostty- это эмулятор терминала, который отличается тем, что он быстрый, многофункциональный и нативный.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.789597064152" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.789667066618" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.789597064152" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.789667066618" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.789597064152" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.789597064152" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.789667066618" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.789667066618" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -172,17 +175,6 @@
 nmcli dev wifi
 nmcli dev wifi connect &quot;SSID&quot; password &quot;PASSWORD&quot;</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="настройка-sshd">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#настройка-sshd">#</doc-anchor-trigger>
-        <span>Настройка SSHD</span>
-    </h2>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">zypper install openssh
-vim /usr/etc/ssh/sshd_config
-# PermitRootLogin yes</code></pre>
-</doc-codeblock></div>
 <doc-anchor-target id="создание-пользователя-с-правами-администратора-и-запрет-ssh-подключения-для-root">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#создание-пользователя-с-правами-администратора-и-запрет-ssh-подключения-для-root">#</doc-anchor-trigger>
@@ -195,23 +187,69 @@ usermod -aG users $USER
 groupadd wheel
 usermod -aG wheel $USER
 zypper in sudo
-passwd $USER
-
-vim /usr/etc/ssh/sshd_config
-# PermitRootLogin no
-systemctl restart sshd</code></pre>
+passwd $USER</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="установка-основы-в-виде-минимального-kde">
+<doc-anchor-target id="настройка-zypper">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-основы-в-виде-минимального-kde">#</doc-anchor-trigger>
-        <span>Установка основы в виде минимального KDE</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#настройка-zypper">#</doc-anchor-trigger>
+        <span>Настройка zypper</span>
     </h2>
 </doc-anchor-target>
 <div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo vim /etc/zypp/zypp.conf
+    solver.onlyRequired = true
+    solver.allowVendorChange = false
+    solver.cleandepsOnRemove = false
+    download.use_deltarpm = true
+    download.max_concurrent_connections = 10</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="установка-программ">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-программ">#</doc-anchor-trigger>
+        <span>Установка программ</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="установка-необходимых-утилит">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-необходимых-утилит">#</doc-anchor-trigger>
+        <span>Установка необходимых утилит</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo zypper in curl wget git gpg2 stow</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="терминальный-эмулятор-ghostty">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#терминальный-эмулятор-ghostty">#</doc-anchor-trigger>
+        <span>Терминальный эмулятор: Ghostty</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Ghostty</strong> - это эмулятор терминала, который отличается тем, что он быстрый, многофункциональный и нативный.
+Хотя существует множество отличных эмуляторов терминала, все они заставляют вас выбирать между скоростью, функциями или нативными пользовательскими интерфейсами.
+Ghostty предоставляет все три.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo zypper addrepo https://download.opensuse.org/repositories/X11:/terminals/openSUSE_Factory/X11:terminals.repo
+sudo zypper refresh
+sudo zypper install ghostty</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="браузер-qutebrowser">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#браузер-qutebrowser">#</doc-anchor-trigger>
+        <span>Браузер: qutebrowser</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo zypper in qutebrowser</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="оконный-менеджер-bspwm">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#оконный-менеджер-bspwm">#</doc-anchor-trigger>
+        <span>Оконный менеджер: bspwm</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">sudo zypper in xorg-x11-server xinit
-sudo zypper in --no-recommends -t pattern kde
-sudo zypper in plasma6-session-x11
-sudo reboot</code></pre>
+sudo zypper in bspwm sxhkd picom polyber flameshot rofi dunst nitrogen</code></pre>
 </doc-codeblock></div>
 
                                 
