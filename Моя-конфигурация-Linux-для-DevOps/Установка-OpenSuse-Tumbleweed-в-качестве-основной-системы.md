@@ -193,9 +193,9 @@ vim /etc/crypttab
 ### Установка grub
 
 ```sh
-sudo nano /etc/default/grub
-    GRUB_CMDLINE_LINUX="rd.luks.uuid=<UUID> root=/dev/mapper/rootvg-rootvol"
-dracut -f
+vim /etc/default/grub
+    GRUB_CMDLINE_LINUX="rd.luks.uuid=<UUID> root=/dev/mapper/vg0-root"
+dracut --regenerate-all --force
 grub2-mkconfig -o /boot/grub2/grub.cfg
 grub2-install --efi-directory=/boot/efi --target=x86_64-efi --bootloader-id=opensuse
 passwd
@@ -205,7 +205,7 @@ passwd
 
 ```sh
 exit
-umount -l /mnt/os/dev/{/shm,/pts,}
-umount -R /mnt/os
-reboot
+sudo umount -l /mnt/os/dev/{/shm,/pts,}
+sudo umount -R /mnt/os
+sudo reboot
 ```
