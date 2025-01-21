@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/retype-i4ox-notes">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.790790433790">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.790791992755">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.790790433790" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.790791992755" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.790790433790" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.790791992755" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.790790433790" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.790790433790" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.790791992755" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.790791992755" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -901,7 +901,7 @@
 </doc-anchor-target>
 <p><strong>DML</strong> - используется для управления данными.</p>
 <ul>
-<li><code v-pre>INERT</code></li>
+<li><code v-pre>INSERT INTO</code></li>
 <li><code v-pre>UPDATE</code></li>
 <li><code v-pre>DELETE</code></li>
 </ul>
@@ -922,6 +922,222 @@
         <span>TCL - Transaction Control Language</span>
     </h3>
 </doc-anchor-target>
+<p><strong>TCL</strong> - используется для управления транзакциями.</p>
+<ul>
+<li><code v-pre>COMMIT</code> - подтверждение.</li>
+<li><code v-pre>ROLLBACK</code> - откат изменений.</li>
+<li><code v-pre>SAVEPOINT</code> - создание точки отката.</li>
+</ul>
+<doc-anchor-target id="dcl---data-control-language">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dcl---data-control-language">#</doc-anchor-trigger>
+        <span>DCL - Data Control Language</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>DCL</strong> - используется для управления правами доступа.</p>
+<ul>
+<li><code v-pre>GRANT</code> - предоставление прав.</li>
+<li><code v-pre>REVOKE</code> - отзык прав.</li>
+</ul>
+<doc-anchor-target id="типы-данных-sql">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#типы-данных-sql">#</doc-anchor-trigger>
+        <span>Типы данных SQL</span>
+    </h2>
+</doc-anchor-target>
+<p>Типы данных определяют, какие значения можно хранить в колонке таблицы.</p>
+<doc-anchor-target id="числовые">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#числовые">#</doc-anchor-trigger>
+        <span>Числовые</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><code v-pre>INT, SMALLINT, BIGINT</code> - целые числа разной разрядности.</li>
+<li><code v-pre>DECIMAL(p,s), NUMERIC(p,s)</code> - числа с фиксированной точностью.</li>
+<li><code v-pre>FLOAT,REAL</code> - числа с плавающей точкой.</li>
+</ul>
+<doc-anchor-target id="строковые">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#строковые">#</doc-anchor-trigger>
+        <span>Строковые</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><code v-pre>CHAR(n)</code> - строка фиксированной длины.</li>
+<li><code v-pre>VARCHAR(n)</code> - строка переменной длины.</li>
+<li><code v-pre>TEXT</code> - текстовые данные большой длины.</li>
+</ul>
+<doc-anchor-target id="дата-и-время">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#дата-и-время">#</doc-anchor-trigger>
+        <span>Дата и время</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><code v-pre>DATE</code> - только дата.</li>
+<li><code v-pre>TIME</code> - только время.</li>
+<li><code v-pre>TIMESTAMP</code> - дата и время.</li>
+</ul>
+<doc-anchor-target id="булевы">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#булевы">#</doc-anchor-trigger>
+        <span>Булевы</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><code v-pre>BOOLEAN</code> - значения TRUE,FALSE</li>
+</ul>
+<doc-anchor-target id="операторы-sql">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#операторы-sql">#</doc-anchor-trigger>
+        <span>Операторы SQL</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="структура-sql-операторов">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#структура-sql-операторов">#</doc-anchor-trigger>
+        <span>Структура SQL-операторов</span>
+    </h3>
+</doc-anchor-target>
+<p>Операторы SQL структурированы по их назначения: DDL, DML, DQL, TCL, DCL. Смотреть выше.</p>
+<doc-anchor-target id="нотации-sql">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#нотации-sql">#</doc-anchor-trigger>
+        <span>Нотации SQL</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Стандартная нотация</em> - поддерживается всеми СУБД.</li>
+<li><em>Расширенная нотация</em> - поддерживается только конкретной СУБД.</li>
+</ol>
+<doc-anchor-target id="форматы-конструкций">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#форматы-конструкций">#</doc-anchor-trigger>
+        <span>Форматы конструкций</span>
+    </h3>
+</doc-anchor-target>
+<p>DDL:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT,
+    enrollment_date DATE
+);
+
+ALTER TABLE students
+ADD COLUMN address VARCHAR(255);
+
+DROP TABLE students;</code></pre>
+</doc-codeblock></div>
+<p>DML:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">INSERT INTO students (student_id, name, age, enrollment_date)
+VALUES (1, 'Иван Иванов', 20, '2023-09-01');
+
+UPDATE students
+SET age = 21
+WHERE student_id = 1;
+
+DELETE FROM students
+WHERE student_id = 1;</code></pre>
+</doc-codeblock></div>
+<p>DQL:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">SELECT name, age
+FROM students
+WHERE age &gt; 18;
+
+SELECT name, age
+FROM students
+ORDER BY age DESC;
+
+SELECT COUNT(*) AS total_students
+FROM students;</code></pre>
+</doc-codeblock></div>
+<p>TCL:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">BEGIN TRANSACTION;
+
+UPDATE students
+SET age = 22
+WHERE student_id = 1;
+
+COMMIT; -- Изменения сохраняются
+-------------------
+BEGIN TRANSACTION;
+
+UPDATE students
+SET age = 22
+WHERE student_id = 1;
+
+ROLLBACK;  -- Все изменения отменяются
+-------------------
+BEGIN TRANSACTION;
+
+UPDATE students
+SET age = 22
+WHERE student_id = 1;
+
+SAVEPOINT save1;  -- Создаем точку отката
+
+UPDATE students
+SET age = 23
+WHERE student_id = 1;
+
+ROLLBACK TO SAVEPOINT save1;  -- Откатываем изменения до save1
+
+COMMIT;</code></pre>
+</doc-codeblock></div>
+<p>DCL:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">GRANT SELECT, INSERT ON students TO user1;
+
+REVOKE SELECT, INSERT ON students FROM user1;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="основные-объекты-языка-sql">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#основные-объекты-языка-sql">#</doc-anchor-trigger>
+        <span>Основные объекты языка SQL</span>
+    </h2>
+</doc-anchor-target>
+<ol>
+<li><em>Таблицы</em> - основные структуры для хранения данных.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">CREATE TABLE employees(
+  id INT PRIMARY KEY,
+  name VARCHAR(100),
+  salary DECIMAL(10,2)
+);</code></pre>
+</doc-codeblock></div>
+<ol start="2">
+<li><em>Представления</em> - Логические таблицы, основанные на результатах запросов, или виртуальные таблицы, содержимое которых определяется запросом.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">CREATE VIEW high_salary_employees AS
+SELECT name, salary FROM employees WHERE salary &gt; 50000;</code></pre>
+</doc-codeblock></div>
+<ol start="3">
+<li><em>Индексы</em> - структуры для ускорения поиска данных. Строки здесь расположены в определенном порядке, но вместо того, чтобы содержать информацию содержит лишь то, что необходимо, чтобы найти нужную информацию.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">CREATE INDEX idx_name ON employees(name);</code></pre>
+</doc-codeblock></div>
+<ol start="4">
+<li><em>Хранимые процедуры и функции</em> - код, выполняемый на сервере для автоматизации операций.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">CREATE FUNCTION add_employee(name VARCHAR(100), salary DECIMAL(10,2))
+AS
+BEGIN
+  INSERT INTO employees(name, salary) VALUES(name, salary);
+END;</code></pre>
+</doc-codeblock></div>
+<ol start="5">
+<li><em>Триггеры</em> - код, который автоматически запускается при выполнении операций <code v-pre>INSERT</code>, <code v-pre>UPDATE</code> и <code v-pre>DELETE</code>.</li>
+</ol>
 
                                 
                                 <!-- Required only on API pages -->
