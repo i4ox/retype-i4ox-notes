@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/retype-i4ox-notes">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.790791992755">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.790793715660">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.790791992755" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.790793715660" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.790791992755" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.790793715660" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.790791992755" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.790791992755" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.790793715660" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.790793715660" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -1102,42 +1102,118 @@ REVOKE SELECT, INSERT ON students FROM user1;</code></pre>
         <span>Основные объекты языка SQL</span>
     </h2>
 </doc-anchor-target>
-<ol>
-<li><em>Таблицы</em> - основные структуры для хранения данных.</li>
-</ol>
+<doc-anchor-target id="таблицы">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#таблицы">#</doc-anchor-trigger>
+        <span>Таблицы</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Таблицы</strong> - основные структуры для хранения данных.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-sql"><code v-pre class="language-sql">CREATE TABLE employees(
-  id INT PRIMARY KEY,
-  name VARCHAR(100),
-  salary DECIMAL(10,2)
+id INT PRIMARY KEY,
+name VARCHAR(100),
+salary DECIMAL(10,2)
 );</code></pre>
 </doc-codeblock></div>
-<ol start="2">
-<li><em>Представления</em> - Логические таблицы, основанные на результатах запросов, или виртуальные таблицы, содержимое которых определяется запросом.</li>
+<doc-anchor-target id="представления">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#представления">#</doc-anchor-trigger>
+        <span>Представления</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Представления</strong> - логические таблицы, основанные на результатах запросов, или виртуальные таблицы, содержимое которых определяется запросом.
+Они позволяют:</p>
+<ul>
+<li>Упрощать сложные запросы.</li>
+<li>Повышать безопасность, скрывая часть данных.</li>
+<li>Улучшать читаемость запросов.</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">CREATE VIEW active_employees AS
+SELECT id, name, salary FROM employees
+WHERE active = TRUE;
+
+SELECT * FROM active_employees;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="хранимые-процедуры-и-функции">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#хранимые-процедуры-и-функции">#</doc-anchor-trigger>
+        <span>Хранимые процедуры и функции</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Хранимые процедуры и функции</strong> - программные блоки, хранящиеся и выполняемые на сервере базы данных.
+Они позволяют:</p>
+<ul>
+<li>Повысить производительность за счет выполнения на сервере.</li>
+<li>Уменьшить передачу данных между клиентом и сервером.</li>
+<li>Повторно использовать код.</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">CREATE PROCEDURE add_employee(name VARCHAR(100), salary DECIMAL(10,2))
+AS
+BEGIN
+    INSERT INTO employees(name, salary) VALUES(name, salary);
+END;
+
+CALL add_employee('name', 50.55);
+--------
+CREATE FUNCTION calculate_tax(price NUMERIC, tax_rate NUMERIC)
+RETURNS NUMERIC AS $$
+BEGIN
+    RETURN price * tax_rate / 100;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT calculate_tax(100, 20);</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="триггеры">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#триггеры">#</doc-anchor-trigger>
+        <span>Триггеры</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Триггеры</strong> - код, который автоматически запускается при определенных событиях в таблице.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">CREATE TRIGGER trigger_name
+{BEFORE|AFTER|INSTEAD OF} {INSERT|UPDATE|DELETE}
+ON table_name
+FOR EACH ROW
+BEGIN
+-- Тело триггера
+END;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="индексы">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#индексы">#</doc-anchor-trigger>
+        <span>Индексы</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Индексы</strong> - структуру для ускорения поиска данных. Они создают структуру данных, основанную на значениях одной или нескольких колонок таблицы.</p>
+<ol>
+<li><em>Кластерный индекс</em> - физически упорядочивает строки таблицы в соответствии со значением индекса.</li>
 </ol>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-sql"><code v-pre class="language-sql">CREATE VIEW high_salary_employees AS
-SELECT name, salary FROM employees WHERE salary &gt; 50000;</code></pre>
+<pre class="language-sql"><code v-pre class="language-sql">CREATE CLUSTERED INDEX idx_id ON employees(id);</code></pre>
 </doc-codeblock></div>
-<ol start="3">
-<li><em>Индексы</em> - структуры для ускорения поиска данных. Строки здесь расположены в определенном порядке, но вместо того, чтобы содержать информацию содержит лишь то, что необходимо, чтобы найти нужную информацию.</li>
+<ol start="2">
+<li><em>Некластерный индекс</em> - создает отдельную структуру, ссылающуюся на данные таблицы.</li>
 </ol>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-sql"><code v-pre class="language-sql">CREATE INDEX idx_name ON employees(name);</code></pre>
 </doc-codeblock></div>
-<ol start="4">
-<li><em>Хранимые процедуры и функции</em> - код, выполняемый на сервере для автоматизации операций.</li>
+<ol start="3">
+<li><em>Уникальный индекс</em> - гарантирует уникальность значений.</li>
 </ol>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-sql"><code v-pre class="language-sql">CREATE FUNCTION add_employee(name VARCHAR(100), salary DECIMAL(10,2))
-AS
-BEGIN
-  INSERT INTO employees(name, salary) VALUES(name, salary);
-END;</code></pre>
+<pre class="language-sql"><code v-pre class="language-sql">CREATE UNIQUE INDEX idx_email ON employees(email);</code></pre>
 </doc-codeblock></div>
-<ol start="5">
-<li><em>Триггеры</em> - код, который автоматически запускается при выполнении операций <code v-pre>INSERT</code>, <code v-pre>UPDATE</code> и <code v-pre>DELETE</code>.</li>
-</ol>
+<doc-anchor-target id="правила-и-стратегии-поддерживания-целостности-данных">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#правила-и-стратегии-поддерживания-целостности-данных">#</doc-anchor-trigger>
+        <span>Правила и стратегии поддерживания целостности данных</span>
+    </h2>
+</doc-anchor-target>
 
                                 
                                 <!-- Required only on API pages -->
