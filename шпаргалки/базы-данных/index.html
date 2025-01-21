@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/retype-i4ox-notes">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.790793715660">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.790802399660">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.790793715660" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.790802399660" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.790793715660" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.790802399660" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.790793715660" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.790793715660" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.790802399660" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.790802399660" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -1096,6 +1096,154 @@ COMMIT;</code></pre>
 
 REVOKE SELECT, INSERT ON students FROM user1;</code></pre>
 </doc-codeblock></div>
+<doc-anchor-target id="извлечение-данных-с-использоывним-sql">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#извлечение-данных-с-использоывним-sql">#</doc-anchor-trigger>
+        <span>Извлечение данных с использоывним SQL</span>
+    </h3>
+</doc-anchor-target>
+<p>Как было сказано выше, извлечение данных осуществляется с помощью команды <code v-pre>SELECT</code>.</p>
+<p>Ключевые конструкции:</p>
+<ol>
+<li><code v-pre>WHERE</code>: фильтрация данных.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">SELECT name FROM employees WHERE SALARY &gt; 50000;</code></pre>
+</doc-codeblock></div>
+<ol start="2">
+<li><code v-pre>ORDER BY</code>: сортировка данных.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">SELECT name, salary FROM employees ORDER BY salary DESC;</code></pre>
+</doc-codeblock></div>
+<ol start="3">
+<li><code v-pre>GROUP BY</code>: группировка данных.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">SELECT deparment, AVG(salary) FROM employees GROUP BY deparment;</code></pre>
+</doc-codeblock></div>
+<ol start="4">
+<li><code v-pre>LIMIT</code>: ограничение количества возвращаемых строк.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">SELECT * FROM employees LIMIT 10;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="обобщение-данных-с-помощью-агрегатных-данных">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#обобщение-данных-с-помощью-агрегатных-данных">#</doc-anchor-trigger>
+        <span>Обобщение данных с помощью агрегатных данных</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Агрегатные функции</strong> позволяют обобщать данные.</p>
+<p>Основные функции:</p>
+<ol>
+<li><code v-pre>COUNT</code>: количество строк.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">SELECT COUNT(*) FROM employees;</code></pre>
+</doc-codeblock></div>
+<ol start="2">
+<li><code v-pre>SUM</code>: сумма значений.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">SELECT SUM(salary) FROM employees;</code></pre>
+</doc-codeblock></div>
+<ol start="3">
+<li><code v-pre>AVG</code>: среднее значение.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">SELECT AVG(salary) FROM employees;</code></pre>
+</doc-codeblock></div>
+<ol start="4">
+<li><code v-pre>MAX</code> и <code v-pre>MIN</code>: максимальное и минимальное значения.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">SELECT MAX(salary), MIN(salary) FROM employees;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="многотабличные-запросы-подзапросы">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#многотабличные-запросы-подзапросы">#</doc-anchor-trigger>
+        <span>Многотабличные запросы, подзапросы</span>
+    </h3>
+</doc-anchor-target>
+<p>Для объединения данных из нескольких таблиц используют <code v-pre>JOIN</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">-- Многотабличный запрос
+SELECT e.name, d.deparment_name
+FROM employees e
+JOIN deparments d ON e.deparment_id = d.id;
+-- Подзапрос
+SELECT name FROM employees WHERE salary &gt; (SELECT AVG(salary) FROM employees);</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="соединения-теоретико-множественные-и-специальные-операции-над-отношениями">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#соединения-теоретико-множественные-и-специальные-операции-над-отношениями">#</doc-anchor-trigger>
+        <span>Соединения, теоретико-множественные и специальные операции над отношениями</span>
+    </h3>
+</doc-anchor-target>
+<p>Соединения:</p>
+<ol>
+<li><code v-pre>INNER JOIN</code>: только совпадающие строки.</li>
+<li><code v-pre>LEFT JOIN</code>: все строки из левой таблицы + совпадения.</li>
+<li><code v-pre>RIGHT JOIN</code>: все строки из правой таблицы + совпадения.</li>
+<li><code v-pre>FULL JOIN</code>: все строки из обоих таблиц.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">SELECT e.name, d.deparment_name AS deparment
+FROM employees e
+LEFT JOIN deparments d ON e.deparment_id = d.id;</code></pre>
+</doc-codeblock></div>
+<p>Теоретико-множественные операции:</p>
+<ol>
+<li><code v-pre>UNION</code>: объединение.</li>
+<li><code v-pre>INTERSECT</code>: пересечение.</li>
+<li><code v-pre>EXCEPT</code>: разность.</li>
+</ol>
+<p>Специальные операции:</p>
+<ol>
+<li><code v-pre>CROSS JOIN</code>: возвращает все комбинации строк из двух таблиц.</li>
+<li><code v-pre>SELF JOIN</code>: используется для сопоставления строк в одной таблице.</li>
+</ol>
+<doc-anchor-target id="группирование-результатов-запроса">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#группирование-результатов-запроса">#</doc-anchor-trigger>
+        <span>Группирование результатов запроса</span>
+    </h3>
+</doc-anchor-target>
+<p>Используется для логической группировки строк.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">SELECT deparment_id, COUNT(*) AS employee_count FROM employees
+GROUP BY deparment_id;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="использованеи-предложения-union">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#использованеи-предложения-union">#</doc-anchor-trigger>
+        <span>Использованеи предложения UNION</span>
+    </h3>
+</doc-anchor-target>
+<p>Объединяет результаты двух или более запросов. Дублирующиеся строки исключаются.</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Используйте <code v-pre>UNION ALL</code>, если нужны дублирующиеся строки.</p>
+        </div>
+    </div>
+</div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">SELECT name FROM employees
+UNION
+SELECT name FROM managers;</code></pre>
+</doc-codeblock></div>
 <doc-anchor-target id="основные-объекты-языка-sql">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#основные-объекты-языка-sql">#</doc-anchor-trigger>
@@ -1214,6 +1362,204 @@ END;</code></pre>
         <span>Правила и стратегии поддерживания целостности данных</span>
     </h2>
 </doc-anchor-target>
+<p><strong>Целостность данных</strong> - обеспечивает корректность и согласованность данных в базе.</p>
+<p>Основные правила которые надо соблюдать:</p>
+<ul>
+<li>Добавлять первичный ключ, он уникально идентифицирует каждую запись.</li>
+<li>Добавлять внешние ключи, они обеспечивают связь между таблицами.</li>
+<li>Добавлять <code v-pre>NOT NULL</code>, запрещает хранение пустых значений.</li>
+<li>Добавлять <code v-pre>CHECK</code>, накладывает ограничения на значения.</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">CREATE TABLE students(
+    id INT PRIMARY KEY,
+    age INT CHECK(age &gt;= 18)
+);</code></pre>
+</doc-codeblock></div>
+<p>Стретегии:</p>
+<ul>
+<li><em>Каскадное обновление и удаление</em>: <code v-pre>ON DELETE CASCADE ON UPDATE CASCADE</code></li>
+</ul>
+<doc-anchor-target id="методы-совместного-доступа-к-базам-данных">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#методы-совместного-доступа-к-базам-данных">#</doc-anchor-trigger>
+        <span>Методы совместного доступа к базам данных</span>
+    </h2>
+</doc-anchor-target>
+<p>Совместный доступ необходим, когда несколько пользователей работают с одной базой данных.</p>
+<p><strong>Параллелизм</strong> - выполнение нескольких операций одновременно.</p>
+<p><strong>Конкуренция</strong> - несколько транзакций обращаются к одним и тем же данным.</p>
+<p>Типы параллелизма:</p>
+<ol>
+<li><em>Данные распределяются</em>: каждый запрос обрабатывает разные данные.</li>
+<li><em>Функциональный параллелизм</em>: каждая транзакция выполняет разные функции.</li>
+</ol>
+<p>Механизмы совместного доступа:</p>
+<ul>
+<li>Блокировки</li>
+<li>Управление версиями данных</li>
+</ul>
+<doc-anchor-target id="транзакции-и-блокировки">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#транзакции-и-блокировки">#</doc-anchor-trigger>
+        <span>Транзакции и блокировки</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="транзакции">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#транзакции">#</doc-anchor-trigger>
+        <span>Транзакции</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Транзакция</strong> - последовательность операций, которая выполняется как единое целое.</p>
+<p>Свойства транзакции:</p>
+<ol>
+<li><em>Атомарность</em>: либо все операции выполняются, либо ни одна.</li>
+<li><em>Согласованность</em>: после завершения данные остаются в корректном состоянии.</li>
+<li><em>Изолированность</em>: параллельные транзакции ни влияют друг на друга.</li>
+<li><em>Долговечность</em>: данные сохраняются даже после сбоя системы.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">START TRANSACTION
+UPDATE accounts SET balance = balance - 100 WHERE id = 1;
+UPDATE accounts SET balance = balance + 100 WHERE id = 2;
+COMMIT;</code></pre>
+</doc-codeblock></div>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Если транзакция не может быть завершена, используют <code v-pre>ROLLBACK</code>.</p>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="блокировки">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#блокировки">#</doc-anchor-trigger>
+        <span>Блокировки</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><code v-pre>EXCLUSIVE(исключительная)</code>: транзакция блокирует запись всех операций.</li>
+<li><code v-pre>SHARED(разделяемая)</code>: несколько транзакций могут читать одну и ту же запись.</li>
+</ul>
+<doc-anchor-target id="уровни-изолированности-пользователей">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#уровни-изолированности-пользователей">#</doc-anchor-trigger>
+        <span>Уровни изолированности пользователей</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><code v-pre>READ UNCOMMITTED</code>: транзакции видят незавершенные изменения других транзакций.</li>
+<li><code v-pre>READ COMMITED</code>: транзакции видят только завершенные изменения.</li>
+<li><code v-pre>REPEATABLE READ</code>: запросы видят одно и то же состояние данных в пределах транзакции.</li>
+<li><code v-pre>SERIALIZABLE</code>: полная изолированность. Максимальная защита от конфликтов.</li>
+</ol>
+<doc-anchor-target id="параллельное-выполнение-транзакций">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#параллельное-выполнение-транзакций">#</doc-anchor-trigger>
+        <span>Параллельное выполнение транзакций</span>
+    </h3>
+</doc-anchor-target>
+<p>Чтобы избежать конфликтов, применяются:</p>
+<ul>
+<li>Блокировки</li>
+<li>Уровни изолированности.</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-sql"><code v-pre class="language-sql">SELECT TRANSACTION ISOLATION LEVEL SERIALIZABLE;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="методы-сериализации-транзакций">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#методы-сериализации-транзакций">#</doc-anchor-trigger>
+        <span>Методы сериализации транзакций</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Сериализация</strong> - порядок выполнения транзакций, обеспечивающих корректность данных.</p>
+<p>Методы:</p>
+<ul>
+<li><em>Протокол блокировок 2-фазного типа</em>: фаза1 - транзакция получает блокировки, фаза2 - транзакуия снимает блокировки.</li>
+<li><em>Графы предшествования</em>: определяет порядок транзакций, чтобы избежать конфликтов.</li>
+</ul>
+<doc-anchor-target id="проблема-тупиковых-ситуаций-и-ее-решение">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#проблема-тупиковых-ситуаций-и-ее-решение">#</doc-anchor-trigger>
+        <span>Проблема тупиковых ситуаций и ее решение</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Тупик(Deadlock)</strong> - ситуация, которая возникает если две или более транзакции ожидают освобождения ресурсов друг другом.</p>
+<p>Решение:</p>
+<ol>
+<li>Построение графа ожидания. Если есть цикл, то это тупик.</li>
+<li>Назначение тайм-аута для транкзакций.</li>
+<li>Определение приоритетов транзакций.</li>
+</ol>
+<doc-anchor-target id="синхронизационные-захваты">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#синхронизационные-захваты">#</doc-anchor-trigger>
+        <span>Синхронизационные захваты</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Синхронизация</strong> - позволяет нескольким пользователям работать с базой одновременно без ошибок.</p>
+<p>Механизмы:</p>
+<ul>
+<li><em>Семафоры</em>: ограничивают количество одновременно выполняемых операций.</li>
+<li><em>Мьютексы</em>: предотвращают одновременное выполнение критических операций.</li>
+</ul>
+<doc-anchor-target id="распределенные-базы-данных">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#распределенные-базы-данных">#</doc-anchor-trigger>
+        <span>Распределенные базы данных</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Распределенные базы данных</strong> - системы, в которых данные хранятся на нескольких серверах, расположенных в разных местах, и управляются как единое целое.</p>
+<p>Задачи распределенных баз данных:</p>
+<ul>
+<li>Распределение данных</li>
+<li>Управление распределением</li>
+<li>Оптимизация запросов</li>
+</ul>
+<p>Проблемы распределенных баз данных:</p>
+<ol>
+<li><em>Сеть</em>: низкая скорость или разрывы соединения влияют на доступ к данным.</li>
+<li><em>Целостность</em>: сложность обеспечения согласованности между серверами.</li>
+<li><em>Управление транзакциями</em>: необходимость глобального контроля транзакций.</li>
+</ol>
+<doc-anchor-target id="nosql">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#nosql">#</doc-anchor-trigger>
+        <span>NoSQL</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>NoSQL</strong> - это тип СУБД, ориентированных на обработку больших объемов данных и высокую масштабируемость.</p>
+<p>Особенности:</p>
+<ul>
+<li>Нерялиционная модель</li>
+<li>Свободная схема</li>
+<li>Простой API</li>
+<li>Распределенность</li>
+</ul>
+<doc-anchor-target id="типы-баз-данных">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#типы-баз-данных">#</doc-anchor-trigger>
+        <span>Типы баз данных</span>
+    </h2>
+</doc-anchor-target>
+<ol>
+<li>Ключ-значения</li>
+<li>Документоориентированные</li>
+<li>Графовые базы данных</li>
+<li>Колоночные базы данных</li>
+</ol>
 
                                 
                                 <!-- Required only on API pages -->
