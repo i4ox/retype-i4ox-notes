@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-root" content="/retype-i4ox-notes">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.791094476547">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.6.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Основы Golang | i4ox Docs</title>
+    <meta name="title" content="Основы Golang | i4ox Docs">
+    <meta name="description" content="Каждая Go программа состоит из пакетов и стартует с пакета main. Программа ниже использует пакеты fmt">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/golang/основы/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/golang/основы/">
+    <meta property="og:title" content="Основы Golang | i4ox Docs">
+    <meta property="og:description" content="Каждая Go программа состоит из пакетов и стартует с пакета main. Программа ниже использует пакеты fmt">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/golang/основы/">
+    <meta property="twitter:title" content="Основы Golang | i4ox Docs">
+    <meta property="twitter:description" content="Каждая Go программа состоит из пакетов и стартует с пакета main. Программа ниже использует пакеты fmt">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../uploads/logo.svg" rel="icon">
+    <link href="../../resources/css/retype.css?v=3.6.0.791094476547" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791094476547" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791094476547" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.791094476547" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
+                            <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../uploads/logo.svg">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../uploads/logo.svg">
+                            </span>
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Notes by i4ox</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                                <!-- Page content  -->
+<doc-anchor-target id="основы-golang" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#основы-golang">#</doc-anchor-trigger>
+        <span>Основы Golang</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="пакеты-переменные-и-функции">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#пакеты-переменные-и-функции">#</doc-anchor-trigger>
+        <span>Пакеты, переменные и функции</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="пакеты">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#пакеты">#</doc-anchor-trigger>
+        <span>Пакеты</span>
+    </h3>
+</doc-anchor-target>
+<p>Каждая Go программа состоит из пакетов и стартует с пакета <code v-pre>main</code>.
+Программа ниже использует пакеты <code v-pre>fmt</code> и <code v-pre>math/rand</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;math/rand&quot;
+)
+
+func main() {
+    fmt.Println(&quot;My favourite number is&quot;, rand.Intn(10))
+}</code></pre>
+</doc-codeblock></div>
+<p>В соглашении по коду сказано, что имя пакета должно быть таким же как последний элемент пути импорта.
+То есть файлы в <code v-pre>math/rand</code> должны начинаться с <code v-pre>package rand</code>.</p>
+<doc-anchor-target id="импорты">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#импорты">#</doc-anchor-trigger>
+        <span>Импорты</span>
+    </h3>
+</doc-anchor-target>
+<p>Код ниже группирует несколько импортов через &quot;факторизированный&quot; (от слова Factory) способ.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">import (
+    &quot;fmt&quot;
+    &quot;math&quot;
+)</code></pre>
+</doc-codeblock></div>
+<p>Однако ничего нам не мешает использовать несколько операторов <code v-pre>import</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">import &quot;fmt&quot;
+import &quot;math&quot;</code></pre>
+</doc-codeblock></div>
+<p>Однако хорошим тоном считается использование &quot;факторизированного&quot; метода.</p>
+<doc-anchor-target id="экспортированные-имена">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#экспортированные-имена">#</doc-anchor-trigger>
+        <span>Экспортированные имена</span>
+    </h3>
+</doc-anchor-target>
+<p>В Go важно соблюдать наименование объектов, так как экспортируются лишь те объекты, что начинаются на заглавную букву.</p>
+<p>Верно:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">fmt.Println(math.Pi) // Будет успешно найдено, так как подлежит экспорту</code></pre>
+</doc-codeblock></div>
+<p>Неверно, вызовит ошибку:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">fmt.Println(math.pi) // Даже если такой объект существует, он не будет найден</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="функции">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#функции">#</doc-anchor-trigger>
+        <span>Функции</span>
+    </h3>
+</doc-anchor-target>
+<p>В Go функции могут принимать ноль или несколько элементов.
+В примере ниже функция <em>add</em> принимает два параметра типа <em>int</em> и возвращает результат того же типа.</p>
+<p><strong>ВАЖНО</strong>: тип идет после объявления переменной/функции.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func add(x int, y int) int {
+    return x + y
+}
+
+func main() {
+    fmt.Println(add(42,13))
+}</code></pre>
+</doc-codeblock></div>
+<p>Когда два или больше параметров именованной функции имеют одинаковый тип, мы можем указать тип только для последнего параметра.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func add(x, y int) int {
+    return x + y
+}
+
+func main() {
+    fmt.Println(add(42,13))
+}</code></pre>
+</doc-codeblock></div>
+<p>Также функция может возвращать несколько результатов.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func swap(x, y string) (string, string) {
+    return y, x
+}
+
+func main() {
+    a, b := swap(&quot;hello&quot;, &quot;world&quot;)
+    fmt.Println(a, b)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="именнованные-значение-возврата">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#именнованные-значение-возврата">#</doc-anchor-trigger>
+        <span>Именнованные значение возврата</span>
+    </h3>
+</doc-anchor-target>
+<p>Результат любой функции может быть наименован.
+Они будут рассматриваться как переменные объявленные на верхнем уровне функции.</p>
+<p>Благодаря этому имеется возможность использовать <code v-pre>return</code> без значений, тогда функция вернет именнованные параметры.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func split(sum int) (x, i int) {
+    x = sum * 4 / 8
+    y = sum - x
+    return
+}
+
+func main() {
+    fmt.Println(split(17))
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="переменные">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#переменные">#</doc-anchor-trigger>
+        <span>Переменные</span>
+    </h3>
+</doc-anchor-target>
+<p>В Go есть оператор <code v-pre>var</code>, который позволяет создать переменную.
+С данным операторм работают те же правила, что и с аргументами функций.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+var c, python, java bool
+
+func main() {
+    var i int
+    fmt.Println(i, c, python, java)
+}</code></pre>
+</doc-codeblock></div>
+<p>В отличии от других языков программирования здесь Go не упадет с ошибкой, что значение не иницилизировано.
+Go автоматически задает переменным значения по-умолчанию(нулевые значения): 0, false и другие.</p>
+<p>Объявление переменных может включать инициализацию, одну для каждой переменной.
+Если инициализация используется, то можно опустить тип данных, он будет подобран по указанному значению.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+var i, j int = 1, 2
+
+func main() {
+    var c, python, java = true, false, &quot;no!&quot;
+    fmt.Println(i, j, c, python, java)
+}</code></pre>
+</doc-codeblock></div>
+<p>Если инициализация переменных происходит внутри функций, то можно использовать сокращенный оператор <code v-pre>:=</code>, который заменяет <code v-pre>var</code> и указания типа.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    var i, j int = 1, 2
+    k := 3
+    c, python, java := true, false, &quot;no!&quot;
+
+    fmt.Println(i, j, k, c, python, java)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="базовые-типы-данных">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#базовые-типы-данных">#</doc-anchor-trigger>
+        <span>Базовые типы данных</span>
+    </h3>
+</doc-anchor-target>
+<p>В Go имеются следующие базовые типы данных:</p>
+<ul>
+<li>bool</li>
+<li>string</li>
+<li>int, int8, int16, int32, int64</li>
+<li>uint, uint8, uint16, uint32, uint64, uintptr</li>
+<li>byte // тоже самое, что и uint8</li>
+<li>rune // тоже самое, что и int32, представляет собой Unicode.</li>
+<li>float32, float64</li>
+<li>complex64, complex128</li>
+</ul>
+<p>Ниже приведен пример использования некоторых типов данных, также ниже приведен способ &quot;факторизированной&quot; группировки.
+Также стоит заметить, что <code v-pre>int</code>, <code v-pre>uint</code> и <code v-pre>uintptr</code> имеют привязку либо к 32, либо к 64 битам в зависимости от архитектуры процессора.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;math/cmplx&quot;
+)
+
+var (
+    ToBe   bool       = false
+    MaxInt uint64     = 1&lt;&lt;64 - 1
+    z      complex128 = cmplx.Sqrt(-5 + 12i)
+)
+
+func main() {
+    fmt.Printf(&quot;Type: %T Value: %v\n&quot;, ToBe, ToBe)
+    fmt.Printf(&quot;Type: %T Value: %v\n&quot;, MaxInt, MaxInt)
+    fmt.Printf(&quot;Type: %T Value: %v\n&quot;, z, z)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="преобразование-типов">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#преобразование-типов">#</doc-anchor-trigger>
+        <span>Преобразование типов</span>
+    </h3>
+</doc-anchor-target>
+<p>В Go есть выражение <code v-pre>T(v)</code>, которые приобазует значение <code v-pre>v</code> в тип <code v-pre>T</code>.</p>
+<p>Например:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">var i int = 42
+var f float64 = float64(i)
+var u uint = uint(f)</code></pre>
+</doc-codeblock></div>
+<p>Или:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">i := 42
+f := float64(i)
+u := uint(f)</code></pre>
+</doc-codeblock></div>
+<p>В отличии от C, в Go приобразование между разными типами данных требует явного преобразования.
+Вы не сможете использовать <code v-pre>int</code> в качестве <code v-pre>float64</code> без преобразования.</p>
+<doc-anchor-target id="константы">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#константы">#</doc-anchor-trigger>
+        <span>Константы</span>
+    </h3>
+</doc-anchor-target>
+<p>Константы объявляются также как и переменные, но с ключевым словом <code v-pre>const</code>.</p>
+<p>Константы могут быть:</p>
+<ul>
+<li>символами</li>
+<li>строками</li>
+<li>логическим значением</li>
+<li>цифровым значением</li>
+</ul>
+<p>Константы не могут быть объявлены с использованием <code v-pre>:=</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+const Pi = 3.14
+
+func main() {
+    const World = &quot;世界&quot;
+    fmt.Println(&quot;Hello&quot;, World)
+    fmt.Println(&quot;Happy&quot;, Pi, &quot;Day&quot;)
+
+    const Truth = true
+    fmt.Println(&quot;Go rules?&quot;, Truth)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="операторы-управления-потоком-for-if-else-switch-и-defer">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#операторы-управления-потоком-for-if-else-switch-и-defer">#</doc-anchor-trigger>
+        <span>Операторы управления потоком: for, if, else, switch и defer</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="for">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#for">#</doc-anchor-trigger>
+        <span>For</span>
+    </h3>
+</doc-anchor-target>
+<p>Go имеет всего одну конструкцию для построения циклов - <code v-pre>for</code>.
+Данный цикл имеет три части, которые разделены <code v-pre>;</code>:</p>
+<ul>
+<li>состояние инициализации, выполняется при первой итерации;</li>
+<li>условие: проверяется на соответствие перед каждой итерацией;</li>
+<li>пост-условие: выполняется после конца каждой итерации.</li>
+</ul>
+<p>Состояние инициализации часто будет просто кратким объявлением переменной, и эта переменная будет видна только внутри цикла.</p>
+<p>Цикл прекратит свою работу, когда условие будет ложным.</p>
+<p><strong>ВАЖНО</strong>: В отличии от других языков в Go не нужен <code v-pre>()</code> вокруг трех компонентов.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    sum := 0
+    for i := 0; i &lt; 10; i++ {
+        sum += i
+    }
+    fmt.Println(sum)
+}</code></pre>
+</doc-codeblock></div>
+<p>Состояние инициализации и пост-условие могут быть опциональными(цикл будет работать как <code v-pre>while</code> в других ЯП):</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    sum := 1
+    for sum &lt; 1000 {
+        sum += sum
+    }
+    fmt.Println(sum)
+}</code></pre>
+</doc-codeblock></div>
+<p>Можно такде отбросить и условие, тогда это будет бесконечный цикл.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+func main() {
+    for {
+    }
+}</code></pre>
+</doc-codeblock></div>
+<p>Также стоит упомянуть, что Go поддерживает <code v-pre>break</code> и <code v-pre>continue</code>.</p>
+<doc-anchor-target id="if">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#if">#</doc-anchor-trigger>
+        <span>If</span>
+    </h3>
+</doc-anchor-target>
+<p>Также как в случае с циклами в Go не надо использовать <code v-pre>()</code> для условий.
+Но <code v-pre>{}</code> обязательны, невозможно сделать условие в одну строку.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;math&quot;
+)
+
+func sqrt(x float64) string {
+    if x &lt; 0 {
+        return sqrt(-x) + &quot;i&quot;
+    }
+    return fmt.Sprint(math.Sqrt(x))
+}
+
+func main() {
+    fmt.Println(sqrt(2), sqrt(-4))
+}</code></pre>
+</doc-codeblock></div>
+<p><code v-pre>if</code> можно использовать прямо вместе с инициализацией переменной:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;math&quot;
+)
+
+func pow(x, n, lim float64) float64 {
+    if v := math.Pow(x, n); v &lt; lim {
+        return v
+    }
+    return lim
+}
+
+func main() {
+    fmt.Println(
+        pow(3,2,10),
+        pow(3,3,20),
+    )
+}</code></pre>
+</doc-codeblock></div>
+<p>Стоит отметить, что переменная <code v-pre>v</code> не будет доступна извне тела <code v-pre>if</code>.</p>
+<doc-anchor-target id="ifelse">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ifelse">#</doc-anchor-trigger>
+        <span>If..else</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li>Переменная <code v-pre>v</code> из примера выше распространяется и на телов условия <code v-pre>else</code>.</li>
+<li>Можно использовать промежуточные условия <code v-pre>else if</code>.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;math&quot;
+)
+
+func pow(x, n, lim float64) float64 {
+    if v := math.Pow(x, n); v &lt; lim {
+        return v
+    } else {
+        fmt.Printf(&quot;%g &gt;= %g\n&quot;, v, lim)
+    }
+
+    return lim
+}
+
+func main() {
+    fmt.Println(
+        pow(3, 2, 10),
+        pow(3, 3, 20),
+    )
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="switch">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#switch">#</doc-anchor-trigger>
+        <span>Switch</span>
+    </h3>
+</doc-anchor-target>
+<p><code v-pre>switch</code> это более короткий способ записать последовательность из <code v-pre>if..else</code> условий.
+У конструкции есть условия, и если оно совпадет со значением, то выполнится код, который содержится в этому условии.
+А если ни одно условие не будет соответствовать правде, то выполнится финальный <code v-pre>default</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;runtime&quot;
+)
+
+func main() {
+    fmt.Print(&quot;Go runs on &quot;)
+    switch os := runtime.GOOS; os {
+    case &quot;darwin&quot;:
+        fmt.Println(&quot;OS X.&quot;)
+    case &quot;linux&quot;:
+        fmt.Println(&quot;Linux.&quot;)
+    default:
+        fmt.Printf(&quot;%s. \n&quot;, os)
+    }
+}</code></pre>
+</doc-codeblock></div>
+<p>Можно вызвать <code v-pre>switch</code> без условия, оно будет соответствовать <code v-pre>switch true</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;time&quot;
+)
+
+func main() {
+    t := time.Now()
+    switch {
+    case t.Hour() &lt; 12:
+        fmt.Println(&quot;Good morning!&quot;)
+    case t.Hour() &lt; 17:
+        fmt.Println(&quot;Good afternoon.&quot;)
+    default:
+        fmt.Println(&quot;Good evening.&quot;)
+    }
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="defer">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#defer">#</doc-anchor-trigger>
+        <span>Defer</span>
+    </h3>
+</doc-anchor-target>
+<p>Оператор <code v-pre>defer</code> откладывает выполнения функции пока не будет произведен <code v-pre>return</code>.</p>
+<p>Стоит отметить, что аргументы поступают в функцию сразу, но выполняется они лишь перед <code v-pre>return</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    defer fmt.Println(&quot;world&quot;)
+
+    fmt.Println(&quot;hello&quot;)
+}</code></pre>
+</doc-codeblock></div>
+<p><strong>ВАЖНО</strong>: функции, которые вызываются с <code v-pre>defer</code> помещаются в стек, а после перед <code v-pre>return</code> выполняются по принципе LIFO(Last-In-First-Out).</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    fmt.Println(&quot;counting&quot;)
+
+    for i := 0; i &lt; 10; i++ {
+        defer fmt.Println(i)
+    }
+
+    fmt.Println(&quot;done&quot;)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="продвинутые-типы-данных">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#продвинутые-типы-данных">#</doc-anchor-trigger>
+        <span>Продвинутые типы данных</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="указатели">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#указатели">#</doc-anchor-trigger>
+        <span>Указатели</span>
+    </h3>
+</doc-anchor-target>
+<p>В языке Go присутствуют указатели.
+Указатель содержит адрес памяти значения.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">var p *int</code></pre>
+</doc-codeblock></div>
+<p>Тип <code v-pre>*T</code> - это указатель для значения <code v-pre>T</code>.
+Значение указатель по-умолчанию <code v-pre>nil</code>.</p>
+<p>Оператор <code v-pre>&amp;</code> генерирует указатель на операнд.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">i := 42
+p = &amp;i</code></pre>
+</doc-codeblock></div>
+<p>Оператор <code v-pre>*</code> обозначет значение, которое хранится по указателю.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">fmt.Println(*p)
+*p = 21</code></pre>
+</doc-codeblock></div>
+<p><strong>ВАЖНО</strong>: в Go в отличии от C нету арифметики для указателей.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    i, j := 42, 2701
+
+    p := &amp;i
+    fmt.Println(*p)
+    *p = 21
+    fmt.Println(i)
+
+    p = &amp;j
+    *p = *p / 37
+    fmt.Println(j)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="структуры">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#структуры">#</doc-anchor-trigger>
+        <span>Структуры</span>
+    </h3>
+</doc-anchor-target>
+<p>Структура - это коллекция полей. В Go используется ключевое слово <code v-pre>struct</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+type Vertex struct {
+    X int
+    Y int
+}
+
+func main() {
+    fmt.Println(Vertex{1,2})
+}</code></pre>
+</doc-codeblock></div>
+<p>Через оператор <code v-pre>.</code> можно обращаться к полям структуры.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">func main() {
+    v := Vertex{1,2}
+    v.X = 4
+    fmt.Println(v.X)
+}</code></pre>
+</doc-codeblock></div>
+<p>Точно также можно использовать указатель на структуры.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">func main() {
+    v := Vertex{1,2}
+    p := &amp;v
+    p.X = 1e9
+    fmt.Println(v)
+}</code></pre>
+</doc-codeblock></div>
+<p>Структуру можно инициализировать несколькими способами.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">var (
+    v1 = Vertex{1,2}
+    v2 = Vertex{X: 1} // Y:0
+    v3 = Vertex{} // X:0 and Y:0
+    p = &amp;Vertex{1,2} // *Vertex
+)
+
+func main() {
+    fmt.Println(v1, p, v2, v3)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="массивы">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#массивы">#</doc-anchor-trigger>
+        <span>Массивы</span>
+    </h3>
+</doc-anchor-target>
+<p>В Go массив обозначается как <code v-pre>[n]T</code>, что означет массив из <code v-pre>T</code> размерности <code v-pre>n</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">var a [10]int</code></pre>
+</doc-codeblock></div>
+<p>Размерность - это часть типа, поэтому массивы не могут быть изменены в размере.
+Но это не проблема, о чем ниже.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    var a [2]string
+    a[0] = &quot;Hello&quot;
+    a[1] = &quot;World&quot;
+    fmt.Println(a[0], a[1])
+    fmt.Println(a)
+
+    primes := [6]int{2,3,5,7,11,13}
+    fmt.Println(primes)
+}</code></pre>
+</doc-codeblock></div>
+<p>Также массиву можно задать размер, которые автоматически подберется в соответствии с количеством элементов.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">a := [...]int{3, 1, 5, 10, 100} // len(a)=5</code></pre>
+</doc-codeblock></div>
+<p>В Go символ <code v-pre>...</code> используется для указания множества. Ниже будет несколько вариантов использования данного оператора.</p>
+<doc-anchor-target id="срезы">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#срезы">#</doc-anchor-trigger>
+        <span>Срезы</span>
+    </h3>
+</doc-anchor-target>
+<p>Массив в Go имеет фиксированный размер, но в Go есть срез, который имеет динамический размер.
+Размер будет зависеть от текущего количества элементов.
+В практике срезы встречаются чаще, чем массивы.</p>
+<p>Срез обозначается типом <code v-pre>[]T</code>, что обозначет срез с данными типа <code v-pre>T</code>.
+Срез формируется путем указание двух границ, при этом стоит иметь ввиду, что первый включается, последний исключается.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    primes := [6]int{2,3,5,7,11,13}
+    var s []int = primes[1:4]
+    fmt.Println(s)
+}</code></pre>
+</doc-codeblock></div>
+<p><strong>ВАЖНО</strong>: Стоит иметь ввиду, что срезы не хранят данные, они лишь описывают секции массивов.
+Если вы поменяете элемент в срезе, он поменяется и в массиве.</p>
+<p>Также если мы имеем массив <code v-pre>[10]int</code>, то следующие срезы одинаковые:</p>
+<ul>
+<li>[0:10]</li>
+<li>[:10]</li>
+<li>[0:]</li>
+<li>[:]</li>
+</ul>
+<p>У среза есть такие параметры как: длина и емкость.
+<em>Длина</em> - количество элементов, который он содержит.
+<em>Емкость</em> - количество элементов в базовом массиве.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    s := []int{2,3,5,7,11,13}
+    printSlice(s)
+
+    s = s[:0]
+    printSlice(s)
+
+    s = s[:4]
+    printSlice(s)
+
+    s = s[2:]
+    printSlice(s)
+}
+
+func printSlice(s []int) {
+    fmt.Println(&quot;len=%d cap=%d %v\n&quot;, len(s), cap(s), s)
+}</code></pre>
+</doc-codeblock></div>
+<p>Нулевое значение для срезов это <code v-pre>nil</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    var s []int
+    fmt.Println(s, len(s), cap(s))
+    if s == nil {
+        fmt.Println(&quot;nil!&quot;)
+    }
+}</code></pre>
+</doc-codeblock></div>
+<p>Срезы могут быть созданы через встроенную функцию <code v-pre>make</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">a := make([]int, 5) // len(a)=5
+
+b := make([]int, 0, 5) // len(b)=0, cap(b)=5
+
+b = b[:cap(b)] // len(b)=5, cap(b)=5
+b = b[1:] // len(b)=4, cap(b)=4</code></pre>
+</doc-codeblock></div>
+<p>Обычно, чтобы добавить новые элементы в срез в Go используется функция <code v-pre>append</code>.
+Выглядит она следующим образом: <code v-pre>func append(s []T, vs ...T) []T</code>.</p>
+<p>Первый параметры это срез, к которому мы хотим добавить элементы, а дальше сами элементы(их перечисление).
+Результат функции это все элементы оригинального среза + новые.</p>
+<p>Если в массиве не хватает места, чтобы добавить элементы в срез, то будет создан массив с большей вместимостью.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    var s []int
+    printSlice(s)
+
+    s = append(s, 0)
+    printSlice(s)
+
+    s = append(s, 1)
+    printSlice(s)
+
+    s = append(s, 2, 3, 4)
+    printSlice(s)
+}
+
+func printSlice(s []int) {
+    fmt.Println(&quot;len=%d cap=%d %v\n&quot;, len(s), cap(s), s)
+}</code></pre>
+</doc-codeblock></div>
+<p>Также в <code v-pre>append</code> можно передать массив элементов и декомпозировать его при помощи <code v-pre>...</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">s = append(s, []int{7,8,9}...)</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="range">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#range">#</doc-anchor-trigger>
+        <span>Range</span>
+    </h3>
+</doc-anchor-target>
+<p><code v-pre>range</code> позволяет итерировать некоторые объекты, возвращая на каждой итерации два значения: индекс и значение элемента.
+Также <code v-pre>range</code> можно использовать как итератор в цикле <code v-pre>for</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+func main() {
+    for i, v := range pow {
+        fmt.Printf(&quot;2**%d = %d\n&quot;, i, v)
+    }
+}</code></pre>
+</doc-codeblock></div>
+<p>При использовании <code v-pre>range</code> можно опустить одно из значений.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">for i, _ := range pow {
+}
+
+// or
+
+for _, v := range pow {
+}
+
+// or
+
+for i := range pow {
+
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="словаримапы">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#словаримапы">#</doc-anchor-trigger>
+        <span>Словари(мапы)</span>
+    </h3>
+</doc-anchor-target>
+<p>Словарь позволяет хранить данные в виде ключ-значение.
+Нулевое значение - <code v-pre>nil</code>, для нулевого словаря не заданы ключи, а также ключи не могут быть добавлены.</p>
+<p>Словарь можно создать при помощи функции <code v-pre>make</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+type Vertex struct {
+    Lat, Long float64
+}
+
+var m map[string]Vertex
+
+func main() {
+    m = make(map[string]Vertex)
+    m[&quot;bell Labs&quot;] = Vertex{
+        40.68433, -74.39967,
+    }
+    fmt.Println(m[&quot;Bell Labs&quot;])
+}</code></pre>
+</doc-codeblock></div>
+<p>Также если тип верхнего-уровня представляет собой просто наименование, то его можно опустить.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+type Vertex struct {
+    Lat, Long float64
+}
+
+var m = map[string]Vertex{
+    &quot;Bell Labs&quot;: {40.68433, -74.39967},
+    &quot;Google&quot;:    {37.42202, -122.08408},
+}
+
+func main() {
+    fmt.Println(m)
+}</code></pre>
+</doc-codeblock></div>
+<p>Теперь затронем изменения словарей.
+Чтобы добавить или обновить элемент в словаре, нужно обратиться к нему по ключу.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">m[key] = elem</code></pre>
+</doc-codeblock></div>
+<p>Чтобы получить элемент:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">elem = m[key]</code></pre>
+</doc-codeblock></div>
+<p>Чтобы удалить элемент используется функция <code v-pre>delete</code>, которая принимает словарь и ключ, по которому нужно произвести удаление.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">delete(m, key)</code></pre>
+</doc-codeblock></div>
+<p>Можно проверить существует ли элемент по ключу при помощи следующей конструкции:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">elem, ok = m[key] // ok хранит true или false</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="функции-как-тип-данных">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#функции-как-тип-данных">#</doc-anchor-trigger>
+        <span>Функции как тип данных</span>
+    </h3>
+</doc-anchor-target>
+<p>В Go функции тоже переменные. И соответственно они могут использоваться там же, где и другие переменные.
+Функции могут быть аргументами других функций или значениями возврата.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;math&quot;
+)
+
+func compute(fn func(float64, float64) float64) float64 {
+    return fn(3, 4)
+}
+
+func main() {
+    hypot := func(x, y float64) float64 {
+        return math.Sqrt(x*x + y*y)
+    }
+    fmt.Println(hypot(5,12))
+
+    fmt.Println(compute(hypot))
+    fmt.Println(compute(math.Pow))
+} </code></pre>
+</doc-codeblock></div>
+<p>Также Go поддерживает в качестве последнего аргумента функции бесконечное множество параметров.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">func variadicParams(a int, b string, others ...interface{}) {
+}
+// or
+func variadicParams(a int, b string, others ...any) {
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="методы">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#методы">#</doc-anchor-trigger>
+        <span>Методы</span>
+    </h2>
+</doc-anchor-target>
+<p>В Go нету классов. Однако, вы можете создавать методы для типов.
+<em>Метод</em> это функция, которая имеет специальный <em>receiver</em> аргумент.
+Он задается между <code v-pre>func</code> и именем метода.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;math&quot;
+)
+
+type Vertex struct {
+    X, Y float64
+}
+
+func (v Vertex) Abs() float64 {
+    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+func main() {
+    v := Vertex{3,4}
+    fmt.Println(v.Abs())
+}</code></pre>
+</doc-codeblock></div>
+<p><strong>ВАЖНО</strong>: метод все та же функция, но с использованием <code v-pre>receiver</code>. Вы можете заменить ее на обычную функцию, но она не будет привязана к типу.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;math&quot;
+)
+
+type Vertex struct {
+    X, Y float64
+}
+
+func Abs(v Vertex) float64 {
+    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+func main() {
+    v := Vertex{3,4}
+    fmt.Println(Abs(v))
+}</code></pre>
+</doc-codeblock></div>
+<p>Методы можно создавать для любых типов данных(не только структур).</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;math&quot;
+)
+
+type MyFloat float64
+
+func (f MyFloat) Abs() float64 {
+    if f &lt; 0 {
+        return float64(-f)
+    }
+    return float64(f)
+}
+
+func main() {
+    f := MyFloat(-math.Sqrt2)
+    fmt.Println(f.Abs())
+}</code></pre>
+</doc-codeblock></div>
+<p>Если в методе надо изменить значение <code v-pre>receiver</code>, то используются указатели.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;math&quot;
+)
+
+type Vertex struct {
+    X, Y float64
+}
+
+func (v Vertex) Abs() float64 {
+    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+func (v *Vertex) Scale(f float64) {
+    v.X = v.X * f
+    v.Y = v.Y * f
+}
+
+func main() {
+    v := Vertex{3,4}
+    v.Scale(10)
+    fmt.Println(v.Abs())
+}</code></pre>
+</doc-codeblock></div>
+<p><strong>ВАЖНО</strong>: стоит иметь ввиду, что <code v-pre>v.Scale(10)</code> это по-сути <code v-pre>(&amp;v).Scale(10)</code>.
+А также если аргумент метода или функции у нас это указатель, то и передать мы должны его с символом <code v-pre>&amp;</code>.</p>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../golang/многопоточность-и-параллельность/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Многопоточность и параллельность в Golang</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../шпаргалки/git/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Git</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© 2025 Notes by i4ox. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Основы Golang", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+</body>
+</html>

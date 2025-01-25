@@ -4,40 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/retype-i4ox-notes">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.790841491186">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.791094476547">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
-    <title>Настройка OpenSuse Tumbleweed после установки | i4ox Docs</title>
-    <meta name="title" content="Настройка OpenSuse Tumbleweed после установки | i4ox Docs">
-    <meta name="description" content="Ghostty- это эмулятор терминала, который отличается тем, что он быстрый, многофункциональный и нативный.">
+    <title>Интерфейсы в Golang | i4ox Docs</title>
+    <meta name="title" content="Интерфейсы в Golang | i4ox Docs">
+    <meta name="description" content="Интерфейс представляет собой набор описаний методов. В качестве значения интерфейса может быть любая реализация всех его методов.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/моя-конфигурация-linux-для-devops/настройка-opensuse-tumbleweed-после-установки/">
+    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/golang/интерфейсы/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/моя-конфигурация-linux-для-devops/настройка-opensuse-tumbleweed-после-установки/">
-    <meta property="og:title" content="Настройка OpenSuse Tumbleweed после установки | i4ox Docs">
-    <meta property="og:description" content="Ghostty- это эмулятор терминала, который отличается тем, что он быстрый, многофункциональный и нативный.">
+    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/golang/интерфейсы/">
+    <meta property="og:title" content="Интерфейсы в Golang | i4ox Docs">
+    <meta property="og:description" content="Интерфейс представляет собой набор описаний методов. В качестве значения интерфейса может быть любая реализация всех его методов.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/моя-конфигурация-linux-для-devops/настройка-opensuse-tumbleweed-после-установки/">
-    <meta property="twitter:title" content="Настройка OpenSuse Tumbleweed после установки | i4ox Docs">
-    <meta property="twitter:description" content="Ghostty- это эмулятор терминала, который отличается тем, что он быстрый, многофункциональный и нативный.">
+    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/golang/интерфейсы/">
+    <meta property="twitter:title" content="Интерфейсы в Golang | i4ox Docs">
+    <meta property="twitter:description" content="Интерфейс представляет собой набор описаний методов. В качестве значения интерфейса может быть любая реализация всех его методов.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.790841491186" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.791094476547" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.790841491186" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791094476547" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.790841491186" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.790841491186" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791094476547" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.791094476547" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -156,100 +156,246 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="настройка-opensuse-tumbleweed-после-установки" class="break-words">
+<doc-anchor-target id="интерфейсы-в-golang" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#настройка-opensuse-tumbleweed-после-установки">#</doc-anchor-trigger>
-        <span>Настройка OpenSuse Tumbleweed после установки</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#интерфейсы-в-golang">#</doc-anchor-trigger>
+        <span>Интерфейсы в Golang</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="подключение-к-сети">
+<doc-anchor-target id="интерфейсы">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#подключение-к-сети">#</doc-anchor-trigger>
-        <span>Подключение к сети</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#интерфейсы">#</doc-anchor-trigger>
+        <span>Интерфейсы</span>
     </h2>
 </doc-anchor-target>
+<p><em>Интерфейс</em> представляет собой набор описаний методов.
+В качестве значения интерфейса может быть любая реализация всех его методов.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">systemctl enable --now NetworkManager
+<pre class="language-go"><code v-pre class="language-go">package main
 
-# Если у вас WiFi
-nmcli dev wifi
-nmcli dev wifi connect &quot;SSID&quot; password &quot;PASSWORD&quot;</code></pre>
+import (
+    &quot;fmt&quot;
+    &quot;math&quot;
+)
+
+type Abser interface {
+    Abs() float64
+}
+
+func main() {
+    var a Abser
+    f := MyFloat(-math.Sqrt2)
+    v := Vertex{3,4}
+    a = f
+    a = &amp;v
+
+    fmt.Println(a.Abs())
+}
+
+type MyFloat float64
+
+func (f MyFloat) Abs() float64 {
+    if f &lt; 0 {
+        return float64(-f)
+    }
+    return float64(f)
+}
+
+type Vertex struct {
+    X, Y float64
+}
+
+func (v *Vertex) Abs() float64 {
+    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="создание-пользователя-с-правами-администратора-и-запрет-ssh-подключения-для-root">
+<p><strong>ВАЖНО</strong>: В Go нету ключевого слова <code v-pre>implements</code>, интерфейс наследуется через реализацию всех его методов.</p>
+<p>Под капотом интерфейсы хранят значение и конкретный тип: <code v-pre>(value, type)</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">type I interface {
+    M()
+}
+
+type T struct {
+    S string
+}
+
+func (t *T) M() {
+    fmt.Println(t.S)
+}
+
+func main() {
+    var i I
+    i = &amp;T{&quot;hello&quot;}
+    describe(i)
+    i.M()
+}
+
+func describe(i I) {
+    fmt.Printf(&quot;(%v, %T)\n&quot;, i, i)
+}</code></pre>
+</doc-codeblock></div>
+<p><strong>ВАЖНО</strong>: В Go используются пустые интерфейсы <code v-pre>interface{}</code>, что помогает принимать неизвестный тип данных.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    var i interface{}
+    describe(i)
+
+    i = 42
+    describe(i)
+
+    i = &quot;hello&quot;
+    describe(i)
+}
+
+func describe(i interface{}) {
+    fmt.Printf(&quot;(%v, %T)\n&quot;, i, i)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="проверка-типа">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#создание-пользователя-с-правами-администратора-и-запрет-ssh-подключения-для-root">#</doc-anchor-trigger>
-        <span>Создание пользователя с правами администратора и запрет SSH-подключения для root</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#проверка-типа">#</doc-anchor-trigger>
+        <span>Проверка типа</span>
     </h2>
 </doc-anchor-target>
+<p>Так как тип переменной может быть <code v-pre>interface{}</code>, то нам надо проверять тип полученных данных.
+Делается это при помощи следующей конструкции: <code v-pre>t, ok := i.(T)</code>.
+Если условие было выполнено успешно, то мы получим значение и статус <code v-pre>true</code>, иначе нулевое значение и статус <code v-pre>false</code>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">useradd -m $USER
-usermod -aG users $USER
-groupadd wheel
-usermod -aG wheel $USER
-zypper in sudo
-passwd $USER</code></pre>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    var i interface{} = &quot;hello&quot;
+
+    s := i.(string)
+    fmt.Println(s)
+
+    s, ok := i.(string)
+    fmt.Println(s, ok)
+
+    f, ok := i.(float64)
+    fmt.Println(f, ok)
+
+    // f = i.(float64) // panic
+    fmt.Println(f)
+}</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="настройка-zypper">
+<p>Проверку типа можно реализовать через <code v-pre>switch</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+func do(i interface{}) {
+    switch v := i.(type) {
+    case int:
+        fmt.Printf(&quot;Twice %v is %v\n&quot;, v, v*2)
+    case string:
+        fmt.Printf(&quot;%q is %v bytes long\n&quot;, v, len(v))
+    default:
+        fmt.Printf(&quot;I don't know about type %T!\n&quot;, v)
+    }
+}
+
+func main() {
+    do(21)
+    do(&quot;hello&quot;)
+    do(true)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="переопределение-string">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#настройка-zypper">#</doc-anchor-trigger>
-        <span>Настройка zypper</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#переопределение-string">#</doc-anchor-trigger>
+        <span>Переопределение String()</span>
     </h2>
 </doc-anchor-target>
+<p>Как и в других языках в Go можно переопределить метод <code v-pre>toString</code>.
+Для этого используется стандартный интерфейс <code v-pre>Stringer</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo vim /etc/zypp/zypp.conf
-    solver.onlyRequired = true
-    solver.allowVendorChange = false
-    solver.cleandepsOnRemove = false
-    download.use_deltarpm = true
-    download.max_concurrent_connections = 10</code></pre>
+<pre class="language-go"><code v-pre class="language-go">type Stringer interface {
+    String() string
+}</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="установка-программ">
+<p>Поэтому можно реализовать следующий функционал.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import &quot;fmt&quot;
+
+type Person struct {
+    Name string
+    Age  int
+}
+
+func (p Person) String() string {
+    return fmt.Sprintf(&quot;%v (%v years)&quot;, p.Name, p.Age)
+}
+
+func main() {
+    a := Person{&quot;Arthur Dent&quot;, 42}
+    z := Person{&quot;Zaphod Beeblebrox&quot;, 9001}
+    fmt.Println(a, z)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="обработка-ошибок">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-программ">#</doc-anchor-trigger>
-        <span>Установка программ</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#обработка-ошибок">#</doc-anchor-trigger>
+        <span>Обработка ошибок</span>
     </h2>
 </doc-anchor-target>
-<doc-anchor-target id="установка-необходимых-утилит">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-необходимых-утилит">#</doc-anchor-trigger>
-        <span>Установка необходимых утилит</span>
-    </h3>
-</doc-anchor-target>
+<p>Программы Go взаимодействуют с ошибками через значение <code v-pre>error</code>.
+Тип данных <code v-pre>error</code> такой же встроенный интерфейс как <code v-pre>fmt.Stringer</code>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo zypper in curl wget git gpg2 stow</code></pre>
+<pre class="language-go"><code v-pre class="language-go">type error interface {
+    Error() string
+}</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="терминальный-эмулятор-ghostty">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#терминальный-эмулятор-ghostty">#</doc-anchor-trigger>
-        <span>Терминальный эмулятор: Ghostty</span>
-    </h3>
-</doc-anchor-target>
-<p><strong>Ghostty</strong> - это эмулятор терминала, который отличается тем, что он быстрый, многофункциональный и нативный.
-Хотя существует множество отличных эмуляторов терминала, все они заставляют вас выбирать между скоростью, функциями или нативными пользовательскими интерфейсами.
-Ghostty предоставляет все три.</p>
+<p>Функции часто возвращают <code v-pre>error</code> как значение, и мы должны проверять является ли ошибка <code v-pre>nil</code> или нет.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo zypper addrepo https://download.opensuse.org/repositories/X11:/terminals/openSUSE_Factory/X11:terminals.repo
-sudo zypper refresh
-sudo zypper install ghostty</code></pre>
+<pre class="language-go"><code v-pre class="language-go">i, err := strconv.Atoi(&quot;42&quot;)
+if err != nil {
+    fmt.Printf(&quot;couldn't convert number: %v\n&quot;, err)
+    return
+}
+
+fmt.Println(&quot;Converted integer:&quot;, i)</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="браузер-qutebrowser">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#браузер-qutebrowser">#</doc-anchor-trigger>
-        <span>Браузер: qutebrowser</span>
-    </h3>
-</doc-anchor-target>
+<p><code v-pre>nil</code> - обозначет успех выполнения, а если наоборот, то провал выполнения.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo zypper in qutebrowser</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="оконный-менеджер-bspwm">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#оконный-менеджер-bspwm">#</doc-anchor-trigger>
-        <span>Оконный менеджер: bspwm</span>
-    </h3>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo zypper in xorg-x11-server xinit
-sudo zypper in bspwm sxhkd picom polyber flameshot rofi dunst nitrogen</code></pre>
+<pre class="language-go"><code v-pre class="language-go">package main
+
+import (
+    &quot;fmt&quot;
+    &quot;time&quot;
+)
+
+type MyError struct {
+    When time.Time
+    What string
+}
+
+func (e *MyError) Error() string {
+    return fmt.Sprintf(&quot;at %v, %s&quot;, e.When, e.What)
+}
+
+func run() error {
+    return &amp;MyError{
+        time.Now(),
+        &quot;it didn't work&quot;,
+    }
+}
+
+func main() {
+    if err := run(); err != nil {
+        fmt.Println(err)
+    }
+}</code></pre>
 </doc-codeblock></div>
 
                                 
@@ -260,20 +406,20 @@ sudo zypper in bspwm sxhkd picom polyber flameshot rofi dunst nitrogen</code></p
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../golang/генерики/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Начало всех начал</span>
+                                                <span class="block mt-1">Генерики в Golang</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../моя-конфигурация-linux-для-devops/установка-opensuse-tumbleweed-в-качестве-основной-системы/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../golang/многопоточность-и-параллельность/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Установка Open​Suse Tumbleweed</span>
+                                                <span class="block mt-1">Многопоточность и параллельность в Golang</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -317,6 +463,6 @@ sudo zypper in bspwm sxhkd picom polyber flameshot rofi dunst nitrogen</code></p
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Настройка OpenSuse Tumbleweed после установки", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Интерфейсы в Golang", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
