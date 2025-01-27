@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-root" content="/retype-i4ox-notes">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.791300389383">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.6.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Обоснование требований к программной системе | i4ox Docs</title>
+    <meta name="title" content="Обоснование требований к программной системе | i4ox Docs">
+    <meta name="description" content="Требования к программному обеспечению— это описание функций, характеристик, ограничений и условий, которым должна соответствовать система для...">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/шпаргалки/обоснование-требований-к-программной-системе/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/шпаргалки/обоснование-требований-к-программной-системе/">
+    <meta property="og:title" content="Обоснование требований к программной системе | i4ox Docs">
+    <meta property="og:description" content="Требования к программному обеспечению— это описание функций, характеристик, ограничений и условий, которым должна соответствовать система для...">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/шпаргалки/обоснование-требований-к-программной-системе/">
+    <meta property="twitter:title" content="Обоснование требований к программной системе | i4ox Docs">
+    <meta property="twitter:description" content="Требования к программному обеспечению— это описание функций, характеристик, ограничений и условий, которым должна соответствовать система для...">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../uploads/logo.svg" rel="icon">
+    <link href="../../resources/css/retype.css?v=3.6.0.791300389383" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791300389383" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791300389383" data-turbo-eval="false" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
+                            <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../uploads/logo.svg">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../uploads/logo.svg">
+                            </span>
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Notes by i4ox</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                                <!-- Page content  -->
+<doc-anchor-target id="обоснование-требований-к-программной-системе" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#обоснование-требований-к-программной-системе">#</doc-anchor-trigger>
+        <span>Обоснование требований к программной системе</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="определение-требований-к-по-виды-требований-этапы-их-разработки">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#определение-требований-к-по-виды-требований-этапы-их-разработки">#</doc-anchor-trigger>
+        <span>Определение &quot;требований к ПО&quot;. Виды требований, этапы их разработки</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Требования к программному обеспечению</strong> — это описание функций, характеристик, ограничений и условий, которым должна соответствовать система для удовлетворения потребностей и ожиданий заинтересованных сторон. Требования определяют, &quot;что&quot; система должна делать и &quot;как&quot; она должна это делать.</p>
+<doc-anchor-target id="виды-требований">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#виды-требований">#</doc-anchor-trigger>
+        <span>Виды требований</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Бизнес-требования</em>: цели и задачи бизнеса, которые проект должен выполнить. Пример: &quot;Увеличить продажи на 20% за счет внедрения онлайн-магазина&quot;.</li>
+<li><em>Пользовательские требования</em>: описывают задачи, которые пользователь выполняет с системой. Пример: &quot;Пользователь должен иметь возможность зарегистрироваться и авторизоваться&quot;.</li>
+<li><em>Функциональные требования</em>: описывают конкретные функции системы. Пример: &quot;Система должна отправлять уведомление пользователю по электронной почте&quot;.</li>
+<li><em>Нефункциональные требования</em>: касаются качественных характеристик системы, таких как производительность, безопасность, масштабируемость.</li>
+<li><em>Системные требования</em>: специфицируют технические параметры системы, такие как поддерживаемые платформы, объем памяти, требования к оборудованию.</li>
+</ol>
+<doc-anchor-target id="этапы-их-разработки">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#этапы-их-разработки">#</doc-anchor-trigger>
+        <span>Этапы их разработки</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Сбор информации</em>: использование интервью, опросов, наблюдений, анализа документов для выявления требований.</li>
+<li><em>Анализ требований</em>: выявление противоречий, пропусков, дублирующих требований.</li>
+<li><em>Документирование</em>: формализация требований в виде спецификаций (SRS — Software Requirements Specification).</li>
+<li><em>Валидация и согласование</em>: проверка требований на соответствие ожиданиям клиента и технической реализуемости.</li>
+<li><em>Управление изменениями</em>: отслеживание и корректировка требований на протяжении жизненного цикла проекта.</li>
+</ol>
+<doc-anchor-target id="бизнес-требования-модели-анализа-бизнеса-методологии-и-нотации">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#бизнес-требования-модели-анализа-бизнеса-методологии-и-нотации">#</doc-anchor-trigger>
+        <span>Бизнес-требования. Модели анализа бизнеса. Методологии и нотации</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Бизнес-требования</strong> описывают цели проекта с точки зрения компании и объясняют, зачем проект вообще нужен. Это наиболее высокоуровневые требования, например: &quot;Снизить расходы на обслуживание клиентов на 15%&quot;, &quot;Запустить мобильное приложение для увеличения вовлеченности пользователей&quot;.</p>
+<doc-anchor-target id="модели-анализа-бизнеса">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#модели-анализа-бизнеса">#</doc-anchor-trigger>
+        <span>Модели анализа бизнеса</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>SWOT-анализ</em>: определение сильных (Strengths) и слабых (Weaknesses) сторон, возможностей (Opportunities) и угроз (Threats) для бизнеса.</li>
+<li><em>PESTLE-анализ</em>: анализ политических, экономических, социальных, технологических, юридических и экологических факторов, влияющих на проект.</li>
+<li><em>BPMN (Business Process Model and Notation)</em>: нотация для моделирования бизнес-процессов, позволяющая визуально представить процессы.</li>
+<li><em>Диаграмма потоков данных (DFD)</em>: модель, описывающая, как данные движутся между различными элементами системы.</li>
+</ol>
+<doc-anchor-target id="методологии-и-нотации">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#методологии-и-нотации">#</doc-anchor-trigger>
+        <span>Методологии и нотации</span>
+    </h3>
+</doc-anchor-target>
+<p>Методологии:</p>
+<ul>
+<li>Agile</li>
+<li>Scrum</li>
+<li>Waterfall</li>
+<li>Kanban.</li>
+</ul>
+<p>Нотации:</p>
+<ul>
+<li>UML (Unified Modeling Language)</li>
+<li>BPMN</li>
+<li>IDEF0.</li>
+</ul>
+<doc-anchor-target id="пользовательские-требования-модели-анализа-пользовательских-требований-пользовательские-истории-и-варианты-использования">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#пользовательские-требования-модели-анализа-пользовательских-требований-пользовательские-истории-и-варианты-использования">#</doc-anchor-trigger>
+        <span>Пользовательские требования. Модели анализа пользовательских требований. Пользовательские истории и варианты использования</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Пользовательские требования</strong> — это описание действий, которые пользователь хочет выполнять с системой. Пример: &quot;Пользователь должен иметь возможность загрузить файл&quot;.</p>
+<doc-anchor-target id="модели-анализа-пользовательских-требований">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#модели-анализа-пользовательских-требований">#</doc-anchor-trigger>
+        <span>Модели анализа пользовательских требований</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Customer Journey Map</em>: визуализация пути пользователя от начала взаимодействия с системой до достижения цели.</li>
+<li><em>Диаграммы вариантов использования</em>: показывают взаимодействие пользователя с системой через различные сценарии.</li>
+</ol>
+<doc-anchor-target id="пользовательские-истории">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#пользовательские-истории">#</doc-anchor-trigger>
+        <span>Пользовательские истории</span>
+    </h3>
+</doc-anchor-target>
+<p><code v-pre>&quot;Как [роль], я хочу [цель], чтобы [результат]&quot;.</code></p>
+<p>Пример: &quot;Как зарегистрированный пользователь, я хочу иметь возможность изменить пароль, чтобы защитить свой аккаунт&quot;.</p>
+<doc-anchor-target id="варианты-использования">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#варианты-использования">#</doc-anchor-trigger>
+        <span>Варианты использования</span>
+    </h3>
+</doc-anchor-target>
+<p>Описывают конкретный сценарий взаимодействия пользователя с системой, например: &quot;Добавление товара в корзину&quot;.</p>
+<doc-anchor-target id="управление-требованиями-отслеживаемость-требований">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#управление-требованиями-отслеживаемость-требований">#</doc-anchor-trigger>
+        <span>Управление требованиями. Отслеживаемость требований</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Управление требованиями</strong> включает в себя выявление, документирование, отслеживание, анализ и контроль изменений требований на протяжении всего жизненного цикла проекта. Это важно для согласования работы команды и обеспечения качества продукта.</p>
+<p><strong>Отслеживаемость требований</strong> - это способность связывать требования с другими элементами проекта, такими как тестовые сценарии, код, задачи. Используются:</p>
+<ul>
+<li>Матрицы отслеживаемости требований.</li>
+<li>Инструменты управления требованиями: Jira, Confluence, IBM DOORS.</li>
+</ul>
+<doc-anchor-target id="выгоды-от-высококачественного-процесса-разработки-требований">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#выгоды-от-высококачественного-процесса-разработки-требований">#</doc-anchor-trigger>
+        <span>Выгоды от высококачественного процесса разработки требований</span>
+    </h2>
+</doc-anchor-target>
+<ol>
+<li><em>Снижение числа ошибок</em>: Четко сформулированные требования минимизируют недоразумения.</li>
+<li><em>Сокращение времени на разработку</em>: Ясные требования позволяют команде работать эффективнее.</li>
+<li><em>Экономия ресурсов</em>: Снижение затрат за счет предотвращения переработок.</li>
+<li><em>Повышение качества продукта</em>: Продукт будет соответствовать ожиданиям клиента.</li>
+<li><em>Улучшение коммуникации</em>: Формализация требований способствует лучшему взаимодействию между заинтересованными сторонами.</li>
+</ol>
+<doc-anchor-target id="требования-с-точки-зрения-клиента">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#требования-с-точки-зрения-клиента">#</doc-anchor-trigger>
+        <span>Требования с точки зрения клиента</span>
+    </h2>
+</doc-anchor-target>
+<p>С точки зрения клиента, требования — это описание того, что они хотят получить от системы. Для клиента важны:</p>
+<ul>
+<li>Удобство использования.</li>
+<li>Соответствие их бизнес-целям.</li>
+<li>Минимизация затрат и времени на внедрение.</li>
+<li>Поддержка и развитие системы.</li>
+</ul>
+<doc-anchor-target id="проблемы-при-формировании-требований">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#проблемы-при-формировании-требований">#</doc-anchor-trigger>
+        <span>Проблемы при формировании требований</span>
+    </h2>
+</doc-anchor-target>
+<ol>
+<li><em>Неясные или расплывчатые требования</em>: Клиенты не всегда точно знают, чего хотят.</li>
+<li><em>Частые изменения требований</em>: Вносятся новые требования по мере разработки.</li>
+<li><em>Конфликты между стейкхолдерами</em>: Разные заинтересованные стороны имеют разные приоритеты.</li>
+<li><em>Нехватка времени и ресурсов</em>: На сбор и анализ требований не выделено достаточно времени.</li>
+<li><em>Плохая коммуникация</em>: Недостаток обратной связи между клиентами и командой.</li>
+</ol>
+<doc-anchor-target id="разрыв-ожиданий-уменьшение-разрыва-ожиданий">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#разрыв-ожиданий-уменьшение-разрыва-ожиданий">#</doc-anchor-trigger>
+        <span>Разрыв ожиданий. Уменьшение разрыва ожиданий</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Разрыв ожиданий</strong> возникает, когда конечный продукт не соответствует ожиданиям клиента.</p>
+<p>Способы уменьшения разрыва ожиданий:</p>
+<ul>
+<li>Постоянная обратная связь с клиентом.</li>
+<li>Создание прототипов и демонстрация на ранних стадиях.</li>
+<li>Использование Agile для итеративной разработки.</li>
+<li>Четкая и прозрачная коммуникация.</li>
+</ul>
+<doc-anchor-target id="заинтересованные-лица">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#заинтересованные-лица">#</doc-anchor-trigger>
+        <span>Заинтересованные лица</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Заинтересованные лица (стейкхолдеры)</strong> — это все, кто так или иначе влияет на проект или затрагивается его результатами. Они делятся на:</p>
+<ul>
+<li><em>Внутренние</em>: команда разработки, менеджеры, владельцы бизнеса.</li>
+<li><em>Внешние</em>: заказчики, конечные пользователи, регуляторы.</li>
+</ul>
+<p>Для успешного взаимодействия со стейкхолдерами важно:</p>
+<ul>
+<li>Идентифицировать ключевых участников.</li>
+<li>Понять их ожидания и потребности.</li>
+<li>Установить каналы коммуникации.</li>
+</ul>
+<doc-anchor-target id="типовое-по---кто-представляет-интересы-клиентов">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#типовое-по---кто-представляет-интересы-клиентов">#</doc-anchor-trigger>
+        <span>Типовое ПО - кто представляет интересы клиентов</span>
+    </h2>
+</doc-anchor-target>
+<p>Для типового программного обеспечения (например, офисные приложения, CRM-системы) интересы клиентов представляют:</p>
+<ul>
+<li><em>Бизнес-аналитики</em>: выявляют и анализируют потребности широкого круга пользователей.</li>
+<li><em>Продукт-менеджеры</em>: определяют функциональность продукта и стратегию его развития.</li>
+<li><em>Тестировщики и UX-дизайнеры</em>: обеспечивают удобство и качество использования.</li>
+</ul>
+<doc-anchor-target id="сотрудничество-клиентов-и-разработчиков">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сотрудничество-клиентов-и-разработчиков">#</doc-anchor-trigger>
+        <span>Сотрудничество клиентов и разработчиков</span>
+    </h2>
+</doc-anchor-target>
+<p>Эффективное сотрудничество клиентов и разработчиков включает:</p>
+<ul>
+<li>Постоянные встречи и обсуждения (Sprint Review, Demo).</li>
+<li>Использование общих инструментов для управления требованиями (например, Jira).</li>
+<li>Обратную связь на всех этапах проекта.</li>
+</ul>
+<doc-anchor-target id="права-и-обязанности-клиентов-и-разработчиков">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#права-и-обязанности-клиентов-и-разработчиков">#</doc-anchor-trigger>
+        <span>Права и обязанности клиентов и разработчиков</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="права-клиента">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#права-клиента">#</doc-anchor-trigger>
+        <span>Права клиента</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li>Получать информацию о ходе разработки.</li>
+<li>Вносить изменения в требования (в рамках договорённостей).</li>
+<li>Получать качественный продукт.</li>
+</ol>
+<doc-anchor-target id="обязанности-клиента">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#обязанности-клиента">#</doc-anchor-trigger>
+        <span>Обязанности клиента</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li>Своевременно предоставлять информацию.</li>
+<li>Участвовать в согласовании требований.</li>
+</ol>
+<doc-anchor-target id="права-разработчика">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#права-разработчика">#</doc-anchor-trigger>
+        <span>Права разработчика</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li>Получать четкие и понятные требования.</li>
+<li>Ожидать обратную связь от клиента.</li>
+</ol>
+<doc-anchor-target id="обязанности-разработчика">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#обязанности-разработчика">#</doc-anchor-trigger>
+        <span>Обязанности разработчика</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li>Следовать утверждённым требованиям.</li>
+<li>Обеспечивать качество продукта.</li>
+</ol>
+<doc-anchor-target id="достижение-соглашения-о-требованиях-базовое-соглашение-о-требованиях">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#достижение-соглашения-о-требованиях-базовое-соглашение-о-требованиях">#</doc-anchor-trigger>
+        <span>Достижение соглашения о требованиях. Базовое соглашение о требованиях</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Соглашение о требованиях</strong> — это процесс достижения согласия между всеми заинтересованными сторонами относительно целей и содержания проекта.</p>
+<p>Этапы:</p>
+<ol>
+<li>Обсуждение требований с клиентом.</li>
+<li>Создание спецификации (SRS).</li>
+<li>Согласование и утверждение документа.</li>
+</ol>
+<doc-anchor-target id="базовое-соглашение-о-требованиях">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#базовое-соглашение-о-требованиях">#</doc-anchor-trigger>
+        <span>Базовое соглашение о требованиях</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Базовое соглашение о требованиях (Baseline Requirements Agreement)</strong> — это зафиксированный и утвержденный набор требований, согласованный между всеми заинтересованными сторонами. Это документ, который используется как основа для дальнейшей работы над проектом.</p>
+<p>Включает в себя:</p>
+<ul>
+<li>Функциональные и нефункциональные требования</li>
+<li>Границы системы</li>
+<li>Сроки выполнения</li>
+<li>Ответственность сторон</li>
+</ul>
+<doc-anchor-target id="отбор-пользователей-для-выявления-требований-признаки-классификации-пользователей">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#отбор-пользователей-для-выявления-требований-признаки-классификации-пользователей">#</doc-anchor-trigger>
+        <span>Отбор пользователей для выявления требований. Признаки классификации пользователей</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Отбор пользователей</strong> включает в себя выбор представителей целевой аудитории.</p>
+<p>Признаки классификации пользователей:</p>
+<ul>
+<li>Роль в системе (администратор, пользователь).</li>
+<li>Частота использования системы.</li>
+<li>Уровень технической подготовки.</li>
+</ul>
+<doc-anchor-target id="способы-определения-классов-пользователей-архетипы-пользователей">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#способы-определения-классов-пользователей-архетипы-пользователей">#</doc-anchor-trigger>
+        <span>Способы определения классов пользователей. Архетипы пользователей</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Классы пользователей</strong> определяются на основе:</p>
+<ul>
+<li>Интервью с пользователями.</li>
+<li>Анализа демографических данных.</li>
+<li>Построения архетипов — обобщённых образов типичных пользователей.</li>
+</ul>
+<doc-anchor-target id="архетипы-пользователей">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#архетипы-пользователей">#</doc-anchor-trigger>
+        <span>Архетипы пользователей</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Новичок</em>: требует интуитивный интерфейс, обучающие материалы или пошаговые инструкции</li>
+<li><em>Продвинутый пользователь</em>: хорошо знаком с системой и требует дополнительных возможностей для настройки и автоматизации.</li>
+<li><em>Скептик</em>: относится к системе с недоверием или сопротивлением к изменениям</li>
+<li><em>Эксперт</em>: имеет глубокие знания в своей функции, знает какие функци ему необходимы</li>
+<li><em>Ценитель удобства</em>: интересуется простотой и экономией времени</li>
+<li><em>Бюджетно-ориентированный пользователь</em>: интересуется соотношением цени и качества</li>
+<li><em>Руководитель</em>: интересуется общей картиной</li>
+</ol>
+<doc-anchor-target id="методы-выявления-требований-интервью-семинары-фокус-группы-наблюдение-опросные-листы">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#методы-выявления-требований-интервью-семинары-фокус-группы-наблюдение-опросные-листы">#</doc-anchor-trigger>
+        <span>Методы выявления требований: интервью, семинары, фокус-группы, наблюдение, опросные листы</span>
+    </h2>
+</doc-anchor-target>
+<ol>
+<li><em>Интервью</em>: личные беседы с пользователями для выявления их потребностей.</li>
+<li><em>Семинары</em>: коллективные обсуждения для генерации идей.</li>
+<li><em>Фокус-группы</em>: обсуждения с представителями целевой аудитории.</li>
+<li><em>Наблюдение</em>: изучение работы пользователей в их среде.</li>
+<li><em>Опросные листы</em>: сбор мнений через анкеты.</li>
+</ol>
+<doc-anchor-target id="стадии-выявления-требований-в-проекте-правила-сбора-информации">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#стадии-выявления-требований-в-проекте-правила-сбора-информации">#</doc-anchor-trigger>
+        <span>Стадии выявления требований в проекте. Правила сбора информации</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="стадии-выявления-требований">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#стадии-выявления-требований">#</doc-anchor-trigger>
+        <span>Стадии выявления требований</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Инициация проекта</em>:
+<ul>
+<li>Определяются основные цели проекта, ключевые заинтересованные стороны и их ожидания.</li>
+<li>Проводятся предварительные встречи и обсуждения.</li>
+</ul>
+</li>
+<li><em>Сбор требований</em>:
+<ul>
+<li>Используются методы, такие как интервью, опросы, наблюдение, анализ документации, фокус-группы.</li>
+<li>Формируются черновые описания требований.</li>
+</ul>
+</li>
+<li><em>Анализ требований</em>:
+<ul>
+<li>Проверка требований на полноту, противоречивость, реалистичность и соответствие целям проекта.</li>
+<li>Выявляются скрытые или неявные требования.</li>
+</ul>
+</li>
+<li><em>Документирование</em>:
+<ul>
+<li>Оформление требований в виде спецификации (например, SRS), диаграмм, моделей.</li>
+<li>Создаются описания бизнес-процессов, диаграммы потоков данных, сценарии использования.</li>
+</ul>
+</li>
+<li><em>Валидация требований</em>:
+<ul>
+<li>Проверка требований на согласованность с ожиданиями клиента.</li>
+<li>Утверждение требований всеми заинтересованными сторонами.</li>
+</ul>
+</li>
+<li><em>Управление изменениями</em>:
+<ul>
+<li>Отслеживание и контроль изменений требований на протяжении жизненного цикла проекта.</li>
+</ul>
+</li>
+</ol>
+<doc-anchor-target id="правила-сбора-информации">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#правила-сбора-информации">#</doc-anchor-trigger>
+        <span>Правила сбора информации</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li>Задавайте открытые вопросы для получения развернутых ответов.</li>
+<li>Уточняйте, если информация неполная или противоречивая.</li>
+<li>Привлекайте всех ключевых стейкхолдеров для полноты картины.</li>
+<li>Избегайте предположений — проверяйте каждую гипотезу.</li>
+<li>Используйте визуализацию (диаграммы, схемы) для лучшего понимания.</li>
+<li>Проводите итерации, возвращаясь к клиенту для уточнений.</li>
+</ol>
+<doc-anchor-target id="ограничения">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ограничения">#</doc-anchor-trigger>
+        <span>Ограничения</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Ограничения</strong> — это факторы, которые могут ограничивать процесс разработки, внедрения или эксплуатации системы.</p>
+<doc-anchor-target id="примеры-ограничений">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#примеры-ограничений">#</doc-anchor-trigger>
+        <span>Примеры ограничений</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li>Технические:
+<ul>
+<li>Требования к оборудованию (память, процессоры, хранилище).</li>
+<li>Совместимость с существующими системами.</li>
+<li>Поддержка определенных платформ или браузеров.</li>
+</ul>
+</li>
+<li>Бизнес-ограничения:
+<ul>
+<li>Бюджет проекта.</li>
+<li>Сроки выполнения.</li>
+<li>Приоритеты бизнеса.</li>
+</ul>
+</li>
+<li>Юридические и нормативные:
+<ul>
+<li>Соответствие законодательству (например, GDPR).</li>
+<li>Лицензирование и авторские права.</li>
+</ul>
+</li>
+<li>Организационные:
+<ul>
+<li>Ограниченное число сотрудников в команде.</li>
+<li>Недостаток компетенций.</li>
+</ul>
+</li>
+<li>Социальные и культурные:
+<ul>
+<li>Учет языков и культурных особенностей пользователей.</li>
+</ul>
+</li>
+</ol>
+<doc-anchor-target id="зачем-учитывать-ограничения">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#зачем-учитывать-ограничения">#</doc-anchor-trigger>
+        <span>Зачем учитывать ограничения</span>
+    </h3>
+</doc-anchor-target>
+<p>Учет ограничений помогает избежать перерасхода ресурсов, срывов сроков и неудач в проекте.</p>
+<doc-anchor-target id="подразумеваемые-и-неявные-требования">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#подразумеваемые-и-неявные-требования">#</doc-anchor-trigger>
+        <span>Подразумеваемые и неявные требования</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Подразумеваемые требования</strong> — это те, которые очевидны и ожидаются пользователем, но могут быть не задокументированы.
+Например:</p>
+<ul>
+<li>Удобство интерфейса.</li>
+<li>Высокая производительность.</li>
+</ul>
+<p><strong>Неявные требования</strong> — это требования, которые клиент сам не осознает или не формулирует, но они важны для успешного использования системы.
+Например:</p>
+<ul>
+<li>Система должна быть интуитивно понятной.</li>
+<li>Обеспечение безопасности данных.</li>
+</ul>
+<p>Различие:</p>
+<ul>
+<li>Подразумеваемые требования основываются на индустриальных стандартах и ожиданиях.</li>
+<li>Неявные требования требуют выявления через наблюдение, анализ поведения пользователей и уточняющие вопросы.</li>
+</ul>
+<doc-anchor-target id="поиск-упущенных-требований">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#поиск-упущенных-требований">#</doc-anchor-trigger>
+        <span>Поиск упущенных требований</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Упущенные требования</strong> — это те, которые не были выявлены на этапе сбора, но могут оказать значительное влияние на продукт.</p>
+<p>Методы поиска упущенных требований:</p>
+<ol>
+<li><em>Анализ аналогичных проектов</em>: Изучите требования других систем в той же отрасли.</li>
+<li><em>Создание прототипов</em>: Прототипирование выявляет дополнительные нужды, которые не были сформулированы ранее.</li>
+<li><em>Обратная связь</em>: Сбор отзывов от пользователей, тестировщиков, разработчиков.</li>
+<li><em>Сценарный анализ</em>: Опишите всевозможные сценарии использования системы и проверьте, покрываются ли они требованиями.</li>
+<li><em>Мозговой штурм</em>: Организуйте встречи команды для выявления дополнительных требований.</li>
+</ol>
+<doc-anchor-target id="стандарты-и-методологии-разработки-требований">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#стандарты-и-методологии-разработки-требований">#</doc-anchor-trigger>
+        <span>Стандарты и методологии разработки требований</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="стандарты">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#стандарты">#</doc-anchor-trigger>
+        <span>Стандарты</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>IEEE 830-1998</em>: Описывает структуру документа спецификации требований (SRS).</li>
+<li><em>ISO/IEC 29148</em>: Стандарт для управления требованиями.</li>
+<li><em>BABOK (Business Analysis Body of Knowledge)</em>: Рекомендации для бизнес-анализа.</li>
+</ol>
+<doc-anchor-target id="методологии">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#методологии">#</doc-anchor-trigger>
+        <span>Методологии</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Agile</em>:
+<ul>
+<li>Инкрементальная и итеративная разработка.</li>
+<li>Требования описываются в формате user stories.</li>
+</ul>
+</li>
+<li><em>Scrum</em>:
+<ul>
+<li>Планирование спринтов с четкими задачами.</li>
+<li>Постоянная работа с бэклогом.</li>
+</ul>
+</li>
+<li><em>Waterfall</em>:
+<ul>
+<li>Последовательный подход, где требования фиксируются на ранних стадиях.</li>
+</ul>
+</li>
+<li><em>Lean</em>:
+<ul>
+<li>Минимизация потерь и фокус на ценности для клиента.</li>
+</ul>
+</li>
+</ol>
+<doc-anchor-target id="основные-артефакты-анализа-модели-анализа-бизнеса">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#основные-артефакты-анализа-модели-анализа-бизнеса">#</doc-anchor-trigger>
+        <span>Основные артефакты анализа. Модели анализа бизнеса</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="основные-артефакты-анализа">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#основные-артефакты-анализа">#</doc-anchor-trigger>
+        <span>Основные артефакты анализа</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Спецификация требований (SRS)</em>: Документ, детализирующий все требования.</li>
+<li><em>Диаграммы бизнес-процессов</em>: Используются для анализа текущих и будущих процессов.</li>
+<li><em>Матрица отслеживаемости</em>: Помогает отслеживать связь требований с другими элементами проекта.</li>
+<li><em>Прототипы</em>: Визуальное представление системы для согласования с клиентом.</li>
+</ol>
+<doc-anchor-target id="модели-анализа-бизнеса-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#модели-анализа-бизнеса-1">#</doc-anchor-trigger>
+        <span>Модели анализа бизнеса</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>BPMN (Business Process Model and Notation)</em>: Показывает процессы в виде блок-схем.</li>
+<li><em>SWOT-анализ</em>: Выявляет сильные и слабые стороны бизнеса.</li>
+<li><em>Диаграммы потоков данных (DFD)</em>: Отображают движение данных в системе.</li>
+</ol>
+<doc-anchor-target id="модели-анализа-требований-подходы-к-моделированию">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#модели-анализа-требований-подходы-к-моделированию">#</doc-anchor-trigger>
+        <span>Модели анализа требований. Подходы к моделированию</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="модели-анализа-требований">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#модели-анализа-требований">#</doc-anchor-trigger>
+        <span>Модели анализа требований</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Use Case Diagram (Диаграммы вариантов использования)</em>: Показывают взаимодействие пользователей с системой.</li>
+<li><em>ERD (Диаграммы сущность-связь)</em>: Описывают данные и их связи.</li>
+<li><em>State Diagrams (Диаграммы состояний)</em>: Описывают поведение системы в различных состояниях.</li>
+</ol>
+<doc-anchor-target id="подходы-к-моделированию">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#подходы-к-моделированию">#</doc-anchor-trigger>
+        <span>Подходы к моделированию</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Графический</em>: Использование диаграмм (UML, BPMN) для наглядности.</li>
+<li><em>Текстовый</em>: Формальное описание в виде документов.</li>
+<li><em>Прототипирование</em>: Создание интерактивных прототипов системы.</li>
+</ol>
+<doc-anchor-target id="пользовательские-требования-варианты-использования-и-сценарии-использования-пользовательские-истории">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#пользовательские-требования-варианты-использования-и-сценарии-использования-пользовательские-истории">#</doc-anchor-trigger>
+        <span>Пользовательские требования. Варианты использования и сценарии использования. Пользовательские истории</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Пользовательские требования</strong> — это описание задач, которые пользователь хочет выполнить с системой. Пример: &quot;Пользователь должен иметь возможность оплатить покупку онлайн&quot;.</p>
+<ul>
+<li><em>Варианты использования</em>: Описывают, как пользователь взаимодействует с системой для достижения цели. Пример: &quot;Авторизация пользователя&quot; включает сценарии входа с верными и неверными данными.</li>
+<li><em>Сценарии использования</em>: Подробное описание последовательности шагов в рамках варианта использования. Пример: Шаги авторизации пользователя:
+<ul>
+<li>Пользователь вводит логин и пароль.</li>
+<li>Система проверяет данные.</li>
+<li>В случае успеха пользователь попадает в личный кабинет.</li>
+</ul>
+</li>
+<li><em>Пользовательские истории</em>: Краткий формат требований: &quot;Как [роль], я хочу [цель], чтобы [результат]&quot;. Пример: &quot;Как пользователь, я хочу получать уведомления о скидках, чтобы не пропускать акции&quot;.</li>
+</ul>
+<p>Отличие Use Case от User Story:</p>
+<ul>
+<li>Use Case детализирован и формализован.</li>
+<li>User Story проще и используется в гибких методологиях.</li>
+</ul>
+<doc-anchor-target id="определение-анализ-и-проверка-вариантов-использования-варианты-использования-и-функциональные-требования">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#определение-анализ-и-проверка-вариантов-использования-варианты-использования-и-функциональные-требования">#</doc-anchor-trigger>
+        <span>Определение, анализ и проверка вариантов использования. Варианты использования и функциональные требования</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Определение вариантов использования (Use Cases)</strong>: Варианты использования описывают взаимодействие пользователя с системой для достижения определенной цели. Они формируют мост между пользовательскими и функциональными требованиями.</p>
+<doc-anchor-target id="этапы-работы-с-вариантами-использования">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#этапы-работы-с-вариантами-использования">#</doc-anchor-trigger>
+        <span>Этапы работы с вариантами использования</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Определение</em>:
+<ul>
+<li>Определите роли (актеров), которые взаимодействуют с системой.</li>
+<li>Опишите цели, которые каждый актер пытается достичь.</li>
+</ul>
+</li>
+<li><em>Анализ</em>:
+<ul>
+<li>Декомпозируйте варианты использования на шаги.</li>
+<li>Уточните возможные альтернативные пути (например, ошибки или исключения).</li>
+</ul>
+</li>
+<li><em>Проверка</em>:
+<ul>
+<li>Убедитесь, что варианты использования покрывают все пользовательские сценарии.</li>
+<li>Проверяйте на непротиворечивость и соответствие требованиям.</li>
+</ul>
+</li>
+</ol>
+<doc-anchor-target id="связь-с-функциональными-требованиями">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#связь-с-функциональными-требованиями">#</doc-anchor-trigger>
+        <span>Связь с функциональными требованиями</span>
+    </h3>
+</doc-anchor-target>
+<p>Функциональные требования описывают поведение системы в терминах, основанных на вариантах использования.
+Например:</p>
+<ul>
+<li>Вариант использования: &quot;Пользователь авторизуется в системе&quot;.</li>
+<li>Функциональное требование: &quot;Система должна отправлять код подтверждения при входе&quot;.</li>
+</ul>
+<doc-anchor-target id="преимущества-требований-основанных-на-вариантах-использования">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#преимущества-требований-основанных-на-вариантах-использования">#</doc-anchor-trigger>
+        <span>Преимущества требований, основанных на вариантах использования</span>
+    </h2>
+</doc-anchor-target>
+<ol>
+<li><em>Понятность для стейкхолдеров</em>: Описание в терминах сценариев взаимодействия облегчает понимание клиентам.</li>
+<li><em>Обеспечение полноты</em>: Позволяют охватить все возможные сценарии и исключения.</li>
+<li><em>Поддержка тестирования</em>: Варианты использования легко преобразуются в тестовые сценарии.</li>
+<li><em>Улучшение коммуникации</em>: Сценарии взаимодействия создают единый язык для команды разработки и клиентов.</li>
+<li><em>Гибкость</em>: Подход можно адаптировать для Agile или Waterfall.</li>
+</ol>
+<doc-anchor-target id="функциональные-требования-модели-анализа-функциональных-требований-методологии-и-нотации">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#функциональные-требования-модели-анализа-функциональных-требований-методологии-и-нотации">#</doc-anchor-trigger>
+        <span>Функциональные требования. Модели анализа функциональных требований. Методологии и нотации</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Функциональные требования</strong> — это описание функций, которые система должна выполнять. Они фокусируются на том, что система должна делать.</p>
+<p>Примеры:</p>
+<ul>
+<li>Система должна позволять пользователю регистрироваться.</li>
+<li>При добавлении товара в корзину его количество должно увеличиваться на единицу.</li>
+</ul>
+<doc-anchor-target id="модели-анализа-функциональных-требований">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#модели-анализа-функциональных-требований">#</doc-anchor-trigger>
+        <span>Модели анализа функциональных требований</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Диаграммы вариантов использования (Use Case Diagrams)</em>: Показывают взаимодействие пользователей с системой.</li>
+<li><em>DFD (Диаграммы потоков данных)</em>: Описывают, как данные проходят через систему.</li>
+<li><em>Диаграммы последовательности (Sequence Diagrams)</em>: Показывают последовательность взаимодействий.</li>
+</ol>
+<doc-anchor-target id="методологии-и-нотации-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#методологии-и-нотации-1">#</doc-anchor-trigger>
+        <span>Методологии и нотации:</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Методологии: Agile, Scrum, Waterfall.</li>
+<li>Нотации: UML, BPMN, IDEF0.</li>
+</ul>
+<doc-anchor-target id="бизнес-правила-и-их-роль-в-требованиях-выявление-бизнес-правил">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#бизнес-правила-и-их-роль-в-требованиях-выявление-бизнес-правил">#</doc-anchor-trigger>
+        <span>Бизнес-правила и их роль в требованиях. Выявление бизнес-правил</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Бизнес-правила</strong> — это ограничения, правила или условия, которые определяют поведение системы в рамках бизнеса.</p>
+<p>Роль в требованиях: бизнес-правила уточняют, как система должна функционировать.
+Пример: &quot;Скидка не может превышать 50% от стоимости товара&quot;.</p>
+<doc-anchor-target id="методы-выявления-бизнес-правил">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#методы-выявления-бизнес-правил">#</doc-anchor-trigger>
+        <span>Методы выявления бизнес-правил</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Интервью с экспертами.</li>
+<li>Анализ существующих документов и политик.</li>
+<li>Изучение нормативных актов и стандартов.</li>
+</ul>
+<doc-anchor-target id="влияние-бизнес-правил-на-различные-типы-требований-к-по">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#влияние-бизнес-правил-на-различные-типы-требований-к-по">#</doc-anchor-trigger>
+        <span>Влияние бизнес-правил на различные типы требований к ПО</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Бизнес-правила</strong> играют ключевую роль в разработке требований к ПО, так как они формируют основу для создания функционала, ограничений и поведения системы.</p>
+<p>Влияние бизнес-правил на типы требований:</p>
+<ol>
+<li><em>Функциональные требования</em>:
+<ul>
+<li>Бизнес-правила определяют, как должна работать система в определенных сценариях.</li>
+<li>Пример: В интернет-магазине бизнес-правило может гласить: &quot;Скидка применяется только к товарам, не участвующим в других акциях&quot;. Это определяет функциональное требование — система должна проверять, есть ли скидки на товар, перед применением другой акции.</li>
+</ul>
+</li>
+<li><em>Нефункциональные требования</em>:
+<ul>
+<li>Бизнес-правила могут задавать ограничения, связанные с качественными характеристиками системы:</li>
+<li>Пример: &quot;Ответ на запрос клиента должен предоставляться в течение 3 секунд&quot;.</li>
+</ul>
+</li>
+<li><em>Пользовательские требования</em>:
+<ul>
+<li>Правила влияют на сценарии взаимодействия пользователя с системой.</li>
+<li>Пример: &quot;Пользователь должен вводить пароль, содержащий не менее 8 символов&quot;.</li>
+</ul>
+</li>
+<li><em>Системные требования</em>:
+<ul>
+<li>Бизнес-правила могут требовать соблюдения стандартов или взаимодействия с другими системами.</li>
+<li>Пример: &quot;Система должна быть совместима с национальной системой налогообложения&quot;.</li>
+</ul>
+</li>
+</ol>
+<doc-anchor-target id="классификация-бизнес-правил-организация-хранения-бизнес-правил">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#классификация-бизнес-правил-организация-хранения-бизнес-правил">#</doc-anchor-trigger>
+        <span>Классификация бизнес-правил. Организация хранения бизнес-правил</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="классификация">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#классификация">#</doc-anchor-trigger>
+        <span>Классификация</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Операционные правила</em>: Правила, определяющие действия системы.
+Пример: &quot;Пользователь должен вводить пароль длиной от 8 символов&quot;.</li>
+<li><em>Управляющие правила</em>: Правила, которые описывают управляющие условия.
+Пример: &quot;Все транзакции должны быть одобрены менеджером&quot;.</li>
+</ol>
+<doc-anchor-target id="организация-хранения">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#организация-хранения">#</doc-anchor-trigger>
+        <span>Организация хранения</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Используйте базы знаний (например, Confluence).</li>
+<li>Храните в виде правил (например, в таблицах или схемах).</li>
+</ul>
+<doc-anchor-target id="статические-диаграммы-анализа-функциональных-требований">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#статические-диаграммы-анализа-функциональных-требований">#</doc-anchor-trigger>
+        <span>Статические диаграммы анализа функциональных требований</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Статические диаграммы</strong> используются для моделирования структурных аспектов системы, таких как классы, объекты и их взаимосвязи. Они не показывают поведение системы, а фокусируются на ее компонентах.</p>
+<doc-anchor-target id="типы-статических-диаграмм">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#типы-статических-диаграмм">#</doc-anchor-trigger>
+        <span>Типы статических диаграмм</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Диаграмма классов (Class Diagram)</em>: Показывает основные объекты системы (классы), их атрибуты, методы и связи.</li>
+<li><em>Диаграмма сущность-связь (ERD, Entity-Relationship Diagram)</em>: Используется для моделирования базы данных. Показывает сущности, их атрибуты и отношения между ними.</li>
+<li><em>Пакетная диаграмма (Package Diagram)</em>: Моделирует логическую организацию системы, разбивая ее на пакеты (модули).</li>
+</ol>
+<doc-anchor-target id="динамические-диаграммы-анализа-функциональных-требований">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#динамические-диаграммы-анализа-функциональных-требований">#</doc-anchor-trigger>
+        <span>Динамические диаграммы анализа функциональных требований</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Динамические диаграммы</strong> показывают, как система ведет себя при выполнении задач или обработке событий. Они фокусируются на процессах и взаимодействиях.</p>
+<doc-anchor-target id="типы-динамических-диаграмм">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#типы-динамических-диаграмм">#</doc-anchor-trigger>
+        <span>Типы динамических диаграмм</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Диаграммы последовательности (Sequence Diagram)</em>: Показывают, как элементы системы взаимодействуют друг с другом во времени.</li>
+<li><em>Диаграммы деятельности (Activity Diagram)</em>: Отображают последовательность действий или событий в процессе.</li>
+<li><em>Диаграммы состояний (State Diagram)</em>: Показывают, как объект системы изменяет свое состояние в ответ на события.</li>
+<li><em>Диаграммы взаимодействия (Interaction Overview Diagram)</em>: Объединяют элементы диаграмм последовательности и активности, отображая высокоуровневые процессы.</li>
+</ol>
+<doc-anchor-target id="характеристики-идеальных-требований">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#характеристики-идеальных-требований">#</doc-anchor-trigger>
+        <span>Характеристики идеальных требований</span>
+    </h2>
+</doc-anchor-target>
+<ol>
+<li><em>Полнота</em>: требования описывают весь процесс целиков</li>
+<li><em>Однозначность</em>: требования можно трактовать единым образом</li>
+<li><em>Проверяемость</em>:  требования должны быть легко проверяемы</li>
+<li><em>Реалистичность</em>: требования должны быть реализуемыми в реальности</li>
+</ol>
+<doc-anchor-target id="точки-зрения-на-требования-уровень-детализации-требований">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#точки-зрения-на-требования-уровень-детализации-требований">#</doc-anchor-trigger>
+        <span>Точки зрения на требования. Уровень детализации требований</span>
+    </h2>
+</doc-anchor-target>
+<p>Точки зрения делятся на три вида:</p>
+<ul>
+<li>Клиента.</li>
+<li>Пользователя.</li>
+<li>Разработчика.</li>
+</ul>
+<p>Уровни детализации бывают двух видов:</p>
+<ul>
+<li>Высокий уровень (общие цели).</li>
+<li>Низкий уровень (технические детали).</li>
+</ul>
+<doc-anchor-target id="определение-требований-к-данным-моделирование-отношений-данных">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#определение-требований-к-данным-моделирование-отношений-данных">#</doc-anchor-trigger>
+        <span>Определение требований к данным. Моделирование отношений данных</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Определение требований к данным</strong> описывают, как система работает с данными(хранения, валидация).</p>
+<p>Для отображение связей между данными используется ERD.</p>
+<doc-anchor-target id="диаграммы-классов-словарь-данных-анализ-данных">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#диаграммы-классов-словарь-данных-анализ-данных">#</doc-anchor-trigger>
+        <span>Диаграммы классов. Словарь данных. Анализ данных</span>
+    </h2>
+</doc-anchor-target>
+<ol>
+<li><em>Диаграммы классов</em>: Показывают объекты и их атрибуты.</li>
+<li><em>Словарь данных</em>: Документирует данные (например, названия и типы полей).</li>
+<li><em>Анализ данных</em>: Проверяет корректность и полноту данных.</li>
+</ol>
+<doc-anchor-target id="нефункциональные-требования-классы-нефункциональных-требований">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#нефункциональные-требования-классы-нефункциональных-требований">#</doc-anchor-trigger>
+        <span>Нефункциональные требования. Классы нефункциональных требований</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Нефункциональные требования (НФТ)</strong> — это требования, описывающие характеристики системы, которые влияют на ее качество.</p>
+<doc-anchor-target id="основные-классы-нфт">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#основные-классы-нфт">#</doc-anchor-trigger>
+        <span>Основные классы НФТ</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Производительность</em>:
+<ul>
+<li>Пример: &quot;Система должна обрабатывать не менее 500 запросов в секунду&quot;.</li>
+</ul>
+</li>
+<li><em>Масштабируемость</em>:
+<ul>
+<li>Пример: &quot;Система должна поддерживать добавление новых серверов без остановки работы&quot;.</li>
+</ul>
+</li>
+<li><em>Надежность</em>:
+<ul>
+<li>Пример: &quot;Система должна быть доступна 99.9% времени&quot;.</li>
+</ul>
+</li>
+<li><em>Удобство использования (Usability)</em>:
+<ul>
+<li>Пример: &quot;Среднее время обучения пользователя не должно превышать 2 часов&quot;.</li>
+</ul>
+</li>
+<li><em>Безопасность</em>:
+<ul>
+<li>Пример: &quot;Пароли должны храниться в зашифрованном виде&quot;.</li>
+</ul>
+</li>
+<li><em>Совместимость</em>:
+<ul>
+<li>Пример: &quot;Система должна работать на Windows, macOS и Linux&quot;.</li>
+</ul>
+</li>
+</ol>
+<doc-anchor-target id="атрибуты-качества-внешние-и-внутренние-атрибуты-качества">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#атрибуты-качества-внешние-и-внутренние-атрибуты-качества">#</doc-anchor-trigger>
+        <span>Атрибуты качества. Внешние и внутренние атрибуты качества</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Атрибуты качества</strong> определяют, насколько система удовлетворяет свои цели.</p>
+<p>Внешние атрибуты качества(важны для пользователей):</p>
+<ul>
+<li>Производительность.</li>
+<li>Удобство использования.</li>
+<li>Доступность.</li>
+</ul>
+<p>Внутренние атрибуты качества(важны для разработчиков):</p>
+<ul>
+<li>Простота поддержки.</li>
+<li>Модульность.</li>
+<li>Читаемость кода.</li>
+</ul>
+<doc-anchor-target id="прототипы-как-средство-снижения-риска-классификация-прототипов">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#прототипы-как-средство-снижения-риска-классификация-прототипов">#</doc-anchor-trigger>
+        <span>Прототипы как средство снижения риска. Классификация прототипов</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Прототипы</strong> — это упрощенные версии продукта, созданные для проверки концепций и снижения рисков.</p>
+<p>Роли прототипов:</p>
+<ul>
+<li>Обратная связь от клиентов.</li>
+<li>Проверка идей и гипотез.</li>
+<li>Оценка сложности реализации.</li>
+</ul>
+<doc-anchor-target id="классификация-прототипов">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#классификация-прототипов">#</doc-anchor-trigger>
+        <span>Классификация прототипов:</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Бумаговоры (Paper Prototypes)</em>: Ручные зарисовки интерфейсов.</li>
+<li><em>Интерактивные прототипы</em>: Создаются с использованием инструментов (Figma, Axure).</li>
+<li><em>Кодовые прототипы</em>: Простейшая версия приложения с минимальным функционалом.</li>
+</ol>
+<doc-anchor-target id="определение-приоритетов-требований-приемы-определения-приоритетов">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#определение-приоритетов-требований-приемы-определения-приоритетов">#</doc-anchor-trigger>
+        <span>Определение приоритетов требований. Приемы определения приоритетов</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Определение приоритетов</strong> позволяет сфокусироваться на самых важных задачах.</p>
+<doc-anchor-target id="методы">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#методы">#</doc-anchor-trigger>
+        <span>Методы</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><em>MoSCoW</em>: Must Have, Should Have, Could Have, Won’t Have.</li>
+<li><em>Метод аналитической иерархии (AHP)</em>: Разбиение требований на уровни важности.</li>
+<li><em>Модель Кано (Kano Model)</em>: Классификация функций на базовые, производящие &quot;вау-эффект&quot; и нейтральные.</li>
+</ul>
+<doc-anchor-target id="утверждение-требований-рецензирование-требований">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#утверждение-требований-рецензирование-требований">#</doc-anchor-trigger>
+        <span>Утверждение требований. Рецензирование требований</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Утверждение требований</strong> — это процесс согласования требований с клиентом и командой.</p>
+<doc-anchor-target id="методы-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#методы-1">#</doc-anchor-trigger>
+        <span>Методы</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><em>Рецензирование</em>: Проверка требований на полноту, точность.</li>
+<li><em>Создание критериев приемки</em>: Четкие условия, которые требования должны удовлетворять.</li>
+</ul>
+<doc-anchor-target id="прототипы-требований-тестирование-требований">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#прототипы-требований-тестирование-требований">#</doc-anchor-trigger>
+        <span>Прототипы требований. Тестирование требований</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Прототипы требований</strong> помогают визуализировать ожидания клиента.</p>
+<p><strong>Тестирование требований</strong> - проверка на соответствие ожиданиям и технической реализуемости.</p>
+<doc-anchor-target id="утверждение-требований-с-применением-критериев-приемки">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#утверждение-требований-с-применением-критериев-приемки">#</doc-anchor-trigger>
+        <span>Утверждение требований с применением критериев приемки</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Критерии приемки</strong> — это условия, которые требования должны удовлетворять для утверждения.</p>
+<p>Пример:</p>
+<ul>
+<li><em>Требование</em>: &quot;Пользователь должен авторизоваться через email&quot;.</li>
+<li><em>Критерий приемки</em>: &quot;Система проверяет, что введенный email существует&quot;.</li>
+</ul>
+<doc-anchor-target id="повторное-использование-требований-виды-и-сценарии">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#повторное-использование-требований-виды-и-сценарии">#</doc-anchor-trigger>
+        <span>Повторное использование требований. Виды и сценарии</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="виды-повторного-использования">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#виды-повторного-использования">#</doc-anchor-trigger>
+        <span>Виды повторного использования</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Функциональные требования</em>:
+<ul>
+<li>Пример: Авторизация.</li>
+</ul>
+</li>
+<li><em>Нефункциональные требования</em>:
+<ul>
+<li>Пример: &quot;Система должна быть доступна 24/7&quot;.</li>
+</ul>
+</li>
+</ol>
+<doc-anchor-target id="сценарии">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сценарии">#</doc-anchor-trigger>
+        <span>Сценарии:</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li><em>Типовые процессы</em>: Регистрация.</li>
+<li><em>Шаблоны интерфейсов</em>: Форма поиска.</li>
+</ol>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../шпаргалки/ssh/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">SSH</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../шпаргалки/helm/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Шпаргалка по Helm</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© 2025 Notes by i4ox. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Обоснование требований к программной системе", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+</body>
+</html>
