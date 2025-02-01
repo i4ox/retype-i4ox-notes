@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/retype-i4ox-notes">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.791737455129">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.791746670283">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.791737455129" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.791746670283" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791737455129" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791746670283" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791737455129" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.791737455129" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791746670283" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.791746670283" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -359,6 +359,88 @@
 		}
 		list[i], list[min] = list[min], list[i]
 	}
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="рекурсия">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#рекурсия">#</doc-anchor-trigger>
+        <span>Рекурсия</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Рекурсия</strong> - элегантный способ решения задач. Это метод решения задач, при котором функция вызывает саму себя в процессе выполнения.</p>
+<p>Рекурсивные алгоритмы широко используются в программировании для решения задач, которые можно разбить на более простые подзадачи того же типа.</p>
+<doc-anchor-target id="когда-использовать-рекурсию">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#когда-использовать-рекурсию">#</doc-anchor-trigger>
+        <span>Когда использовать рекурсию?</span>
+    </h3>
+</doc-anchor-target>
+<p>Рекурсия полезна, когда задача естественным образом разделяется на аналогичные, но меньшие по размеру подзадачи.</p>
+<p>Рекурсия часто применяется:</p>
+<ul>
+<li>В деревьях.</li>
+<li>В графах.</li>
+<li>В сортировках.</li>
+<li>В математических вычислениях.</li>
+</ul>
+<doc-anchor-target id="как-работает-рекурсия">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#как-работает-рекурсия">#</doc-anchor-trigger>
+        <span>Как работает рекурсия?</span>
+    </h3>
+</doc-anchor-target>
+<p>Рекурсивная функция обычно состоит из двух частей:</p>
+<ol>
+<li><strong>Базовый случай</strong> – условие, при котором функция прекращает вызывать саму себя и возвращает результат. Это необходимо для предотвращения бесконечной рекурсии.</li>
+<li><strong>Рекурсивный случай</strong> – часть функции, в которой она вызывает саму себя с измененными аргументами, приближаясь к базовому случаю.</li>
+</ol>
+<p>Рассмотрим в качестве примера вычисления факториала числа.</p>
+<p>Факториал числа для n обозначается как n! и выглядит как произведение чисел от 1 до n.</p>
+<p>Рекурсивное определение факториала для n можно представить следующим образом:</p>
+<ul>
+<li>Базовый случай: 0! = 1 или 1! = 1.</li>
+<li>Рекурсивный случай: n! = n * (n-1)!</li>
+</ul>
+<p>Преимущества:</p>
+<ul>
+<li>Упрощает код для задач, которые естественно рекурсивны.</li>
+<li>Позволяет легко реализовывать сложные алгоритмы.</li>
+</ul>
+<p>Недостатки:</p>
+<ul>
+<li>Может привести к большому количеству вызовов функции, что увеличивает расход памяти.</li>
+<li>Риск переполнения стека.</li>
+<li>Менее эффективна в сравнении с итеративными алгоритмами из-за накладных расходов памяти</li>
+</ul>
+<doc-anchor-target id="сложность-алгоритма-2">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сложность-алгоритма-2">#</doc-anchor-trigger>
+        <span>Сложность алгоритма</span>
+    </h3>
+</doc-anchor-target>
+<p>Сложность рекурсивных алгоритмов зависит от количества рекурсивных вызовов и работы, выполняемой на каждом шаге.
+Например, для вычисления факториала сложность будет <code v-pre>O(n!)</code>, то есть один раз на каждый шаг производится вычисление n-1-й части факториала.</p>
+<doc-anchor-target id="реализация-рекурсии-на-go">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#реализация-рекурсии-на-go">#</doc-anchor-trigger>
+        <span>Реализация рекурсии на Go</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">func factorial(n int) int {
+	if n == 0 {
+		return 1
+	}
+	return n * factorial(n-1)
+}
+
+func fibonacci(n int) int {
+	if n == 0 {
+		return 0
+	} else if n == 1 {
+		return 1
+	}
+	return fibonacci(n-1) + fibonacci(n-2)
 }</code></pre>
 </doc-codeblock></div>
 
