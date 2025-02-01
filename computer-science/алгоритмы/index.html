@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/retype-i4ox-notes">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.791731047715">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.791731244026">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.791731047715" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.791731244026" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791731047715" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791731244026" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791731047715" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.791731047715" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791731244026" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.791731244026" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -178,7 +178,12 @@
 <p>Специальная нотация &quot;О-большое&quot; описывает скорость работы алгоритма.</p>
 <p>Предположим, у нас ограничение в 100мс и надо проверить 100 элементов - Пусть 1мс это тоже самое что и 1 операция.</p>
 <p>Для простого алгоритма можно считать это скоростью О(100), то есть 100мс.</p>
-<p>А в случае с бинарным поиском это скорость О(log100), то есть 7мс(2<sup>6 = 64; 2</sup>7 = 128; 64 &lt; 100 &lt; 128).</p>
+<p>А в случае с бинарным поиском это скорость О(log100), то есть 7мс.</p>
+<ol>
+<li>2^6 = 64</li>
+<li>2^7 = 128</li>
+<li>64 &lt; 100 &lt; 128</li>
+</ol>
 <p>Можно сказать, что О(<code v-pre>количество операций</code>), то есть это обозначение того сколько операций понадобится в <em>худшем случае</em>.</p>
 <doc-anchor-target id="типичные-варинты-о-большого">
     <h3>
