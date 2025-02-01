@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/retype-i4ox-notes">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.791746670283">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.791747667017">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.791746670283" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.791747667017" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791746670283" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791747667017" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791746670283" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.791746670283" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791747667017" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.791747667017" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -185,6 +185,47 @@
 <li>Воспользоваться массивами.</li>
 <li>Воспользоваться связными списками.</li>
 </ul>
+<doc-anchor-target id="что-такое-стек-и-стек-вызовов">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-стек-и-стек-вызовов">#</doc-anchor-trigger>
+        <span>Что такое стек и стек вызовов?</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Стек</strong> - простая структура данных. Про сам стек как про структуру данных будет изложено ниже.</p>
+<p><strong>Стек вызовов</strong> - это стек, который работает внутри компьютера и хранит все вызовы функций, выполняемых над программой.</p>
+<p>Сначала давайте обратив внимание на пример ниже:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">func greet(name string) {
+    fmt.Println(&quot;Hello&quot;, name)
+    greet2(name)
+    fmt.Println(&quot;get ready to say goodbye...&quot;)
+    bye()
+}
+
+func greet2(name string) {
+    fmt.Println(&quot;How are you&quot;, name)
+}
+
+func bye() {
+    fmt.Println(&quot;Goodbye&quot;)
+}</code></pre>
+</doc-codeblock></div>
+<p>Мы видем что у нас есть функция <code v-pre>greet</code>, которая вызывает другие функции и передает им аргументы.</p>
+<p>Каждый раз когда мы вызываем функцию, она помещается в стек вызовов.</p>
+<p>Вот алгоритм работы стека вызовов для примера выше:</p>
+<ol>
+<li>В стек отправляется вызов <code v-pre>greet</code>.</li>
+<li>Выводится сообщение &quot;Hello, $name&quot;.</li>
+<li>В стек отправляется вызов <code v-pre>greet2</code>.</li>
+<li>Выводится сообщение &quot;How are you, $name&quot;.</li>
+<li>Управление возвращается в функцию <code v-pre>greet</code>.</li>
+<li>Функция <code v-pre>greet2</code> убирается из стека вызовов.</li>
+<li>В стек отправляется вызов <code v-pre>bye</code>.</li>
+<li>Выводится сообщение &quot;Goodbye&quot;.</li>
+<li>Управление возвращается в функцию <code v-pre>greet</code>.</li>
+<li>Функция <code v-pre>bye</code> убирается из стека вызовов.</li>
+<li>Функция <code v-pre>greet</code> убирается из стека вызовов.</li>
+</ol>
 <doc-anchor-target id="массивы">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#массивы">#</doc-anchor-trigger>
@@ -559,6 +600,122 @@ func main() {
 
 	bst.Delete(30)
 	fmt.Println(&quot;After Deleting 30:&quot;, bst.InOrderTraversal())
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="стек">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#стек">#</doc-anchor-trigger>
+        <span>Стек</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Стек</strong> — это структура данных, которая работает по принципу <em>LIFO</em>, то есть последний элемент, добавленный в стек, будет первым, который из него удалится.
+Стек можно представить как стопку тарелок: вы кладете тарелки одну на другую, и чтобы взять тарелку, нужно снять верхнюю.</p>
+<p>Стеки широко используются:</p>
+<ul>
+<li>В алгоритмах (например, обход графов, проверка сбалансированности скобок).</li>
+<li>В управлении вызовами функций (стек вызовов).</li>
+<li>В текстовых редакторах (например, для реализации отмены действий).</li>
+</ul>
+<doc-anchor-target id="как-работает-стек">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#как-работает-стек">#</doc-anchor-trigger>
+        <span>Как работает стек?</span>
+    </h3>
+</doc-anchor-target>
+<p>Стек поддерживает две основные операции:</p>
+<ul>
+<li><em>Push</em> — добавление элемента на вершину стека.</li>
+<li><em>Pop</em> — удаление элемента с вершины стека.</li>
+</ul>
+<p>Дополнительные операции:</p>
+<ul>
+<li><em>Peek</em> — просмотр элемента на вершине стека без его удаления.</li>
+<li><em>IsEmpty</em> — проверка, пуст ли стек.</li>
+</ul>
+<doc-anchor-target id="операции-над-стеком">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#операции-над-стеком">#</doc-anchor-trigger>
+        <span>Операции над стеком</span>
+    </h3>
+</doc-anchor-target>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Операция</th>
+<th>Лучший случай</th>
+<th>Худший случай</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Push</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Pop</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Peek</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>IsEmpty</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="реализация-стека-на-go">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#реализация-стека-на-go">#</doc-anchor-trigger>
+        <span>Реализация стека на Go</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">type Stack struct {
+	data []int
+}
+
+func (s *Stack) Push(value int) {
+	s.data = append(s.data, value)
+}
+
+func (s *Stack) Pop() int {
+	if len(s.data) == 0 {
+		return 0
+	}
+	value := s.data[len(s.data)-1]
+	s.data = s.data[:len(s.data)-1]
+	return value
+}
+
+func (s *Stack) Peek() int {
+	if len(s.data) == 0 {
+		return 0
+	}
+	return s.data[len(s.data)-1]
+}
+
+func (s *Stack) IsEmpty() bool {
+	return len(s.data) == 0
+}
+
+func main() {
+	stack := Stack{}
+	stack.Push(1)
+	stack.Push(2)
+	stack.Push(3)
+	fmt.Println(stack.Peek()) // 3
+	fmt.Println(stack.Pop())  // 3
+	fmt.Println(stack.Pop())  // 2
+	fmt.Println(stack.Pop())  // 1
+	fmt.Println(stack.IsEmpty()) // true
 }</code></pre>
 </doc-codeblock></div>
 
