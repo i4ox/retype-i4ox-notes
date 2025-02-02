@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/retype-i4ox-notes">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.791747667017">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.791818498537">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.791747667017" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.791818498537" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791747667017" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791818498537" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791747667017" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.791747667017" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791818498537" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.791818498537" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -177,8 +177,8 @@
 </doc-anchor-target>
 <p>Специальная нотация &quot;О-большое&quot; описывает скорость работы алгоритма.</p>
 <p>Предположим, у нас ограничение в 100мс и надо проверить 100 элементов - Пусть 1мс это тоже самое что и 1 операция.</p>
-<p>Для простого алгоритма можно считать это скоростью О(100), то есть 100мс.</p>
-<p>А в случае с бинарным поиском это скорость О(log100), то есть 7мс.</p>
+<p>Для простого алгоритма можно считать это скоростью <code v-pre>O(100)</code>, то есть 100мс.</p>
+<p>А в случае с бинарным поиском это скорость <code v-pre>О(log100)</code>, то есть 7мс.</p>
 <ol>
 <li>2^6 = 64</li>
 <li>2^7 = 128</li>
@@ -284,7 +284,7 @@
         <span>Сложность алгоритма</span>
     </h3>
 </doc-anchor-target>
-<p>В общем случае для списка из n элементов алгоритм будет работать в O(log n) шагов. В то время как тупой поиск будет работать в O(n) шагов.</p>
+<p>В общем случае для списка из n элементов алгоритм будет работать в <code v-pre>O(log n)</code> шагов. В то время как тупой поиск будет работать в <code v-pre>O(n)</code> шагов.</p>
 <doc-anchor-target id="реализация-бинарного-поиска-на-go">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#реализация-бинарного-поиска-на-go">#</doc-anchor-trigger>
@@ -307,64 +307,10 @@
 	return -1
 }</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="сортировка-выбором">
+<doc-anchor-target id="рекурсия-recursion">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#сортировка-выбором">#</doc-anchor-trigger>
-        <span>Сортировка выбором</span>
-    </h2>
-</doc-anchor-target>
-<p><strong>Сортировка выбором</strong> – это алгоритм сортировки, который работает, находя наименьший элемент в списке и перемещая его в начало.
-Затем он находит следующий наименьший элемент и перемещает его на вторую позицию, и так далее, пока список не будет отсортирован.</p>
-<doc-anchor-target id="когда-использовать-сортировку-выбором">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#когда-использовать-сортировку-выбором">#</doc-anchor-trigger>
-        <span>Когда использовать сортировку выбором?</span>
-    </h3>
-</doc-anchor-target>
-<p>Если у тебя небольшой список и важна простота реализации, этот метод подойдет. Однако для больших массивов он неэффективен.</p>
-<doc-anchor-target id="как-работает-сортировка-выбором">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#как-работает-сортировка-выбором">#</doc-anchor-trigger>
-        <span>Как работает сортировка выбором?</span>
-    </h3>
-</doc-anchor-target>
-<p>Рассмотрим следующий список чисел: <code v-pre>[29, 10, 14, 37, 13]</code>.</p>
-<ol>
-<li>Находим наименьший элемент в списке и перемещаем его в начало списка. -&gt; 10 -&gt; <code v-pre>[10, 29, 14, 37, 13]</code>.</li>
-<li>Находим следующий наименьший элемент и перемещаем его на вторую позицию. -&gt; 13 -&gt; <code v-pre>[10, 13, 14, 37, 29]</code>.</li>
-<li>Находим следующий наименьший элемент и перемещаем его на третью позицию. -&gt; 14 -&gt; <code v-pre>[10, 13, 14, 37, 29]</code>.</li>
-<li>Находим следующий наименьший элемент и перемещаем его на четвертую позицию. -&gt; 29 -&gt; <code v-pre>[10, 13, 14, 29, 37]</code>.</li>
-</ol>
-<doc-anchor-target id="сложность-алгоритма-1">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#сложность-алгоритма-1">#</doc-anchor-trigger>
-        <span>Сложность алгоритма</span>
-    </h3>
-</doc-anchor-target>
-<p>Сложность алгоритма сортировки выбором равна <code v-pre>O(n^2)</code>.</p>
-<doc-anchor-target id="реализация-сортировки-выбором-на-go">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#реализация-сортировки-выбором-на-go">#</doc-anchor-trigger>
-        <span>Реализация сортировки выбором на Go</span>
-    </h3>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">func selectionSort(list []int) {
-	for i := 0; i &lt; len(list); i++ {
-		min := i
-		for j := i + 1; j &lt; len(list); j++ {
-			if list[j] &lt; list[min] {
-				min = j
-			}
-		}
-		list[i], list[min] = list[min], list[i]
-	}
-}</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="рекурсия">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#рекурсия">#</doc-anchor-trigger>
-        <span>Рекурсия</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#рекурсия-recursion">#</doc-anchor-trigger>
+        <span>Рекурсия (Recursion)</span>
     </h2>
 </doc-anchor-target>
 <p><strong>Рекурсия</strong> - элегантный способ решения задач. Это метод решения задач, при котором функция вызывает саму себя в процессе выполнения.</p>
@@ -412,9 +358,9 @@
 <li>Риск переполнения стека.</li>
 <li>Менее эффективна в сравнении с итеративными алгоритмами из-за накладных расходов памяти</li>
 </ul>
-<doc-anchor-target id="сложность-алгоритма-2">
+<doc-anchor-target id="сложность-алгоритма-1">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#сложность-алгоритма-2">#</doc-anchor-trigger>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сложность-алгоритма-1">#</doc-anchor-trigger>
         <span>Сложность алгоритма</span>
     </h3>
 </doc-anchor-target>
@@ -443,6 +389,294 @@ func fibonacci(n int) int {
 	return fibonacci(n-1) + fibonacci(n-2)
 }</code></pre>
 </doc-codeblock></div>
+<doc-anchor-target id="принцип-разделяй-и-властвуй">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#принцип-разделяй-и-властвуй">#</doc-anchor-trigger>
+        <span>Принцип &quot;разделяй и властвуй&quot;</span>
+    </h3>
+</doc-anchor-target>
+<p>Решение задачи методом разделяй и властвуй состоит из двух частей:</p>
+<ol>
+<li>Сначала определяется базовый случай, это должен быть простейший случай из возможных.</li>
+<li>Задача делится или сокращается до тех пор, пока не придется выполнить базовый случай.</li>
+</ol>
+<p>Предположим есть участок 1680 на 640 и его надо разделить на квадраты с максимальной площадью.
+Мы сможем получить два квадрата площадью 640 на 640, но у нас останется еще участок 640 на 400, что не является квадратом.
+Так вот к нему мы можем опять применить принцип разделяй и властвуй.</p>
+<p>То есть алгоритм такой:</p>
+<ol>
+<li>Площадь 1680 на 640 разделяется на квадраты с максимальной площадью, остается участок 640 на 400.</li>
+<li>Площадь 640 на 400 разделяется на квадраты с максимальной площадью, остается участок 400 на 240.</li>
+<li>Площадь 400 на 240 разделяется на квадраты с максимальной площадью, остается участок 240 на 160.</li>
+<li>Площадь 240 на 160 разделяется на квадраты с максимальной площадью, остается участок 160 на 80.</li>
+<li>Площадь 160 на 80 разделяется на квадраты с максимальной площадью. В итоге будет два квадрата с площадью 80 на 80, и лишнего участка не будет.</li>
+<li>То есть базовый случай будет 160 кратно 80, а рекурсивный случай будет участок с максимальной площадью.</li>
+</ol>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Стоит отдельно отметить, что скорее это не алгоритм, а подход к решению задачи.</p>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="пара-слов-о-функциональном-программировании">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#пара-слов-о-функциональном-программировании">#</doc-anchor-trigger>
+        <span>Пара слов о функциональном программировании</span>
+    </h3>
+</doc-anchor-target>
+<p>В функциональном программирование нету циклов, поэтому вместо нее используют рекурсивные функции.</p>
+<p>Пример вычисления суммы элементов массива на Haskell:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">sum [] = 0 -- базовый случай
+sum (x:xs) = x + (sum xs) -- рекурсивный случай</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="сортировка-выбором-selection-sort">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сортировка-выбором-selection-sort">#</doc-anchor-trigger>
+        <span>Сортировка выбором (Selection Sort)</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Сортировка выбором</strong> – это алгоритм сортировки, который работает, находя наименьший элемент в списке и перемещая его в начало.
+Затем он находит следующий наименьший элемент и перемещает его на вторую позицию, и так далее, пока список не будет отсортирован.</p>
+<doc-anchor-target id="когда-использовать-сортировку-выбором">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#когда-использовать-сортировку-выбором">#</doc-anchor-trigger>
+        <span>Когда использовать сортировку выбором?</span>
+    </h3>
+</doc-anchor-target>
+<p>Если у тебя небольшой список и важна простота реализации, этот метод подойдет. Однако для больших массивов он неэффективен.</p>
+<doc-anchor-target id="как-работает-сортировка-выбором">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#как-работает-сортировка-выбором">#</doc-anchor-trigger>
+        <span>Как работает сортировка выбором?</span>
+    </h3>
+</doc-anchor-target>
+<p>Рассмотрим следующий список чисел: <code v-pre>[29, 10, 14, 37, 13]</code>.</p>
+<ol>
+<li>Находим наименьший элемент в списке и перемещаем его в начало списка. -&gt; 10 -&gt; <code v-pre>[10, 29, 14, 37, 13]</code>.</li>
+<li>Находим следующий наименьший элемент и перемещаем его на вторую позицию. -&gt; 13 -&gt; <code v-pre>[10, 13, 14, 37, 29]</code>.</li>
+<li>Находим следующий наименьший элемент и перемещаем его на третью позицию. -&gt; 14 -&gt; <code v-pre>[10, 13, 14, 37, 29]</code>.</li>
+<li>Находим следующий наименьший элемент и перемещаем его на четвертую позицию. -&gt; 29 -&gt; <code v-pre>[10, 13, 14, 29, 37]</code>.</li>
+</ol>
+<doc-anchor-target id="сложность-алгоритма-2">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сложность-алгоритма-2">#</doc-anchor-trigger>
+        <span>Сложность алгоритма</span>
+    </h3>
+</doc-anchor-target>
+<p>Сложность алгоритма сортировки выбором равна <code v-pre>O(n^2)</code>.</p>
+<doc-anchor-target id="реализация-сортировки-выбором-на-go">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#реализация-сортировки-выбором-на-go">#</doc-anchor-trigger>
+        <span>Реализация сортировки выбором на Go</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">func selectionSort(list []int) {
+	for i := 0; i &lt; len(list); i++ {
+		min := i
+		for j := i + 1; j &lt; len(list); j++ {
+			if list[j] &lt; list[min] {
+				min = j
+			}
+		}
+		list[i], list[min] = list[min], list[i]
+	}
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="сортировка-слиянием-merge-sort">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сортировка-слиянием-merge-sort">#</doc-anchor-trigger>
+        <span>Сортировка слиянием (Merge Sort)</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Сортировка слиянием</strong> – это алгоритм сортировки, который использует подход <em>«разделяй и властвуй»</em>.
+Он разбивает список на две половины, рекурсивно сортирует каждую половину, а затем объединяет (сливает) их в один отсортированный список.</p>
+<doc-anchor-target id="когда-использовать-сортировку-слиянием">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#когда-использовать-сортировку-слиянием">#</doc-anchor-trigger>
+        <span>Когда использовать сортировку слиянием?</span>
+    </h3>
+</doc-anchor-target>
+<p>Сортировка слиянием эффективна для больших массивов, так как её сложность всегда <code v-pre>O(n log n)</code>, независимо от начального порядка элементов.
+Она также полезна, когда требуется стабильная сортировка (сохранение порядка равных элементов).</p>
+<doc-anchor-target id="как-работает-сортировка-слиянием">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#как-работает-сортировка-слиянием">#</doc-anchor-trigger>
+        <span>Как работает сортировка слиянием?</span>
+    </h3>
+</doc-anchor-target>
+<p>Рассмотрим список чисел: <code v-pre>[38, 27, 43, 3, 9, 82, 10]</code>.</p>
+<p>Алгоритм работает следующим образом:</p>
+<ol>
+<li>Разделяем список на две половины: <code v-pre>[38, 27, 43, 3]</code> и <code v-pre>[9, 82, 10]</code>.</li>
+<li>Рекурсивно сортируем каждую половину:</li>
+<li>Левый список: <code v-pre>[3, 27, 38, 43]</code>.</li>
+<li>Правый список: <code v-pre>[9, 10, 82]</code>.</li>
+<li>Объединяем два отсортированных списка в один: <code v-pre>[3, 9, 10, 27, 38, 43, 82]</code>.</li>
+</ol>
+<doc-anchor-target id="сложность-алгоритма-3">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сложность-алгоритма-3">#</doc-anchor-trigger>
+        <span>Сложность алгоритма</span>
+    </h3>
+</doc-anchor-target>
+<p>Сложность алгоритма сортировки слиянием равна <code v-pre>O(n log n)</code>.
+Также важно, что сложность алгоритма для памяти равна <code v-pre>O(n)</code>.</p>
+<doc-anchor-target id="реализация-сортировки-слиянием-на-go">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#реализация-сортировки-слиянием-на-go">#</doc-anchor-trigger>
+        <span>Реализация сортировки слиянием на Go</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">func merge(left, right []int) []int {
+	result := make([]int, 0, len(left)+len(right))
+	i, j := 0, 0
+	for i &lt; len(left) &amp;&amp; j &lt; len(right) {
+		if left[i] &lt; right[j] {
+			result = append(result, left[i])
+			i++
+		} else {
+			result = append(result, right[j])
+			j++
+		}
+	}
+
+	result = append(result, left[i:]...)
+	result = append(result, right[j:]...)
+	return result
+}
+
+func mergeSort(list []int) []int {
+	if len(list) &lt;= 1 {
+		return list
+	}
+	mid := len(list) / 2
+	left := mergeSort(list[:mid])
+	right := mergeSort(list[mid:])
+	return merge(left, right)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="быстрая-сортировка-quick-sort">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#быстрая-сортировка-quick-sort">#</doc-anchor-trigger>
+        <span>Быстрая сортировка (Quick Sort)</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Быстрая сортировка</strong> – это ещё один алгоритм, использующий подход <em>«разделяй и властвуй»</em>.
+Он выбирает опорный элемент (pivot), разделяет список на две части: элементы меньше опорного и элементы больше опорного, а затем рекурсивно сортирует каждую часть.</p>
+<doc-anchor-target id="когда-использовать-быструю-сортировку">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#когда-использовать-быструю-сортировку">#</doc-anchor-trigger>
+        <span>Когда использовать быструю сортировку?</span>
+    </h3>
+</doc-anchor-target>
+<p>Быстрая сортировка эффективна для больших массивов и обычно работает быстрее, чем сортировка слиянием, на практике.
+Однако её производительность зависит от выбора опорного элемента. В худшем случае её сложность может достигать <code v-pre>O(n^2)</code>.</p>
+<doc-anchor-target id="как-работает-быстрая-сортировка">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#как-работает-быстрая-сортировка">#</doc-anchor-trigger>
+        <span>Как работает быстрая сортировка?</span>
+    </h3>
+</doc-anchor-target>
+<p>Рассмотрим список чисел: <code v-pre>[29, 10, 14, 37, 13]</code>.</p>
+<ol>
+<li>Выбираем опорный элемент, пусть будет последний элемент <code v-pre>13</code>.</li>
+<li>Разделяем список на две части: <code v-pre>[29, 14, 37]</code>(больше опорного) и <code v-pre>[10]</code>(меньше опорного).</li>
+<li>Рекурсивно сортируем каждую часть: <code v-pre>[14, 29, 37]</code>(больше опорного) и <code v-pre>[10]</code>(меньше опорного).</li>
+<li>Объединяем результаты и опорный элемент: <code v-pre>[10, 13, 14, 29, 37]</code>.</li>
+</ol>
+<doc-anchor-target id="сложность-алгоритма-4">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сложность-алгоритма-4">#</doc-anchor-trigger>
+        <span>Сложность алгоритма</span>
+    </h3>
+</doc-anchor-target>
+<p>Сложность алгоритма быстрой сортировки равна <code v-pre>O(n log n)</code> в лучшем случае, а в худшем случае – <code v-pre>O(n^2)</code>.
+Также важно, что сложность алгоритма для памяти равна <code v-pre>O(log n)</code> из-за рекурсии.</p>
+<doc-anchor-target id="реализация-быстрой-сортировки-на-go">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#реализация-быстрой-сортировки-на-go">#</doc-anchor-trigger>
+        <span>Реализация быстрой сортировки на Go</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">func quickSort(list []int) []int {
+	if len(list) &lt;= 1 {
+		return list
+	}
+	pivot := list[len(list)-1]
+	var left, right []int
+	for i := 0; i &lt; len(list)-1; i++ {
+		if list[i] &lt; pivot {
+			left = append(left, list[i])
+		} else {
+			right = append(right, list[i])
+		}
+	}
+	left = quickSort(left)
+	right = quickSort(right)
+	return append(append(left, pivot), right...)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="сравнение-алгоритмов-сортировки">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сравнение-алгоритмов-сортировки">#</doc-anchor-trigger>
+        <span>Сравнение алгоритмов сортировки</span>
+    </h3>
+</doc-anchor-target>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Алгоритм</th>
+<th>Лучший случай</th>
+<th>Средний случай</th>
+<th>Худший случай</th>
+<th>Память</th>
+<th>Когда использовать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Сортировка выбором</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>O(1)</td>
+<td>Для небольших списков, где важна простота реализации</td>
+</tr>
+<tr>
+<td>Сортировка слиянием</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n)</td>
+<td>Для больших списков, где важна стабильность</td>
+</tr>
+<tr>
+<td>Быстрая сортировка</td>
+<td>O(n log n)</td>
+<td>O(n log n)</td>
+<td>O(n^2)</td>
+<td>O(log n)</td>
+<td>Для больших списков, где важна скорость</td>
+</tr>
+</tbody>
+</table>
+</div>
 
                                 
                                 <!-- Required only on API pages -->
