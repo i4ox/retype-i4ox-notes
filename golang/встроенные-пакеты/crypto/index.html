@@ -10,34 +10,34 @@
     <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
-    <title>Многопоточность и параллельность в Golang | i4ox Docs</title>
-    <meta name="title" content="Многопоточность и параллельность в Golang | i4ox Docs">
-    <meta name="description" content="В Go есть горутины- легковесный способ управления рантаймом Go. Горутины запукаются через ключевое слово ">
+    <title>Пакет crypto | i4ox Docs</title>
+    <meta name="title" content="Пакет crypto | i4ox Docs">
+    <meta name="description" content="Пакет crypto предоставляет набор интерфейсов и функций для работы с криптографическими операциями, такими как хеширование, шифрование, цифровые...">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/golang/многопоточность-и-параллельность/">
+    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/golang/встроенные-пакеты/crypto/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/golang/многопоточность-и-параллельность/">
-    <meta property="og:title" content="Многопоточность и параллельность в Golang | i4ox Docs">
-    <meta property="og:description" content="В Go есть горутины- легковесный способ управления рантаймом Go. Горутины запукаются через ключевое слово ">
+    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/golang/встроенные-пакеты/crypto/">
+    <meta property="og:title" content="Пакет crypto | i4ox Docs">
+    <meta property="og:description" content="Пакет crypto предоставляет набор интерфейсов и функций для работы с криптографическими операциями, такими как хеширование, шифрование, цифровые...">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/golang/многопоточность-и-параллельность/">
-    <meta property="twitter:title" content="Многопоточность и параллельность в Golang | i4ox Docs">
-    <meta property="twitter:description" content="В Go есть горутины- легковесный способ управления рантаймом Go. Горутины запукаются через ключевое слово ">
+    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/golang/встроенные-пакеты/crypto/">
+    <meta property="twitter:title" content="Пакет crypto | i4ox Docs">
+    <meta property="twitter:description" content="Пакет crypto предоставляет набор интерфейсов и функций для работы с криптографическими операциями, такими как хеширование, шифрование, цифровые...">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.791840583158" rel="stylesheet">
+    <link href="../../../uploads/logo.svg" rel="icon">
+    <link href="../../../resources/css/retype.css?v=3.6.0.791840583158" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791840583158" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791840583158" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.791840583158" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.6.0.791840583158" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.6.0.791840583158" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../../resources/js/prism.js?v=3.6.0.791840583158" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -52,10 +52,10 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
+                        <a id="docs-site-logo" href="../../../" class="flex items-center leading-snug text-xl">
                             <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
-                                <img class="max-h-10 dark:hidden md:inline-block" src="../../uploads/logo.svg">
-                                <img class="max-h-10 hidden dark:inline-block" src="../../uploads/logo.svg">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../../uploads/logo.svg">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../../uploads/logo.svg">
                             </span>
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Notes by i4ox</span>
                         </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
@@ -156,199 +156,267 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="многопоточность-и-параллельность-в-golang" class="break-words">
+<doc-anchor-target id="пакет-crypto" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#многопоточность-и-параллельность-в-golang">#</doc-anchor-trigger>
-        <span>Многопоточность и параллельность в Golang</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#пакет-crypto">#</doc-anchor-trigger>
+        <span>Пакет crypto</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="горутины">
+<p>Пакет <code v-pre>crypto</code> предоставляет набор интерфейсов и функций для работы с криптографическими операциями, такими как хеширование, шифрование, цифровые подписи и генерация случайных чисел.</p>
+<p>Этот пакет является частью стандартной библиотеки Go и служит основой для более специализированных пакетов, таких как <code v-pre>crypto/aes</code>, <code v-pre>crypto/md5</code>, <code v-pre>crypto/rsa</code>, <code v-pre>crypto/sha1</code>, <code v-pre>crypto/sha256</code> и другие.</p>
+<doc-anchor-target id="основные-возможности">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#горутины">#</doc-anchor-trigger>
-        <span>Горутины</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#основные-возможности">#</doc-anchor-trigger>
+        <span>Основные возможности</span>
     </h2>
 </doc-anchor-target>
-<p>В Go есть <em>горутины</em> - легковесный способ управления рантаймом Go.
-Горутины запукаются через ключевое слово <code v-pre>go</code>. Например, конструкция ниже запустит в горутине функцию <code v-pre>f(x,y,z)</code>:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">go f(x, y, z)</code></pre>
-</doc-codeblock></div>
-<p><strong>ВАЖНО</strong>: вычисление f, x, y и z происходит в текущей горутине, а сама функция выполняется в новой горутине.</p>
-<p><strong>ВАЖНОx2</strong>: горутины работают в одном адресном пространстве, поэтому доступ к памяти должен быть синхронизирован.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">package main
-
-import (
-    &quot;fmt&quot;
-    &quot;time&quot;
-)
-
-func say(s string) {
-    for i := 0; i &lt; 5; i++ {
-        time.Sleep(100 * time.Millisecond)
-        fmt.Println(s)
-    }
-}
-
-func main() {
-    go say(&quot;world&quot;)
-    say(&quot;hello&quot;)
-}</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="каналы">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#каналы">#</doc-anchor-trigger>
-        <span>Каналы</span>
-    </h2>
+<doc-anchor-target id="хеширование">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#хеширование">#</doc-anchor-trigger>
+        <span>Хеширование</span>
+    </h3>
 </doc-anchor-target>
-<p><em>Channels</em> - типизированные каналы, которые позволяют через оператор <code v-pre>&lt;-</code>, отправлять и получать данные.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">ch &lt;- v // Посылаем v в канал ch
-v := &lt;- ch // Получаем из канала ch значение и присваиваем переменной v</code></pre>
-</doc-codeblock></div>
-<p>Каналы можно создавать через функцию <code v-pre>make</code>, как словари и срезы.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">ch := make(chan int)</code></pre>
-</doc-codeblock></div>
-<p><strong>ВАЖНО</strong>: по-умолчанию отправка и получения данных блокируется пока вторая сторона не считает данные.
-Это позволяет синхронизироваться горутинов без явных блокировок.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">package main
-
-import &quot;fmt&quot;
-
-func sum(s []int, c chan int) {
-    sum := 0
-    for _, v := range s {
-        sum += v
-    }
-    c &lt;-sum
-}
-
-func main() {
-    s := []int{7, 2, 8, -9, 4, 0}
-    c := make(chan int)
-    go sum(s[:len(s)/2], c)
-    go sum(s[len(s)/2:], c)
-    x, y := &lt;-c, &lt;-c
-
-    fmt.Println(x, y, x+y)
-}</code></pre>
-</doc-codeblock></div>
-<p>Каналы могут быть буфферизированы, им можно передать длину буффера.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">ch := make(chan int, 100)</code></pre>
-</doc-codeblock></div>
-<p>Отправитель может закрыть канал через ключевое слово <code v-pre>close</code>, чтобы дать понять, что данные больше не поступят.
-Получатель же может проверять был ли канал закрыт:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">v, ok := &lt;-ch</code></pre>
-</doc-codeblock></div>
-<p>Также стоит заметить, что через <code v-pre>range</code> можно получать данные до тех пор пока канал не будет закрыт.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">package main
-
-import &quot;fmt&quot;
-
-func fib(n int, c chan int) {
-    x, y := 0, 1
-    for i := 0; i &lt; n; i++ {
-        c &lt;- x
-        x, y = y, x+y
-    }
-    close(c)
-}
-
-func main() {
-    c := make(chan int, 10)
-    go fibonacci(cap(c), c)
-    for i := range c {
-        fmt.Println(i)
-    }
-}</code></pre>
-</doc-codeblock></div>
-<p><strong>ВАЖНО</strong>: каналы не файлы, обычно их не надо закрывать самому через <code v-pre>close</code>, только тогда, когда требуется явно указать на это.</p>
-<p>Также в Go есть ключевое слово <code v-pre>select</code>, по-факту это <code v-pre>switch</code>, но для каналов.
-<code v-pre>select</code> блокируется до тех пор пока один из его случаев не выполнится, если несколько случаем готовы выполниться, то он выполняет случайный.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">package main
-
-import &quot;fmt&quot;
-
-func fib(c, quit chan int) {
-    x, y := 0, 1
-    for {
-        select {
-        case &lt;- x:
-            x, y = y, x+y
-        case &lt;-quit:
-            fmt.Println(&quot;quit&quot;)
-            return
-        }
-    }
-}
-
-func main() {
-    c := make(chan int)
-    quit := make(chan int)
-    go func() {
-        for i := 0; i &lt; 10; i++ {
-            fmt.Println(&lt;-c)
-        }
-        quit &lt;- 0
-    }()
-    fib(c, quit)
-}</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="mutex">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#mutex">#</doc-anchor-trigger>
-        <span>Mutex</span>
-    </h2>
-</doc-anchor-target>
-<p>Каналы являются хорошим способом коммуникации между горутинами, но что если нам просто надо убедиться, что доступ к переменной имеет только одна горутина в определенный момент времени.
-Данный механизм называется <code v-pre>mutual exclusion</code> или <code v-pre>Mutex</code>.</p>
-<p>В Go мы можем использовать <code v-pre>Mutex</code> через <code v-pre>sync.Mutex</code> и два его метода:</p>
+<p>Пакет <code v-pre>crypto</code> предоставляет функции для работы с хешами SHA-256.</p>
+<p>Примеры хеш-функций:</p>
 <ul>
-<li>Lock</li>
-<li>Unlock</li>
+<li><code v-pre>crypto/sha256</code> - SHA-256 (256-битный хэш-функция).</li>
+<li><code v-pre>crypto/sha512</code> - SHA-512 (512-битный хэш-функция).</li>
+<li><code v-pre>crypto/md5</code> - MD5 (128-битный хэш-функция) - <strong>Не рекомендуется использовать в криптографических целях</strong>.</li>
+</ul>
+<p>Часто используемые функции:</p>
+<ul>
+<li><code v-pre>sha256.New()</code> - Создает новый хэшер SHA-256.</li>
+<li><code v-pre>sha256.Sum256(data []byte) [32]byte</code> - Рассчитывает SHA-256 хэш данных.</li>
 </ul>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-go"><code v-pre class="language-go">package main
-
-import (
-    &quot;fmt&quot;
-    &quot;sync&quot;
-    &quot;time&quot;
+<pre class="language-go"><code v-pre class="language-go">import (
+	&quot;crypto/sha256&quot;
+	&quot;fmt&quot;
 )
 
-type SafeCounter struct {
-    mu sync.Mutex
-    v  map[string]int
+func main() {
+	data := []byte(&quot;hello world&quot;)
+	hash := sha256.Sum256(data)
+	fmt.Printf(&quot;SHA-256: %x\n&quot;, hash)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="симметричное-шифрование">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#симметричное-шифрование">#</doc-anchor-trigger>
+        <span>Симметричное шифрование</span>
+    </h3>
+</doc-anchor-target>
+<p>Пакет <code v-pre>crypto</code> предоставляет интерфейсы для работы с симметричными шифрованиями, такие как <code v-pre>cipher.Block</code>, <code v-pre>cipher.Stream</code>.</p>
+<p>Примеры алгоритмов шифрования:</p>
+<ul>
+<li><code v-pre>crypto/aes</code> - AES (Advanced Encryption Standard).</li>
+<li><code v-pre>crypto/des</code> - DES (Data Encryption Standard) - <strong>Устарело</strong>.</li>
+</ul>
+<p>Часто используемые функции:</p>
+<ul>
+<li><code v-pre>aes.NewCipher(key []byte) (cipher.Block, error)</code> - Создает новый блок AES.</li>
+<li><code v-pre>cipher.NewCBCEncrypter(block cipher.Block, iv []byte) cipher.BlockMode</code> — создает шифратор в режиме CBC.</li>
+<li><code v-pre>cipher.NewCBCDecrypter(block cipher.Block, iv []byte) cipher.BlockMode</code> — создает дешифратор в режиме CBC.</li>
+</ul>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Режим CBC — это шифрование в цикле, которое позволяет использовать блок шифрования для каждого блока данных.</p>
+        </div>
+    </div>
+</div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">import (
+	&quot;bytes&quot;
+	&quot;crypto/aes&quot;
+	&quot;crypto/cipher&quot;
+	&quot;crypto/rand&quot;
+	&quot;fmt&quot;
+	&quot;io&quot;
+)
+
+// Паддинг PKCS#7 - нужен так как блоки должны быть кратны 16 байт
+func padPKCS7(data []byte, blockSize int) []byte {
+	padding := blockSize - (len(data) % blockSize)
+	padText := bytes.Repeat([]byte{byte(padding)}, padding)
+	return append(data, padText...)
 }
 
-func (c *SafeCounter) Inc(key string) {
-    c.mu.Lock()
-    c.v[key]++
-    c.mu.Unlock()
-}
-
-func (c *SafeCounter) Value(key string) int {
-    c.mu.Lock()
-    defer c.mu.Unlock()
-    return c.v[key]
+// Убираем паддинг PKCS#7
+func unpadPKCS7(data []byte) []byte {
+	length := len(data)
+	unpadding := int(data[length-1])
+	return data[:(length - unpadding)]
 }
 
 func main() {
-    c := SafeCounter{v: make(map[string]int)}
-    for i := 0; i &lt; 1000; i++ {
-        go c.Inc(&quot;somekey&quot;)
-    }
+	key := []byte(&quot;examplekey123456&quot;)
+	plaintext := []byte(&quot;hello world&quot;)
 
-    time.Sleep(time.Second)
-    fmt.Println(c.Value(&quot;somekey&quot;))
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		panic(err)
+	}
+
+	iv := make([]byte, aes.BlockSize)
+	if _, err := io.ReadFull(rand.Reader, iv); err != nil {
+		panic(err)
+	}
+
+	paddedText := padPKCS7(plaintext, aes.BlockSize)
+
+	ciphertext := make([]byte, len(paddedText))
+	mode := cipher.NewCBCEncrypter(block, iv)
+	mode.CryptBlocks(ciphertext, paddedText)
+
+	fmt.Printf(&quot;Ciphertext: %x\n&quot;, ciphertext)
+
+	mode = cipher.NewCBCDecrypter(block, iv)
+	mode.CryptBlocks(ciphertext, ciphertext)
+
+	plaintext = unpadPKCS7(ciphertext)
+
+	fmt.Printf(&quot;Plaintext: %s\n&quot;, plaintext)
 }</code></pre>
 </doc-codeblock></div>
+<doc-anchor-target id="ассиметричное-шифрование">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ассиметричное-шифрование">#</doc-anchor-trigger>
+        <span>Ассиметричное шифрование</span>
+    </h3>
+</doc-anchor-target>
+<p>Пакет <code v-pre>crypto</code> предоставляет интерфейсы для асимметричного шифрования, такие как <code v-pre>crypto.PublicKey</code> и <code v-pre>crypto.PrivateKey</code>.</p>
+<p>Примеры алгоритмов шифрования:</p>
+<ul>
+<li><code v-pre>crypto/rsa</code> - RSA (Rivest–Shamir–Adleman).</li>
+<li><code v-pre>crypto/dsa</code> - DSA (Digital Signature Algorithm).</li>
+<li><code v-pre>crypto/ecdsa</code> - ECDSA (Elliptic Curve Digital Signature Algorithm).</li>
+</ul>
+<p>Часто используемые функции:</p>
+<ul>
+<li><code v-pre>rsa.GenerateKey(rand io.Reader, bitSize int) (*rsa.PrivateKey, error)</code> - Создает новый ключ RSA.</li>
+<li><code v-pre>rsa.EncryptPKCS1v15(rand io.Reader, pub *rsa.PublicKey, plaintext []byte) ([]byte, error)</code> - Шифрует данные с использованием RSA с использованием PKCS#1.</li>
+<li><code v-pre>rsa.DecryptPKCS1v15(rand io.Reader, priv *rsa.PrivateKey, ciphertext []byte) ([]byte, error)</code> - Расшифровывает данные с использованием RSA с использованием PKCS#1.</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">import (
+	&quot;crypto/rand&quot;
+	&quot;crypto/rsa&quot;
+	&quot;fmt&quot;
+)
+
+func main() {
+	privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
+	if err != nil {
+		panic(err)
+	}
+	publicKey := &amp;privateKey.PublicKey
+
+	ciphertext, err := rsa.EncryptPKCS1v15(rand.Reader, publicKey, []byte(&quot;hello world&quot;))
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf(&quot;Ciphertext: %x\n&quot;, ciphertext)
+
+	plaintext, err := rsa.DecryptPKCS1v15(rand.Reader, privateKey, ciphertext)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf(&quot;Plaintext: %s\n&quot;, plaintext)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="цифровые-подписи">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#цифровые-подписи">#</doc-anchor-trigger>
+        <span>Цифровые подписи</span>
+    </h3>
+</doc-anchor-target>
+<p>Пакет <code v-pre>crypto</code> предоставляет интерфейсы для создания и проверки цифровых подписей.</p>
+<p>Примеры алгоритмов цифровой подписи:</p>
+<ul>
+<li><code v-pre>crypto/rsa</code> - RSA (Rivest–Shamir–Adleman).</li>
+<li><code v-pre>crypto/ecdsa</code> - ECDSA (Elliptic Curve Digital Signature Algorithm).</li>
+</ul>
+<p>Часто используемые функции:</p>
+<ul>
+<li><code v-pre>ecdsa.GenerateKey(curve elliptic.Curve, rand io.Reader) (*ecdsa.PrivateKey, error)</code> - Создает новый ключ ECDSA.</li>
+<li><code v-pre>ecdsa.Sign(rand io.Reader, priv *ecdsa.PrivateKey, hash []byte) (r, s *big.Int, err error)</code> - Подписывает данные с использованием ECDSA.</li>
+<li><code v-pre>ecdsa.Verify(pub *ecdsa.PublicKey, hash []byte, r, s *big.Int) bool</code> - Проверяет подпись ECDSA.</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">import (
+	&quot;crypto/ecdsa&quot;
+	&quot;crypto/elliptic&quot;
+	&quot;crypto/rand&quot;
+	&quot;crypto/sha256&quot;
+	&quot;fmt&quot;
+)
+
+func main() {
+	privateKey, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
+	if err != nil {
+		panic(err)
+	}
+
+	msg := &quot;hello world&quot;
+	hash := sha256.Sum256([]byte(msg))
+	r, s, err := ecdsa.Sign(rand.Reader, privateKey, hash[:])
+	if err != nil {
+		panic(err)
+	}
+
+	valid := ecdsa.Verify(&amp;privateKey.PublicKey, hash[:], r, s)
+	fmt.Println(&quot;Signature valid:&quot;, valid)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="генерация-случайных-чисел">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#генерация-случайных-чисел">#</doc-anchor-trigger>
+        <span>Генерация случайных чисел</span>
+    </h3>
+</doc-anchor-target>
+<p>Пакет <code v-pre>crypto/rand</code> предоставляет криптографически безопасный генератор случайных чисел.</p>
+<p>Часто используемые функции:</p>
+<ul>
+<li><code v-pre>rand.Read(b []byte)</code> - Создает случайные числа в буфере <code v-pre>b</code>.</li>
+<li><code v-pre>rand.Intn(n int) int</code> - Возвращает случайное число от 0 до <code v-pre>n-1</code>.</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">import (
+	&quot;crypto/rand&quot;
+	&quot;fmt&quot;
+)
+
+func main() {
+	b := make([]byte, 16)
+	_, err := rand.Read(b)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf(&quot;%x\n&quot;, b)
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="остальные-возможности">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#остальные-возможности">#</doc-anchor-trigger>
+        <span>Остальные возможности</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Поддержка TLS/SSL.</li>
+<li>Поддержка X.509 сертификатов.</li>
+<li>Поддержка других криптографических стандартов.</li>
+</ul>
 
                                 
                                 <!-- Required only on API pages -->
@@ -358,20 +426,20 @@ func main() {
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../golang/интерфейсы/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../computer-science/структуры-данных/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Интерфейсы в Golang</span>
+                                                <span class="block mt-1">Структуры данных</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../golang/основы/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../golang/генерики/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Основы Golang</span>
+                                                <span class="block mt-1">Генерики в Golang</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -415,6 +483,6 @@ func main() {
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Многопоточность и параллельность в Golang", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Пакет crypto", level: 3, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
