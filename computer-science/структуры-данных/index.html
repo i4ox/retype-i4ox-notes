@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/retype-i4ox-notes">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.791818976132">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.791837744818">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../uploads/logo.svg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.791818976132" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.791837744818" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791818976132" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.791837744818" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791818976132" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.791818976132" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.791837744818" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.791837744818" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -716,6 +716,242 @@ func main() {
 	fmt.Println(stack.Pop())  // 2
 	fmt.Println(stack.Pop())  // 1
 	fmt.Println(stack.IsEmpty()) // true
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="хэш-таблицы">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#хэш-таблицы">#</doc-anchor-trigger>
+        <span>Хэш-таблицы</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Хэш-таблица</strong> — это структура данных, которая позволяет хранить пары ключ-значение и обеспечивает быстрый доступ к значению по ключу.
+Хэш-таблицы широко используются благодаря своей эффективности: в среднем случае операции вставки, поиска и удаления выполняются за время <code v-pre>O(1)</code>.</p>
+<p>Хэш-таблицы применяются:</p>
+<ul>
+<li>В базах данных для индексации.</li>
+<li>В кэшировании (например, кэш веб-серверов).</li>
+<li>В реализации ассоциативных массивов (словарей).</li>
+<li>В алгоритмах, где требуется быстрый поиск данных.</li>
+</ul>
+<doc-anchor-target id="как-работает-хэш-таблица">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#как-работает-хэш-таблица">#</doc-anchor-trigger>
+        <span>Как работает хэш-таблица?</span>
+    </h3>
+</doc-anchor-target>
+<p>Хэш-таблица использует <em>хэш-функцию</em> для преобразования ключа в индекс массива.
+Этот индекс указывает на ячейку, где хранится значение.</p>
+<p>Если два ключа имеют одинаковый индекс, то происходит коллизия и используются методы разрешения коллизий, такие как цепочки или открытая адресация.</p>
+<doc-anchor-target id="операции-над-хэш-таблицей">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#операции-над-хэш-таблицей">#</doc-anchor-trigger>
+        <span>Операции над хэш-таблицей</span>
+    </h3>
+</doc-anchor-target>
+<p>Основные операции хэш-таблицы</p>
+<ol>
+<li>Вставка (Insert):
+<ul>
+<li>Ключ обрабатывается хэш-функцией, чтобы определить индекс.</li>
+<li>Значение сохраняется в соответствующей ячейке.</li>
+<li>Если возникает коллизия, используется метод разрешения коллизий.</li>
+</ul>
+</li>
+<li>Поиск (Search):
+<ul>
+<li>Ключ обрабатывается хэш-функцией, чтобы определить индекс.</li>
+<li>Если в ячейке есть значение, оно возвращается.</li>
+<li>Если ячейка пуста или содержит другой ключ (коллизия), используется метод разрешения коллизий.</li>
+</ul>
+</li>
+<li>Удаление (Delete):
+<ul>
+<li>Ключ обрабатывается хэш-функцией, чтобы определить индекс.</li>
+<li>Значение удаляется из ячейки.</li>
+<li>Если использовались цепочки, элемент удаляется из списка.</li>
+</ul>
+</li>
+<li>Обновление (Update):
+<ul>
+<li>Поиск элемента по ключу и замена его значения.</li>
+</ul>
+</li>
+</ol>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Операция</th>
+<th>Лучший случай</th>
+<th>Худший случай</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Вставка</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Поиск</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Удаление</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Обновление</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="реализация-хэш-таблицы-на-go">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#реализация-хэш-таблицы-на-go">#</doc-anchor-trigger>
+        <span>Реализация хэш-таблицы на Go</span>
+    </h3>
+</doc-anchor-target>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Мало когда вам придется реализовывать с нуля хэш-таблицу, так как в любом приличном языке программирования уже существует реализация хэш-таблицы.
+В Go такой структурой является map(словарь).</p>
+        </div>
+    </div>
+</div>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>В качестве хорошей хэш-функции можно использовать SHA из библиотеки <code v-pre>crypto/sha256</code>.</p>
+        </div>
+    </div>
+</div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-go"><code v-pre class="language-go">type Node struct {
+	key   string
+	value int
+	next  *Node
+}
+
+type HashTable struct {
+	buckets []*Node
+	size    int
+}
+
+func NewHashTable(size int) *HashTable {
+	return &amp;HashTable{
+		buckets: make([]*Node, size),
+		size:    size,
+	}
+}
+
+func (ht *HashTable) hash(key string) int {
+	hash := 0
+	for i := 0; i &lt; len(key); i++ {
+		hash = (hash + int(key[i])) % ht.size
+	}
+	return hash
+}
+
+func (ht *HashTable) Insert(key string, value int) {
+	index := ht.hash(key)
+	node := &amp;Node{key: key, value: value}
+
+	if ht.buckets[index] == nil {
+		ht.buckets[index] = node
+	} else {
+		current := ht.buckets[index]
+		for current.next != nil {
+			if current.key == key {
+				current.value = value // Обновление значения, если ключ уже существует
+				return
+			}
+			current = current.next
+		}
+		current.next = node
+	}
+}
+
+func (ht *HashTable) Search(key string) (int, bool) {
+	index := ht.hash(key)
+	current := ht.buckets[index]
+
+	for current != nil {
+		if current.key == key {
+			return current.value, true
+		}
+		current = current.next
+	}
+	return 0, false
+}
+
+func (ht *HashTable) Delete(key string) {
+	index := ht.hash(key)
+	current := ht.buckets[index]
+
+	if current == nil {
+		return
+	}
+
+	if current.key == key {
+		ht.buckets[index] = current.next
+		return
+	}
+
+	prev := current
+	current = current.next
+	for current != nil {
+		if current.key == key {
+			prev.next = current.next
+			return
+		}
+		prev = current
+		current = current.next
+	}
+}
+
+func main() {
+	ht := NewHashTable(10)
+
+	ht.Insert(&quot;apple&quot;, 5)
+	ht.Insert(&quot;banana&quot;, 10)
+	ht.Insert(&quot;orange&quot;, 15)
+
+	value, found := ht.Search(&quot;banana&quot;)
+	if found {
+		fmt.Println(&quot;Значение для 'banana':&quot;, value) // 10
+	}
+
+	ht.Delete(&quot;banana&quot;)
+	value, found = ht.Search(&quot;banana&quot;)
+	if !found {
+		fmt.Println(&quot;'banana' не найдено&quot;) // 'banana' не найдено
+	}
 }</code></pre>
 </doc-codeblock></div>
 
