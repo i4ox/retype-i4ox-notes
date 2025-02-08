@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-root" content="/retype-i4ox-notes">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.792320186294">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.6.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Администрирование Linux | i4ox Docs</title>
+    <meta name="title" content="Администрирование Linux | i4ox Docs">
+    <meta name="description" content="Создание пользователей: useradd, passwd">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/admin/linux/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/admin/linux/">
+    <meta property="og:title" content="Администрирование Linux | i4ox Docs">
+    <meta property="og:description" content="Создание пользователей: useradd, passwd">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/admin/linux/">
+    <meta property="twitter:title" content="Администрирование Linux | i4ox Docs">
+    <meta property="twitter:description" content="Создание пользователей: useradd, passwd">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../uploads/logo.svg" rel="icon">
+    <link href="../../resources/css/retype.css?v=3.6.0.792320186294" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.792320186294" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.792320186294" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.792320186294" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
+                            <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../uploads/logo.svg">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../uploads/logo.svg">
+                            </span>
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Notes by i4ox</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                                <!-- Page content  -->
+<doc-anchor-target id="администрирование-linux" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#администрирование-linux">#</doc-anchor-trigger>
+        <span>Администрирование Linux</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="краткая-сводка-по-командам">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#краткая-сводка-по-командам">#</doc-anchor-trigger>
+        <span>Краткая сводка по командам</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="пользователи-и-группы">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#пользователи-и-группы">#</doc-anchor-trigger>
+        <span>Пользователи и группы</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li>Создание пользователей: <code v-pre>useradd</code>, <code v-pre>passwd</code></li>
+<li>Изменение пользователей: <code v-pre>usermod</code></li>
+<li>Удаление пользователей: <code v-pre>userdel</code></li>
+<li>Создание групп: <code v-pre>groupadd</code></li>
+<li>Изменение групп: <code v-pre>groupmod</code></li>
+<li>Удаление групп: <code v-pre>groupdel</code></li>
+<li>Работа с sudo: <code v-pre>visudo</code>, <code v-pre>sudoers</code></li>
+</ul>
+<doc-anchor-target id="основы-linux">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#основы-linux">#</doc-anchor-trigger>
+        <span>Основы Linux</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Linux</strong> — это операционная система с многозадачностью, многопользовательской поддержкой и строгими правами доступа.</p>
+<doc-anchor-target id="fhs---filesystem-hierarchy-standard">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#fhs---filesystem-hierarchy-standard">#</doc-anchor-trigger>
+        <span>FHS - Filesystem Hierarchy Standard</span>
+    </h3>
+</doc-anchor-target>
+<p>В Linux все файлы организованы в виде древовидной структуры с корнем <code v-pre>/</code>.</p>
+<p>Основные директории:</p>
+<ul>
+<li><code v-pre>/</code> - корневой каталог, точка начала всей файловой системы.</li>
+<li><code v-pre>/bin</code> - основные исполняемые файлы.</li>
+<li><code v-pre>/sbin</code> - системные утилиты.</li>
+<li><code v-pre>/boot</code> - загрузочные файлы.</li>
+<li><code v-pre>/dev</code> - устройства, представленные как файлы.</li>
+<li><code v-pre>/etc</code> - конфигурационные файлы.</li>
+<li><code v-pre>/home</code> - домашние каталоги пользователей.</li>
+<li><code v-pre>/lib</code>, <code v-pre>/lib64</code> - системные библиотеки.</li>
+<li><code v-pre>/media</code>, <code v-pre>/mnt</code> - точки монтирования внешних устройств.</li>
+<li><code v-pre>/opt</code> - файлы для дополнильных программ.</li>
+<li><code v-pre>/proc</code> - виртуальная файловая система(информация о процессах и системе).</li>
+<li><code v-pre>/root</code> - корневой каталог root-пользователя.</li>
+<li><code v-pre>/run</code>, <code v-pre>/tmp</code> - временные файлы.</li>
+<li><code v-pre>/srv</code> - сервисные файлы.</li>
+<li><code v-pre>/sys</code> - системные файлы.</li>
+<li><code v-pre>/usr</code> - программы и библиотеки для пользователей.</li>
+<li><code v-pre>/var</code> - изменяемые данные(логи, кеши, почта)</li>
+</ul>
+<doc-anchor-target id="права-доступа-chmod-chown-unmask">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#права-доступа-chmod-chown-unmask">#</doc-anchor-trigger>
+        <span>Права доступа (chmod, chown, unmask)</span>
+    </h3>
+</doc-anchor-target>
+<p>Каждый файл в Linux имеет владельца, группу и права.
+При просмотре файлов можно увидеть их права:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">ls -l
+# -rw-r--r--. 1 alokhov alokhov  307 Jan 31 16:35  retype.yml</code></pre>
+</doc-codeblock></div>
+<p><strong>Обозначения прав</strong>:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Символ</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>-</code></td>
+<td>файл(если <code v-pre>d</code> - каталог)</td>
+</tr>
+<tr>
+<td><code v-pre>rw-</code></td>
+<td>владелец: чтение(<code v-pre>r</code>), запись(<code v-pre>w</code>), нет выполнения(<code v-pre>-</code>)</td>
+</tr>
+<tr>
+<td><code v-pre>r--</code></td>
+<td>группа: только чтение</td>
+</tr>
+<tr>
+<td><code v-pre>r--</code></td>
+<td>остальные пользователи: тоько чтение</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Чтобы изменить права доступа, используется команда <code v-pre>chmod</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">chmod u+rwx,g+r,o-rwx file.txt # При помощи символов
+chmod 750 file.txt # В числовом формате: 111, 101, 000</code></pre>
+</doc-codeblock></div>
+<p>Через команду <code v-pre>umask</code> можно установить какие права НЕ УСТАНАВЛИВАТЬ при создании файла.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">umask # Получить текущую маску
+umask 022 # То есть файлы будут с правами 755</code></pre>
+</doc-codeblock></div>
+<p>Также можно сменить владельца файла, используя команду <code v-pre>chown</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo chown user file.txt # Смена владельца файла
+sudo chown user:group file.txt # Смена владельца и группы(пользователь, который состоит в данной группе)</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="основные-комманды">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#основные-комманды">#</doc-anchor-trigger>
+        <span>Основные комманды</span>
+    </h3>
+</doc-anchor-target>
+<p>Работа с файлами и каталогами:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">ls -lah # Просмотр содержимого каталога
+cd /path/to/directory # Переход в каталог
+cp source.txt destination.txt # Копирование файлов
+mv oldname.txt newname.txt # Перемешение/переименование
+rm -rf mydir # Удаление файлов и каталогов</code></pre>
+</doc-codeblock></div>
+<p>Поиск файлов:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">find / -name &quot;file.txt&quot; # Поиск файла по имени</code></pre>
+</doc-codeblock></div>
+<p>Работа с текстовыми файлами:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">head -n 10 file.txt # Просмотр первых 10 строк
+tail -f file.txt # Просмотр последних строк(обновляется в реальном времени)
+grep &quot;work&quot; file.txt # Поиск строки в файле
+awk '{print $1}' file.txt # Фильтрация текста (выводится лишь первый аргумент)
+sed 's/old/new/g' file.txt # Замена слова внутри файла</code></pre>
+</doc-codeblock></div>
+<p>Перенаправление вывода:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">echo &quot;Hello&quot; &gt; file.txt # Перезапись в файл
+echo &quot;World&quot; &gt;&gt; file.txt # Добавление в файл
+ls - l | grep &quot;.txt&quot; # Перенаправление вывода в ввод другой команды
+ls -l | tee output.txt # Перехватывает вывод, записывает его в файл и выводит на экран</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="процессы">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#процессы">#</doc-anchor-trigger>
+        <span>Процессы</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="просмотр-процессов">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#просмотр-процессов">#</doc-anchor-trigger>
+        <span>Просмотр процессов</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">ps aux # Показать все процессы
+ps -ef # Показать все процессы с их ID
+ps -ef | grep &quot;systemd&quot; # Показать все процессы, содержащие слово &quot;systemd&quot;
+top # Мониторинг процессов
+htop # Удобный мониторинг(нужно отдельно установить)</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="управление-процессами">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#управление-процессами">#</doc-anchor-trigger>
+        <span>Управление процессами</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">kill PID # завершить процесс с определенным ID
+kill -9 PID # Принудительное завершение, игнорируя все закрывающие процессы
+Ctrl + Z # приостановить процесс
+fg # возобновить процесс</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="приоритет-процессов-nice-renice">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#приоритет-процессов-nice-renice">#</doc-anchor-trigger>
+        <span>Приоритет процессов (nice, renice)</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">nice -n 10 myscript.sh # Запуск с низким приоритетом
+renice -n 5 -p PID # Повысить приоритет процесса с PID до 5</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="управление-пользователями-и-группами">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#управление-пользователями-и-группами">#</doc-anchor-trigger>
+        <span>Управление пользователями и группами</span>
+    </h2>
+</doc-anchor-target>
+<p>В Linux пользователи могут быть <em>обычными</em> или <em>системными</em>.
+Системные пользователи используются для служб-демонов.</p>
+<p><strong>Группы</strong> - компонент системы, который позволяет управлять правами доступа к файлам и ресурсам.</p>
+<doc-anchor-target id="создание-пользователя">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#создание-пользователя">#</doc-anchor-trigger>
+        <span>Создание пользователя</span>
+    </h3>
+</doc-anchor-target>
+<p>Создать пользователя можно с помощью команды <code v-pre>useradd</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo useradd user_name</code></pre>
+</doc-codeblock></div>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>По-умолчанию:</p>
+<ul>
+<li>Пользователь создается без домашней директории.</li>
+<li>Используется <code v-pre>/etc/skel</code> для шаблона конфигурации пользователя.</li>
+</ul>
+        </div>
+    </div>
+</div>
+<p>Чтобы создать пользователя с домашней директорией:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo useradd -m user_name</code></pre>
+</doc-codeblock></div>
+<p>Ниже приведена полная команда со всеми популярными опциями.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo useradd -m -s /bin/bash -c &quot;Arthur Lokhov&quot; -g users -G sudo user_name</code></pre>
+</doc-codeblock></div>
+<p>Опции:</p>
+<ul>
+<li><code v-pre>-m</code> - создать домашнюю директорию для пользователя</li>
+<li><code v-pre>-s</code> - указать путь к оболочке для пользователя</li>
+<li><code v-pre>-c</code> - указать описание пользователя</li>
+<li><code v-pre>-G</code> - указать группы пользователя</li>
+<li><code v-pre>-g</code> - указать основную группу пользователя</li>
+</ul>
+<doc-anchor-target id="смена-пароля-пользователя">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#смена-пароля-пользователя">#</doc-anchor-trigger>
+        <span>Смена пароля пользователя</span>
+    </h3>
+</doc-anchor-target>
+<p>После создания пользователя ему нужно задать пароль.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo passwd user_name</code></pre>
+</doc-codeblock></div>
+<p>Если надо сменить текущему пользователю, то можно использовать просто <code v-pre>passwd</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">passwd</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="изменение-параметров-пользователя">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#изменение-параметров-пользователя">#</doc-anchor-trigger>
+        <span>Изменение параметров пользователя</span>
+    </h3>
+</doc-anchor-target>
+<p>Если нужно изменить уже существующего пользователя, используется команда <code v-pre>usermod</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo usermod -l new_user_name user_name # изменение логина
+sudo usermod -d /home/new_user_name -m user_name # изменение домашней директории
+sudo usermod -s /bin/zsh user_name # изменение оболочки
+sudo usermod -aG new_group_name user_name # добавление группы</code></pre>
+</doc-codeblock></div>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Флаг <code v-pre>-a</code> используется для добавление пользователя в группу, без удаления из старых.</p>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="удаление-пользователя">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#удаление-пользователя">#</doc-anchor-trigger>
+        <span>Удаление пользователя</span>
+    </h3>
+</doc-anchor-target>
+<p>Если нужно удалить пользователя, используется команда <code v-pre>userdel</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo userdel user_name</code></pre>
+</doc-codeblock></div>
+<p>Правда этот вариант оставляет домашнюю директорию пользователя, чтобы удалить ее используется команда ниже.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo userdel -r user_name</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="управление-группами">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#управление-группами">#</doc-anchor-trigger>
+        <span>Управление группами</span>
+    </h3>
+</doc-anchor-target>
+<p>Создать новую группу:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo groupadd new_group_name</code></pre>
+</doc-codeblock></div>
+<p>Изменить существующую группу:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo groupmod -n new_group_name old_group_name</code></pre>
+</doc-codeblock></div>
+<p>Удалить группу:</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Группу нельзя удалить, если она содержит пользователей.</p>
+        </div>
+    </div>
+</div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo groupdel group_name</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="просмотр-информации-о-группах-и-пользователях">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#просмотр-информации-о-группах-и-пользователях">#</doc-anchor-trigger>
+        <span>Просмотр информации о группах и пользователях</span>
+    </h3>
+</doc-anchor-target>
+<p>Узнать основную группу пользователя:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">id user_name</code></pre>
+</doc-codeblock></div>
+<p>Проверить в каких группах состоит пользователь:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">groups user_name</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="sudo-и-политика-доступа">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#sudo-и-политика-доступа">#</doc-anchor-trigger>
+        <span>Sudo и политика доступа</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Sudo</strong> позволяет временно выполнять команды от имени суперпользователя.</p>
+<doc-anchor-target id="добавление-пользователя-в-sudo">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#добавление-пользователя-в-sudo">#</doc-anchor-trigger>
+        <span>Добавление пользователя в sudo</span>
+    </h3>
+</doc-anchor-target>
+<p>Чтобы дать права суперпользователя пользователю:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo usermod -aG sudo user_name # Debian/Ubuntu
+sudo usermod -aG wheel user_name # RHEL/CentOS</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="файл-конфигурации-sudoers">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#файл-конфигурации-sudoers">#</doc-anchor-trigger>
+        <span>Файл конфигурации sudoers</span>
+    </h3>
+</doc-anchor-target>
+<p>Настройка <code v-pre>sudo</code> хранится в файле <code v-pre>/etc/sudoers</code>. Изменять его вручную не рекомендуется, лучше использовать:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo visudo</code></pre>
+</doc-codeblock></div>
+<p>Пример строки для добавления пользователя в sudo. Эта команда дает полный доступ к <code v-pre>sudo</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">user_name ALL=(ALL:ALL) ALL</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="запрет-на-запрос-пароля-при-использовании-sudo">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#запрет-на-запрос-пароля-при-использовании-sudo">#</doc-anchor-trigger>
+        <span>Запрет на запрос пароля при использовании sudo</span>
+    </h3>
+</doc-anchor-target>
+<p>Можно запретить запрос пароля при использовании sudo:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">user_name ALL=(ALL) NOPASSWD: ALL</code></pre>
+</doc-codeblock></div>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Это может быть небезопасно!</p>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="ограничение-команд-для-sudo">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ограничение-команд-для-sudo">#</doc-anchor-trigger>
+        <span>Ограничение команд для sudo</span>
+    </h3>
+</doc-anchor-target>
+<p>Можно ограничить команды, которые могут быть выполнены с помощью sudo:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">user_name ALL=(ALL) NOPASSWD: /usr/sbin/service nginx restart</code></pre>
+</doc-codeblock></div>
+<p>В данном примере без запроса пароля можно выполнить команду <code v-pre>sudo service nginx restart</code>.</p>
+<doc-anchor-target id="управление-пакетами-в-linux">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#управление-пакетами-в-linux">#</doc-anchor-trigger>
+        <span>Управление пакетами в Linux</span>
+    </h2>
+</doc-anchor-target>
+<p>Linux использует <strong>пакетные менеджеры</strong> для устаноки, обновления и удаления программ.
+В зависимости от дистрибутива используются разные системы управления пакетами.</p>
+<doc-anchor-target id="debian-basedapt-dpkg">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#debian-basedapt-dpkg">#</doc-anchor-trigger>
+        <span>Debian-based(APT, DPKG)</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>APT(Advanced Package Tool)</strong> - это высокоуровневый менеджер пакетов для Debian, Ubuntu и их производных.
+Он работает поверх <code v-pre>dpkg</code>, который является низкоуровневым инструментов установки <code v-pre>.deb</code> пакетов.</p>
+<p>Работа с <code v-pre>apt</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt update # Обновление списка пакетов
+sudo apt install upgrade # Обновление всех установленных пакетов
+apt search package_name # Поиск пакета по имени
+sudo apt install package_name # Установка пакета
+sudo apt remove package_name # Удаление пакета
+sudo apt purge package_name # Удаление пакета вместе с конфигурацией
+sudo apt autoremove # Удаление всех неиспользуемых пакетов</code></pre>
+</doc-codeblock></div>
+<p>Работа с <code v-pre>dpkg</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo dpkg -i package.deb # Установка .deb пакетов
+sudo apt -f install # Исправление зависимостей после установки .deb через dpkg
+sudo dpkg -r package_name # Удаление пакета
+sudo -l | grep package_name # Просмотр информации о пакете
+sudo dpkg --add-architecture i386 # Добавление пакетов определенной архитектуры</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="redhat-basedyum-dnf-rpm">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#redhat-basedyum-dnf-rpm">#</doc-anchor-trigger>
+        <span>RedHat-based(YUM, DNF, RPM)</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>YAM(Yellowdog Updater, Modified)</strong> и <strong>DNF(Dandifined YUM)</strong> используются в RHEL, CentOS и Fedora.</p>
+<p><strong>RPM(RedHat Package Manager)</strong> - это низкоуровневый инструмент работы с <code v-pre>.rpm</code> пакетами.</p>
+<p>Работа с <code v-pre>dnf</code>(современный пакетный менеджер):</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo dnf check-update # Обновление списка пакетов
+sudo dnf upgrade # Обновление всех установленных пакетов
+sudo dnf search package_name # Поиск пакета по имени
+sudo dnf install package_name # Установка пакета
+sudo dnf remove package_name # Удаление пакета
+sudo dnf clean all # Очистка кэша пакетов</code></pre>
+</doc-codeblock></div>
+<p>Работа с <code v-pre>yum</code>(старый пакетный менеджер, используется в CentOS 7 и RHEL 7):</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo yum check-update # Обновление списка пакетов
+sudo yum update # Обновление всех установленных пакетов
+sudo yum search package_name # Поиск пакета по имени
+sudo yum install package_name # Установка пакета
+sudo yum remove package_name # Удаление пакета
+sudo yum clean all # Очистка кэша пакетов</code></pre>
+</doc-codeblock></div>
+<p>Работа с <code v-pre>rpm</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo rpm -i package.rpm # Установка пакета
+sudo rpm -U package.rpm # Обновление пакета
+sudo rpm -e package.rpm # Удаление пакета
+rpm -qa | grep &quot;package_name&quot; # Поиск пакета по имени</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="компиляция-из-исходниковmake-gcc-tar-configure">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#компиляция-из-исходниковmake-gcc-tar-configure">#</doc-anchor-trigger>
+        <span>Компиляция из исходников(make, gcc, tar, ./configure)</span>
+    </h3>
+</doc-anchor-target>
+<p>Если нужного пакета нет в репозитории, можно установить его из исходников.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">tar -xvzf package.tar.gz # Распаковка архива с исходниками
+tar -xvJf package.tar.xz # Распаковка архива с исходниками
+cd package/ # Переход в каталог с исходниками
+
+sudo apt install build-essential # Установка пакетов для компиляции (Debian)
+sudo dnf groupinstall &quot;Development Tools&quot; # Установка пакетов для компиляции (RHEL)
+
+./configure # Проверяет зависимости и готовит сборку
+make # Компиляция исходников
+sudo make install # Установка пакета</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="управление-дисками-и-файловыми-системами-в-linux">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#управление-дисками-и-файловыми-системами-в-linux">#</doc-anchor-trigger>
+        <span>Управление дисками и файловыми системами в Linux</span>
+    </h2>
+</doc-anchor-target>
+<p>Linux предоставляет мощные инструменты для разметки дисков, работы с файловыми системами, управления <code v-pre>LVM</code> и <code v-pre>RAID</code>, а также шифрования данных с помощью <code v-pre>LUKS</code>.</p>
+<doc-anchor-target id="разметка-дисков-fdisk-parted">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#разметка-дисков-fdisk-parted">#</doc-anchor-trigger>
+        <span>Разметка дисков (fdisk, parted)</span>
+    </h3>
+</doc-anchor-target>
+<p>Перед использование любого диска его необходимо разметить, а затем создать файловую систему.</p>
+<p>Чтобы вывести список дисков и разделов, можно использовать команду <code v-pre>lsblk</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">lsblk</code></pre>
+</doc-codeblock></div>
+<p>А чтобы посмотреть информацию о дисках, можно использовать команду <code v-pre>fdisk -l</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo fdisk -l</code></pre>
+</doc-codeblock></div>
+<p>Разметка диска с помощью <code v-pre>fdisk</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo fdisk /dev/sda # Запуск разметки диска для диска /dev/sda</code></pre>
+</doc-codeblock></div>
+<p>Основные команды для <code v-pre>fdisk</code>:</p>
+<ul>
+<li><code v-pre>n</code> - создать новый раздел</li>
+<li><code v-pre>d</code> - удалить раздел</li>
+<li><code v-pre>w</code> - записать изменения</li>
+<li><code v-pre>p</code> - показать таблицу разделов</li>
+<li><code v-pre>q</code> - выйти из разметки</li>
+</ul>
+<p>Разметка диска с помощью <code v-pre>parted</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo parted /dev/sda # Запуск разметки диска для диска /dev/sda
+
+# Команды ниже выполняются в parted
+mklabel gpt # Создать GPT-разделитель
+mkpart primary ext4 0% 100% # Создать раздел ext4 с начала диска и длиной 100%
+quit # Выйти из parted</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="файловые-системыext4-xfs-btrfs-zfs">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#файловые-системыext4-xfs-btrfs-zfs">#</doc-anchor-trigger>
+        <span>Файловые системы(ext4, xfs, btrfs, zfs)</span>
+    </h3>
+</doc-anchor-target>
+<p>Создание файловых систем:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo mkfs.ext4 /dev/sda1 # ext4 используется по-умолчанию в Linux(где-то уже перешли на btrfs)
+sudo mkfs.xfs /dev/sda1 # xfs хорош для больших файлов
+sudo mkfs.btrfs /dev/sda1 # btrfs, современная с поддержкой снапшотов
+
+sudo apt install zfsutils-linux # Установка zfs для Debian/Ubuntu, в RHEL уже установлена
+sudo zpool create mypool /dev/sda # zfs, производительная, надежная сжимаемая</code></pre>
+</doc-codeblock></div>
+<p>Проверка и исправления файловой системы:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo fsck -f /dev/sda1 # Проверка файловой системы
+sudo e2fsck -p /dev/sda1 # Проверка ext4
+sudo xfs_repair /dev/sda1 # Проверка xfs
+sudo btrfs check /dev/sda1 # Проверка btrfs
+sudo zpool status # Проверка zfs</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="монтирование-дисков-и-fstab">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#монтирование-дисков-и-fstab">#</doc-anchor-trigger>
+        <span>Монтирование дисков и fstab</span>
+    </h3>
+</doc-anchor-target>
+<p>После создания файловой системы, диск нужно подключить в систему.</p>
+<p>Временное монтирование диска делается с помощью команды <code v-pre>mount</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo mount /dev/sda1 /mnt # Монтирование диска в папку /mnt</code></pre>
+</doc-codeblock></div>
+<p>Для того, чтобы размонтировать временно монтированный диск, используется команда <code v-pre>umount</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo umount /mnt # Размонтирование диска из папки /mnt</code></pre>
+</doc-codeblock></div>
+<p>Если диск нужно примонтировать в систему на постоянной основе, то можно использовать файл <code v-pre>fstab</code>.
+Но сначала надо опредилить UUID нужного нам диска. Это можно сделать рядом способов:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">blkid /dev/sda1 # Получить UUID диска
+lsblk -o +uuid,name # Получить UUID диска и имя диска</code></pre>
+</doc-codeblock></div>
+<p>После чего добавить строку ниже в файл <code v-pre>/etc/fstab</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">UUID=xxxx-xxxx /mnt ext4 defaults 0 0</code></pre>
+</doc-codeblock></div>
+<p>Чтобы применить изменения в fstab без перезагрузки системы:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo mount -a # Применить изменения в fstab</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="raid">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#raid">#</doc-anchor-trigger>
+        <span>RAID</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>RAID</strong> – это способ объединения нескольких дисков в один для более высокой производительности, или для того, чтобы они работали как один том.</p>
+<p>Уровни RAID:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>RAID уровень</th>
+<th>Описание</th>
+<th>Надежность</th>
+<th>Производительность</th>
+<th>Минимальное количество дисков</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RAID 0 (Stripting)</td>
+<td>Разделение данных между дисками, без избыточности</td>
+<td>Нет защиты данных</td>
+<td>Высокая(чтение и запись)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RAID 1 (Mirroring)</td>
+<td>Полное зеркалирование данных</td>
+<td>Высокая(один из дисков может выйти из строя)</td>
+<td>Чуть ниже, чем одиночный диск</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RAID 5</td>
+<td>Чередование данных с паритетом</td>
+<td>Один диск можно потерять</td>
+<td>Высокая(но запись медленнее из-за вычисления паритета)</td>
+<td>3</td>
+</tr>
+<tr>
+<td>RAID 6</td>
+<td>Двойной паритет(выдерживает отказ 2 дисков)</td>
+<td>Очень высокая</td>
+<td>Запись медленнее, чем RAID 5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>RAID 10</td>
+<td>Зеркалирование + чередование(RAID 0 + RAID 1)</td>
+<td>Высокая</td>
+<td>Отличная</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Упралять RAID можно с помощью команды <code v-pre>mdadm</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sda /dev/sdb # Создание RAID-1
+sudo mdadm --detail /dev/md0 # Показать сведения о RAID
+sudo mdadm --stop /dev/md0 # Остановить RAID
+sudo mdadm --remove /dev/md0 # Удалить RAID
+sudo mdadm --increment /dev/md0 # Увеличить или уменьшить RAID(добавить или удалить диски)</code></pre>
+</doc-codeblock></div>
+<p>Чтобы просмотреть статусы RAID:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cat /proc/mdstat # Просмотр статусов RAID</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="lvm">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#lvm">#</doc-anchor-trigger>
+        <span>LVM</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>LVM</strong> — это дополнительный слой абстракции от железа, позволяющий собрать кучи разнородных дисков в один, и затем снова разбить этот один именно так как нам хочется. Реализовано с помощью подсистемы <code v-pre>device-mapper</code>.</p>
+<p><strong>PV(Physical Volume)</strong> — физические тома(могут быть разделы или целые &quot;неразбитые&quot; диски).
+<strong>VG(Volume Group)</strong> — группа томов(объединяем физические тома в группу, создаем единый диск, который дальше будет разбивать так, как нам хочется).
+<strong>LV(Logical Volume)</strong> — логические разделы, собственно раздел нашего нового &quot;единого диска&quot;, группы томов, который мы потом форматируем и используем как обычный раздел, обычного жесткого диска.</p>
+<p>Создание физического тома:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo pvcreate /dev/sdb</code></pre>
+</doc-codeblock></div>
+<p>Создание группы томов:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo vgcreate vg0 /dev/sdb</code></pre>
+</doc-codeblock></div>
+<p>Создание логического тома:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo lvcreate -L 10G -n lv0 vg0</code></pre>
+</doc-codeblock></div>
+<p>Форматирование и монтирование тома:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo mkfs.ext4 /dev/vg0/lv0
+sudo mount /dev/vg0/lv0 /mnt</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="шифрование-дисков-с-luks">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#шифрование-дисков-с-luks">#</doc-anchor-trigger>
+        <span>Шифрование дисков с LUKS</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>LUKS(Linux Unified Key Setup)</strong> — стандартное решение для шифрования дисков в Linux.</p>
+<p>Установка LUKS:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt install cryptsetup # Debian/Ubuntu
+sudo dnf install cryptsetup # RHEL</code></pre>
+</doc-codeblock></div>
+<p>Создание зашифрованного раздела LUKS:</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Удалит все данные!</p>
+        </div>
+    </div>
+</div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo cryptsetup luksFormat /dev/sdb # Подтведите шифрование(YES и пароль)</code></pre>
+</doc-codeblock></div>
+<p>Открытие зашифрованного раздела LUKS:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo cryptsetup open /dev/sdb cryptdisk</code></pre>
+</doc-codeblock></div>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Теперь зашифрованный раздел будет доступен под именем <code v-pre>/dev/mapper/cryptdisk</code>.</p>
+        </div>
+    </div>
+</div>
+<p>Форматирование и монтирование зашифрованного раздела:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo mkfs.ext4 /dev/mapper/cryptdisk
+sudo mkdir /mnt/secure
+sudo mount /dev/mapper/cryptdisk /mnt/secure</code></pre>
+</doc-codeblock></div>
+<p>Автоматическое монтирование делается при помощи <code v-pre>/etc/crypttab</code> и <code v-pre>/etc/fstab</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># /etc/crypttab
+cryptdisk UUID=xxxx-xxxx none luks
+
+# /etc/fstab
+/dev/mapper/cryptdisk /mnt/secure ext4 defaults 0 0
+
+# Применение изменений
+sudo systemctl daemon-reexec
+sudo mount -a</code></pre>
+</doc-codeblock></div>
+<p>Закрытие зашифрованного раздела LUKS:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo umount /mnt/secure
+sudo cryptsetup close cryptdisk</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="система-инициализации-и-службы">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#система-инициализации-и-службы">#</doc-anchor-trigger>
+        <span>Система инициализации и службы</span>
+    </h2>
+</doc-anchor-target>
+<p>В Linux управление службами и процессами играет ключевую роль в администрировании.
+Основная система инициализации - <code v-pre>systemd</code>, но также существуют альтернативные системы(<code v-pre>SysVinit</code>, <code v-pre>Upstart</code>, <code v-pre>runut</code>, <code v-pre>OpenRC</code>, <code v-pre>dunit</code>, <code v-pre>s6</code> и т.д.).</p>
+<doc-anchor-target id="systemd">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#systemd">#</doc-anchor-trigger>
+        <span>systemd</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>systemd</strong> - это основной системный менеджер инициализации в большинстве современных дистрибутивов.</p>
+<p>Чтобы проверить используется ли systemd:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">ps --pid 1</code></pre>
+</doc-codeblock></div>
+<p>Основные команды systemd:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo systemctl start nginx # Запуск службы
+sudo systemctl stop nginx # Остановка службы
+sudo systemctl restart nginx # Перезапуск службы
+sudo systemctl reload nginx # Перезагрузка службы без остановки</code></pre>
+</doc-codeblock></div>
+<p>Проверка статуса службы:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo systemctl status nginx</code></pre>
+</doc-codeblock></div>
+<p>Автозагрузка сервисов при старте системы:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo systemctl enable nginx # Включить автозапуск
+sudo systemctl enable --now nginx # Включить автозапуск и запустить сервис
+sudo systemctl disable nginx # Отключить автозапуск</code></pre>
+</doc-codeblock></div>
+<p>Проверить включен ли автозапуск службы:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">systemctl is-enabled nginx</code></pre>
+</doc-codeblock></div>
+<p>Проверка всех запущенных служб:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">systemctl list-units --type=serviced</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="написание-собственных-служб">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#написание-собственных-служб">#</doc-anchor-trigger>
+        <span>Написание собственных служб</span>
+    </h3>
+</doc-anchor-target>
+<p>Службы в <code v-pre>systemd</code> описываются в <strong>unit-файлах</strong>(<code v-pre>.service</code>).</p>
+<p>Создание простого сервиса:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo nano /etc/systemd/system/my-service.service</code></pre>
+</doc-codeblock></div>
+<p>Пример unit-файла:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-ini"><code v-pre class="language-ini">[Unit]
+Description=Мой тестовый сервис # Описание службы
+After=network.target # После чего запускать службу
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/myscript.py # Запуск скрипта
+Restart=always # Когда служба перезапускается
+User=nobody # От лица какого-то пользователя
+Group=nogroup # От лица какой-то группы
+
+[Install]
+WantedBy=multi-user.target # Запускать службу при запуске системы</code></pre>
+</doc-codeblock></div>
+<p>Включение службы в автозапуск:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo systemctl daemon-reload # Перезагрузить systemd
+sudo systemctl enable my-service # Включить службу
+sudo systemctl start my-service # Запустить службу
+systemctl status my-service # Проверить статус службы</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="таймеры-systemd">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#таймеры-systemd">#</doc-anchor-trigger>
+        <span>Таймеры systemd</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo nano /etc/systemd/system/my-timer.timer</code></pre>
+</doc-codeblock></div>
+<p>Пример unit-файла:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-ini"><code v-pre class="language-ini">[Unit]
+Description=Мой тестовый таймер # Описание таймера
+
+[Timer]
+OnBootSec=10 # После загрузки системы запустить таймер через 10 секунд
+OnUnitActiveSec=60 # После запуска службы запустить таймер через 60 секунд
+Unit=my-service.service # Запускать таймер при запуске службы
+
+[Install]
+WantedBy=timers.target # Запускать таймер при запуске системы</code></pre>
+</doc-codeblock></div>
+<p>Включение таймера в автозапуск:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo systemctl daemon-reload # Перезагрузить systemd
+sudo systemctl enable my-timer # Включить таймер
+sudo systemctl start my-timer # Запустить таймер
+systemctl list-timers # Проверить статус таймера</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="резервное-копирование-и-восстановление">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#резервное-копирование-и-восстановление">#</doc-anchor-trigger>
+        <span>Резервное копирование и восстановление</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Резервное копирование</strong> - важная часть администрирования системы. В Linux есть несколько инструментов.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Инструмент</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>rsync</code></td>
+<td>Инкрементальное копирование файлов по сети</td>
+</tr>
+<tr>
+<td><code v-pre>tar</code></td>
+<td>Архивация файлов и директорий</td>
+</tr>
+<tr>
+<td><code v-pre>dd</code></td>
+<td>Клонироваие дисков и разделов</td>
+</tr>
+<tr>
+<td><code v-pre>scp</code></td>
+<td>Копирование файлов по сети</td>
+</tr>
+<tr>
+<td><code v-pre>BorgBackup</code></td>
+<td>Эффективное дедуплицированное резервное копирование</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="rsync">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#rsync">#</doc-anchor-trigger>
+        <span>rsync</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">rsync -av /home/user /backup/ # Простое копирование директории
+rsync -av -e ssh /home/user user@remote:/backup/ # Копирование директории по сети
+rsync -av --delete /home/user /backup/ # Копирование директории с удалением исходной директории</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="tar">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#tar">#</doc-anchor-trigger>
+        <span>tar</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">tar -cvzf backup.tar.gz /home/user # Архивирование директории
+tar -xvzf backup.tar.gz -C /restore/ # Распаковка архива</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="dd">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dd">#</doc-anchor-trigger>
+        <span>dd</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">dd if=/dev/sda of=/backup/disk.img bs=4M status=progress # Создание полного образа диска
+dd if=/backup/disk.img of=/dev/sdb bs=4M status=progress # Восстановление из образа</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="scp">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#scp">#</doc-anchor-trigger>
+        <span>scp</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">scp -r /home/user user@remote:/backup/ # Копирование директории по сети</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="borgbackup">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#borgbackup">#</doc-anchor-trigger>
+        <span>BorgBackup</span>
+    </h3>
+</doc-anchor-target>
+<p>Установка:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt install borgbackup # Debian/Ubuntu
+sudo dnf install borgbackup # RHEL</code></pre>
+</doc-codeblock></div>
+<p>Использование:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">borg init --encryption=repokey /backup/repo # Инициализация репозитория
+borg create --compression=lz4 /backup/repo::backup-$(date +%Y-%m-%d) /home/user # Создание резервной копии
+borg extract /backup/repo::backup-2024-02-07 # Восстановление резервной копии</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="снапшотыlvm-zfs-btrfs">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#снапшотыlvm-zfs-btrfs">#</doc-anchor-trigger>
+        <span>Снапшоты(LVM, ZFS, Btrfs)</span>
+    </h3>
+</doc-anchor-target>
+<p>LVM снапшоты:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">lvcreate -L 1G -s -n my_snapshot /dev/vg0/my_volume # Создание снапшота
+lvremove -f /dev/vg0/my_snapshot # Удаление снапшота</code></pre>
+</doc-codeblock></div>
+<p>ZFS снапшоты:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">zfs snapshot pool/dataset@backup # Создание снапшота
+zfs list -t snapshot # Просмотр снапшотов
+zfs rollback pool/dataset@backup # Откат к снапшоту
+zfs destroy pool/dataset@backup # Удаление снапшота</code></pre>
+</doc-codeblock></div>
+<p>BTRFS снапшоты:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">btrfs subvolume snapshot /home /backup/home_snapshot # Создание снапшота
+btrfs subvolume delete /backup/home_snapshot # Удаление снапшота</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="безопасность-в-linux">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#безопасность-в-linux">#</doc-anchor-trigger>
+        <span>Безопасность в Linux</span>
+    </h2>
+</doc-anchor-target>
+<p>Основные аспекты безопасности в Linux:</p>
+<ul>
+<li>Контроль доступа: <code v-pre>SELinux</code>, <code v-pre>AppArmor</code></li>
+<li>Защита от атак: <code v-pre>fail2ban</code></li>
+<li>Аудит системы: чек-листы безопасности</li>
+</ul>
+<doc-anchor-target id="selinuxsecurity-enhanced-linux">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#selinuxsecurity-enhanced-linux">#</doc-anchor-trigger>
+        <span>SELinux(Security-Enhanced Linux)</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">setstatus # Проверка SELinux
+sudo setenforce 0 # Временно отключить SELinux
+sudo nano /etc/selinux/config # Изменить режим SELinux
+&gt; SELINUX=permissive # enforcing / permissive / disabled</code></pre>
+</doc-codeblock></div>
+<p>Режимы SELinux:</p>
+<ul>
+<li><code v-pre>enforcing</code> - принудительно включен</li>
+<li><code v-pre>permissive</code> - включен, но принудительно отключен</li>
+<li><code v-pre>disabled</code> - выключен</li>
+</ul>
+<doc-anchor-target id="apparmor">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#apparmor">#</doc-anchor-trigger>
+        <span>AppArmor</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo aa-status # Проверка AppArmor
+sudo aa-disable /etc/apparmor.d/usr.sbin.nginx # Отключить AppArmor для nginx
+sudo aa-disable # Отключить все AppArmor
+sudo aa-enforce /etc/apparmor.d/usr.sbin.nginx # Включить AppArmor для nginx
+sudo aa-enforce # Включить все AppArmor</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="fail2ban---защита-от-брутфорса">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#fail2ban---защита-от-брутфорса">#</doc-anchor-trigger>
+        <span>Fail2ban - защита от брутфорса</span>
+    </h3>
+</doc-anchor-target>
+<p>Fail2ban блокирует IP-адреса после нескольких неудачных попыток входа.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt install fail2ban # Debian/Ubuntu
+sudo dnf install fail2ban # RHEL</code></pre>
+</doc-codeblock></div>
+<p>Настройка fail2ban(<code v-pre>/etc/fail2ban/jail.local</code>):</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-ini"><code v-pre class="language-ini">[sshd]
+enabled = true
+maxretry = 3
+bantime = 3600</code></pre>
+</doc-codeblock></div>
+<p>Перезапуск fail2ban:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo systemctl restart fail2ban</code></pre>
+</doc-codeblock></div>
+<p>Просмотр заблокированных IP-адресов:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo fail2ban-client status sshd</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="чек-листы-безопасности">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#чек-листы-безопасности">#</doc-anchor-trigger>
+        <span>Чек-листы безопасности</span>
+    </h3>
+</doc-anchor-target>
+<ol>
+<li>Обновление системы.
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade -y # Debian/Ubuntu
+sudo dnf upgrade -y # RHEL</code></pre>
+</doc-codeblock></div>
+</li>
+<li>Ограничение sudo доступа(<code v-pre>visudo</code>).</li>
+<li>Отключение ненужных служб.</li>
+<li>Защита паролей:
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">passwd -l root # Заблокировать root пароль</code></pre>
+</doc-codeblock></div>
+</li>
+<li>Мониторинг логов.</li>
+</ol>
+<doc-anchor-target id="журналирование-и-мониторинг">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#журналирование-и-мониторинг">#</doc-anchor-trigger>
+        <span>Журналирование и мониторинг</span>
+    </h2>
+</doc-anchor-target>
+<p>Журналирование и мониторинг помогают ослеживать состояние системы, выявлять проблемы и анализировать производительность.</p>
+<doc-anchor-target id="логирование">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#логирование">#</doc-anchor-trigger>
+        <span>Логирование</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>journald</strong> - системный журнал <code v-pre>systemd</code>. Он хранит логи в бинарном формате и управляется через <code v-pre>journalctl</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">journalctl # Просмотр всех логов
+journalctl -u nginx  # Логи конкретного сервиса
+journalctl -b # Логи после перезагрузки системы
+journalctl --since &quot;1 hour ago&quot;  # Логи за последний час
+journalctl --vacuum-time=7d # Очистка журнала с логами старше 7 дней</code></pre>
+</doc-codeblock></div>
+<p><strong>syslog</strong> и <strong>rsyslog</strong> - традиционное логирование. Они записывают логи в текстовые файлы, такие как <code v-pre>/var/log/syslog</code> и <code v-pre>/var/log/auth.log</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">tail -f /var/log/syslog # Просмотр логов
+tail -f /var/log/auth.log # Просмотр логов аутентификации</code></pre>
+</doc-codeblock></div>
+<p>Настройка филтрации логов в <code v-pre>/etc/rsyslog.conf</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">conf</div>
+<pre class="language-none"><code v-pre class="language-none">:programname, isequal, &quot;sshd&quot; /var/log/ssh.log
+&amp; stop</code></pre>
+</doc-codeblock></div>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Запись выше отправляет логи с процесса <code v-pre>sshd</code> в файл <code v-pre>/var/log/ssh.log</code>.</p>
+        </div>
+    </div>
+</div>
+<p>После изменения настроек надо перезапустить службу <code v-pre>rsyslog</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo systemctl restart rsyslog</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="мониторинг-ресурсов">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#мониторинг-ресурсов">#</doc-anchor-trigger>
+        <span>Мониторинг ресурсов</span>
+    </h3>
+</doc-anchor-target>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Команда</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>htop</code></td>
+<td>Графический просмотр процессов</td>
+</tr>
+<tr>
+<td><code v-pre>iostat</code></td>
+<td>Нагрузка на диски</td>
+</tr>
+<tr>
+<td><code v-pre>vmstat</code></td>
+<td>Использование CPU, памяти</td>
+</tr>
+<tr>
+<td><code v-pre>free</code></td>
+<td>Свободная память</td>
+</tr>
+<tr>
+<td><code v-pre>sar</code></td>
+<td>Сбор статистики нагрузки</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Примеры:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">htop                # Запуск интерактивного мониторинга процессов
+iostat -x 1 5       # Статистика по диску (обновляется 5 раз)
+vmstat 2 5          # Мониторинг CPU и памяти (2 сек, 5 раз)
+free -h             # Проверка использования памяти</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="инструменты-мониторинга">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#инструменты-мониторинга">#</doc-anchor-trigger>
+        <span>Инструменты мониторинга</span>
+    </h3>
+</doc-anchor-target>
+<p><code v-pre>Nagios</code>:</p>
+<ul>
+<li>Мониторинг серверов и сетевого оборудования.</li>
+<li>Проверка доступности (ping, HTTP, SSH).</li>
+<li>Оповещения (email, Telegram, Slack).</li>
+</ul>
+<p><code v-pre>Zabbix</code>:</p>
+<ul>
+<li>Сбор данных (CPU, память, диск).</li>
+<li>Графики и триггеры.</li>
+<li>Агенты для Windows/Linux.</li>
+</ul>
+<p><code v-pre>Prometheus + Grafana</code>:</p>
+<ul>
+<li>Сбор метрик(CPU, память, сети).</li>
+<li>Интеграция с Kubernetes, Docker.</li>
+<li>Визуализация данных через Grafana.</li>
+</ul>
+<doc-anchor-target id="виртуализация-и-контейниризация">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#виртуализация-и-контейниризация">#</doc-anchor-trigger>
+        <span>Виртуализация и контейниризация</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Виртуализация</strong> и <strong>контейниризация</strong> - это технологии, позволяющие запускать несколько изолированных сред на одном физическом сервере, но у них разные принципы работы.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Виртуализация</th>
+<th>Контейниризация</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Изоляция</td>
+<td>Полноценная ОС с ядром</td>
+<td>Использует ядро хоста</td>
+</tr>
+<tr>
+<td>Ресурсы</td>
+<td>Требует больше CPU/RAM</td>
+<td>Легковесная</td>
+</tr>
+<tr>
+<td>Запуск</td>
+<td>Минуты(из-за загрузки ОС)</td>
+<td>Секунды</td>
+</tr>
+<tr>
+<td>Гибкость</td>
+<td>Можно запускать разные ОС</td>
+<td>Все контейнеры используют одно ядро</td>
+</tr>
+<tr>
+<td>Безопасность</td>
+<td>Высокая(отдельные ядра)</td>
+<td>Меньше изоляции, но можно использовать <code v-pre>SELinux</code>, <code v-pre>AppArmor</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="виртуализация">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#виртуализация">#</doc-anchor-trigger>
+        <span>Виртуализация</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>QEMU/KVM</strong> - нативная виртуализация на ядре Linux.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">egrep -c '(vmx|svm)' /proc/cpuinfo # Проверка поддержки виртуализации
+sudo apt install qemu-kvm libvirt-daemon-system virt-manager # Debian/Ubuntu
+sudo dnf install qemu-kvm libvirt-daemon virt-manager # RHEL
+
+virt-install --name ubuntu-vm --ram 2048 --vcpus 2 --disk size=10 --cdrom ubuntu.iso # Создание виртуальной машины</code></pre>
+</doc-codeblock></div>
+<p><strong>Proxmox VE</strong> - мощная виртуализация на базе KVM.
+<strong>Proxmox</strong> - платформа для управления виртуальными машинами и контейнерами.</p>
+<p>Установка Proxmox VE:</p>
+<ol>
+<li>Скачиваем ISO с официального сайта.</li>
+<li>Устанавливаем на сервер.</li>
+<li>Управляем через web-интерфейс.</li>
+</ol>
+<p><strong>VMWare ESXi</strong> - коммерческий гипервизор для виртуализации в дата-центрах.</p>
+<p><strong>Hyper-V</strong> - виртуализация от Microsoft для Windows Server.</p>
+<p><strong>VirtualBox</strong> - простая виртуализация для тестов</p>
+<doc-anchor-target id="контейнеризация">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#контейнеризация">#</doc-anchor-trigger>
+        <span>Контейнеризация</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Docker</strong> - основной инструмент контейнеризации.</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Контейнеризация и Docker разберу отдельно.</p>
+        </div>
+    </div>
+</div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt install docker.io # Debian/Ubuntu
+sudo dnf install docker # RHEL
+
+docker run -d -p 8080:80 nginx # Запуск контейнера
+docker ps # Просмотр списка контейнеров
+docker rm -f container-id # Удаление контейнера</code></pre>
+</doc-codeblock></div>
+<p><strong>Podman</strong> - альтернатива Docker без демона.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt install podman # Debian/Ubuntu
+sudo dnf install podman # RHEL
+
+podman run -d -p 8080:80 nginx # Запуск контейнера</code></pre>
+</doc-codeblock></div>
+<p><strong>Kubernetes</strong> - оркестрация контейнеров. Он управляет кластерами контейнеров, балансировкой нагрузки и масштабированием.</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Kubernetes разберу отдельно.</p>
+        </div>
+    </div>
+</div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash"># Установка локального кластера
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+chmod +x minikube-linux-amd64
+sudo mv minikube-linux-amd64 /usr/local/bin/minikube
+
+minikube start # Запуск локального кластера
+kubectl create deployment nginx --image=nginx # Создание деплоя
+kubectl expose deployment nginx --port=80 --type=NodePort # Направление порта</code></pre>
+</doc-codeblock></div>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Начало всех начал</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../computer-science/алгоритмы/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Алгоритмы</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© 2025 Notes by i4ox. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Администрирование Linux", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+</body>
+</html>
