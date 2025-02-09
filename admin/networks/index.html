@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-root" content="/retype-i4ox-notes">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.792408639095">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.6.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Полное руководство по сетям | i4ox Docs</title>
+    <meta name="title" content="Полное руководство по сетям | i4ox Docs">
+    <meta name="description" content="Сетевое администрирование- ключевой навык любого системного администратора.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/admin/networks/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/admin/networks/">
+    <meta property="og:title" content="Полное руководство по сетям | i4ox Docs">
+    <meta property="og:description" content="Сетевое администрирование- ключевой навык любого системного администратора.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/admin/networks/">
+    <meta property="twitter:title" content="Полное руководство по сетям | i4ox Docs">
+    <meta property="twitter:description" content="Сетевое администрирование- ключевой навык любого системного администратора.">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../uploads/logo.svg" rel="icon">
+    <link href="../../resources/css/retype.css?v=3.6.0.792408639095" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.792408639095" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.792408639095" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.792408639095" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
+                            <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../uploads/logo.svg">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../uploads/logo.svg">
+                            </span>
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Notes by i4ox</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                                <!-- Page content  -->
+<doc-anchor-target id="полное-руководство-по-сетям" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#полное-руководство-по-сетям">#</doc-anchor-trigger>
+        <span>Полное руководство по сетям</span>
+    </h1>
+</doc-anchor-target>
+<p><strong>Сетевое администрирование</strong> - ключевой навык любого системного администратора.</p>
+<doc-anchor-target id="основы-сетей">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#основы-сетей">#</doc-anchor-trigger>
+        <span>Основы сетей</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="что-такое-ip-адрес">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-ip-адрес">#</doc-anchor-trigger>
+        <span>Что такое IP-адрес?</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>IP-адрес</strong> - это уникальный идентификатор устройства в сети.</p>
+<ol>
+<li><strong>IPv4</strong> (32-битный, записывается в виде 4 чисел, разделенных точками): Пример: 192.168.1.1</li>
+<li><strong>IPv6</strong> (128-битный, записывается в 8 группах шестнадцатеричных чисел): Пример: 2001:db8::ff00:42:8329</li>
+</ol>
+<doc-anchor-target id="что-такое-маска-сети">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#что-такое-маска-сети">#</doc-anchor-trigger>
+        <span>Что такое маска сети?</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Маска</strong> определяет, какая часть IP-адреса относится к сети, а какая к хосту.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Маска</th>
+<th>CIDR</th>
+<th>Кол-во адресов</th>
+<th>Диапазон хостов</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>255.0.0.0</td>
+<td>/8</td>
+<td>16,777,214</td>
+<td>10.0.0.1 - 10.255.255.254</td>
+</tr>
+<tr>
+<td>255.255.0.0</td>
+<td>/16</td>
+<td>65,534</td>
+<td>192.168.0.1 - 192.168.255.254</td>
+</tr>
+<tr>
+<td>255.255.255.0</td>
+<td>/24</td>
+<td>254</td>
+<td>192.168.1.1 - 192.168.1.254</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Чем больше битов в маске, тем меньше адресов в сети.</p>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="подсети-и-cidr">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#подсети-и-cidr">#</doc-anchor-trigger>
+        <span>Подсети и CIDR</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>CIDR(Classless Inter-Domain Routing)</strong> - обозначение сети через <code v-pre>/ число_битов_маски</code>.</p>
+<p>Пример:</p>
+<ul>
+<li><code v-pre>192.168.1.0/24</code> -&gt; сеть с 256 узлами(254 + 2 узла локального хоста)</li>
+<li><code v-pre>192.168.1.0/30</code> -&gt; сеть с 4 узлами(2 + 2 узла локального хоста)</li>
+</ul>
+<p>Формула для расчета количества хостов: <code v-pre>2^(32 - число_битов_маски) - 2</code>.</p>
+<doc-anchor-target id="типы-ip-адресов-и-их-назначение">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#типы-ip-адресов-и-их-назначение">#</doc-anchor-trigger>
+        <span>Типы IP-адресов и их назначение</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Приватные сети (RFC 1918)</strong>:</p>
+<ul>
+<li>10.0.0.0/8</li>
+<li>172.16.0.0/12</li>
+<li>192.168.0.0/16</li>
+</ul>
+<p><strong>Публичный IP</strong> - доступный для всех на сети.</p>
+<p><strong>Локальные(Loopback) IP</strong> - <code v-pre>127.0.0.1</code>.</p>
+<doc-anchor-target id="модель-osi-и-tcpip">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#модель-osi-и-tcpip">#</doc-anchor-trigger>
+        <span>Модель OSI и TCP/IP</span>
+    </h3>
+</doc-anchor-target>
+<p>Сетевое взаимодействие строится на двух ключевых моделях:</p>
+<p><strong>Модель OSI(7 уровней)</strong>:</p>
+<ol>
+<li>Физический - кабели, Wi-Fi, разъемы.</li>
+<li>Канальный - MAC-адрема, VLAN, Ethernet.</li>
+<li>Сетевой - IP-адреса, маршрутизация(IPv4, IPv6).</li>
+<li>Транспортный - протоколы TCP, UDP.</li>
+<li>Сеансовый - установление соединений (TLS, RPC).</li>
+<li>Представительный - кодировки, шифрование.</li>
+<li>Прикладной - HTTP, FTP, SSH, DNS.</li>
+</ol>
+<p><strong>Модель TCP/IP(4 уровня)</strong>:</p>
+<ol>
+<li>Сетевой интерфейс(физика и MAC).</li>
+<li>Интернет(IP, ICMP).</li>
+<li>Транспортный(TCP, UDP).</li>
+<li>Прикладный(HTTP, DNS, FTP, SSH).</li>
+</ol>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>На практике чаще используется модель TCP/IP, так как она проще и отражает реальную работу сетей.</p>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="протоколы-связи">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#протоколы-связи">#</doc-anchor-trigger>
+        <span>Протоколы связи</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>ICMP</strong> (ping, traceroute) — проверка доступности.</li>
+<li><strong>ARP</strong> — преобразование IP-адресов в MAC-адреса.</li>
+<li><strong>DHCP</strong> — автоматическая раздача IP-адресов.</li>
+<li><strong>DNS</strong> — перевод доменных имен в IP.</li>
+<li><strong>HTTP/HTTPS</strong> — веб-протоколы.</li>
+<li><strong>SSH</strong> — защищенное соединение.</li>
+</ul>
+<doc-anchor-target id="сетевые-устройства">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сетевые-устройства">#</doc-anchor-trigger>
+        <span>Сетевые устройства</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Маршрутизатор (Router)</strong> — передает трафик между сетями</li>
+<li><strong>Коммутатор (Switch)</strong> — соединяет устройства в одной сети</li>
+<li><strong>Файрволл (Firewall)</strong> — фильтрует трафик</li>
+<li><strong>Доступная точка (Access Point)</strong> — раздает Wi-Fi</li>
+<li><strong>Прокси-сервер (Proxy)</strong> — передает запросы пользователей</li>
+</ul>
+<doc-anchor-target id="сетевое-администрирование">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#сетевое-администрирование">#</doc-anchor-trigger>
+        <span>Сетевое администрирование</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="проверка-сетевых-подключений">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#проверка-сетевых-подключений">#</doc-anchor-trigger>
+        <span>Проверка сетевых подключений</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">ping -c 5 google.com # Проверка сетевого подключения
+
+traceroute google.com # Определение маршрута к серверу
+tracert google.com # Аналог traceroute в Windows
+
+dig google.com # Поиск DNS-записи для сервера
+nslookup google.com # Аналог dig в Windows</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="конфигурация-сетевых-интерфейсов">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#конфигурация-сетевых-интерфейсов">#</doc-anchor-trigger>
+        <span>Конфигурация сетевых интерфейсов</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">ip a # Проверка IP-адресов и их назначение
+ip addr add 192.168.1.1/24 dev eth0 # Добавление IP-адреса в интерфейс
+
+ip route show # Проверка маршрутизации интерфейсов
+ip route add 192.168.1.0/24 via 192.168.1.1 # Добавление маршрута</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="настройка-dns">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#настройка-dns">#</doc-anchor-trigger>
+        <span>Настройка DNS</span>
+    </h3>
+</doc-anchor-target>
+<p>Файл <code v-pre>/etc/resolv.conf</code> содержит настройки DNS-сервера, используемых системой.</p>
+<p>Пример содержимого файла:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-ini"><code v-pre class="language-ini">nameserver 8.8.8.8 # Google DNS
+nameserver 1.1.1.1 # Cloudflare DNS
+search example.com # Поиск доменов по имени
+options timeout:2 # Время ожидания ответа от DNS-сервера</code></pre>
+</doc-codeblock></div>
+<p>Основные параметры:</p>
+<ul>
+<li><code v-pre>nameserver</code> - IP-адрес DNS-сервера(до 3-х серверов)</li>
+<li><code v-pre>search</code> - домены по имени, которые будут использоваться для поиска DNS-записей</li>
+<li><code v-pre>options</code> - настройки DNS-сервера</li>
+</ul>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Файл может быть перезаписан сервисами, например, <code v-pre>systemd-resolved</code>, <code v-pre>dhclient</code> или <code v-pre>NetworkManager</code>.</p>
+        </div>
+    </div>
+</div>
+<p>Отключение автоматического обновления <code v-pre>resolv.conf</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">chattr +i /etc/resolv.conf # Отключить автоматическое обновление</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="управление-сетевыми-интерфейсами">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#управление-сетевыми-интерфейсами">#</doc-anchor-trigger>
+        <span>Управление сетевыми интерфейсами</span>
+    </h3>
+</doc-anchor-target>
+<p>Файл <code v-pre>/etc/network/interfaces</code> управляет статическими настройками сетевых интерфейсов(Debian, Ubuntu).</p>
+<p>Пример содержимого файла:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">auto eth0
+iface eth0 inet static
+    address 192.168.1.100
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+    dns-nameservers 8.8.8.8 1.1.1.1</code></pre>
+</doc-codeblock></div>
+<p>Если надо автоматически получать IP:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">auto eth0
+iface eth0 inet dhcp</code></pre>
+</doc-codeblock></div>
+<p>Применение настроек:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo systemctl restart networking</code></pre>
+</doc-codeblock></div>
+<p>Для RHEL/CentOS используется файл <code v-pre>/etc/sysconfig/network-scripts/ifcfg-eth0</code>.</p>
+<p>Пример содержимого файла:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">DEVICE=eth0
+BOOTPROTO=static
+ONBOOT=yes
+IPADDR=192.168.1.100
+NETMASK=255.255.255.0
+GATEWAY=192.168.1.1
+DNS1=8.8.8.8
+DNS2=1.1.1.1</code></pre>
+</doc-codeblock></div>
+<p>Перезапуск сети:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo systemctl restart NetworkManager</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="dhcp-сервер-dnsmasq">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dhcp-сервер-dnsmasq">#</doc-anchor-trigger>
+        <span>DHCP-сервер <code v-pre>dnsmasq</code></span>
+    </h3>
+</doc-anchor-target>
+<p><strong>dnsmasq</strong> - легковесный DNS/DHCP-сервер, который можно использовать для настройки локальной сети.</p>
+<p>Установка:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt install dnsmasq # Debian/Ubuntu
+sudo dnf install dnsmasq # RHEL/CentOS</code></pre>
+</doc-codeblock></div>
+<p>Файл конфигурации <code v-pre>/etc/dnsmasq.conf</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-ini"><code v-pre class="language-ini">dhcp-range=192.168.1.100,192.168.1.200,12h # Вклюсение DHCP-сервера
+dhcp-host=AA::BB::CC:DD:EE:FF,192.168.1.50,4h # Статический IP для устройства
+
+server=8.8.8.8 # Первый DNS-сервер
+server=1.1.1.1 # Второй DNS-сервер
+
+cache-size=1000 # Кэш DNS-записей</code></pre>
+</doc-codeblock></div>
+<p>Запуск и проверка работы:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo systemctl restart dnsmasq
+sudo systemctl enable dnsmasq
+sudo systemctl status dnsmasq</code></pre>
+</doc-codeblock></div>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>После настройки клиенты, подключенные к сети, будут автоматически получать IP-адреса через <code v-pre>dnsmasq</code>.</p>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="дигностика-сети">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#дигностика-сети">#</doc-anchor-trigger>
+        <span>Дигностика сети</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">ping -c 4 google.com # Проверка сетевого подключения
+traceroute google.com # Определение маршрута к серверу
+ss -tulnp # Активные порты и процессы
+tcpdump -i eth0 port 80 # Просмотр трафика по протоколу TCP</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="файрволлы">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#файрволлы">#</doc-anchor-trigger>
+        <span>Файрволлы</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="iptables">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#iptables">#</doc-anchor-trigger>
+        <span>IPTABLES</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>iptables</strong> - классический брандмауэр Linux для фильтрации пакетов.</p>
+<p>Основные цепочки в iptables:</p>
+<ol>
+<li><strong>INPUT</strong> - входящие пакеты.</li>
+<li><strong>FORWARD</strong> - пересылаемые пакеты.</li>
+<li><strong>OUTPUT</strong> - исходящие пакеты.</li>
+</ol>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">iptables -A INPUT -p tcp --dport 80 -j ACCEPT # Открытие порта 80 для входящих пакетов
+iptables -P INPUT DROP # Запрет входящих пакетов
+iptables -L -v -n # Просмотр таблицы правил</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="nftables">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#nftables">#</doc-anchor-trigger>
+        <span>NFTABLES</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">nft add table inet my_firewall # Создание таблицы правил
+nft add chain inet my_firewall input { type filter hook input priority 0 \; } # Создание входящей цепочки
+nft add rule inet my_firewall input tcp dport 80 accept # Добавление правила
+nft list ruleset # Просмотр списка правил
+nft list ruleset &gt; /etc/nftables.conf # Сохранение настроек в файл</code></pre>
+</doc-codeblock></div>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../admin/linux/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Администрирование Linux</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../computer-science/алгоритмы/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Алгоритмы</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© 2025 Notes by i4ox. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Полное руководство по сетям", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+</body>
+</html>
