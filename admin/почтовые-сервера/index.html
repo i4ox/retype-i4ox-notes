@@ -10,24 +10,24 @@
     <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
-    <title>SSH | i4ox Docs</title>
-    <meta name="title" content="SSH | i4ox Docs">
-    <meta name="description" content="ssh-agent - менеджер ключей для SSH. Он хранит ваши ключи и сертификаты в памяти, незашифрованные и готовые к использованию ssh.">
+    <title>Почтовые серверы | i4ox Docs</title>
+    <meta name="title" content="Почтовые серверы | i4ox Docs">
+    <meta name="description" content="Почтовая система состоит из нескольких компонентов:">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/шпаргалки/ssh/">
+    <link rel="canonical" href="https://i4ox.github.io/retype-i4ox-notes/admin/почтовые-сервера/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/шпаргалки/ssh/">
-    <meta property="og:title" content="SSH | i4ox Docs">
-    <meta property="og:description" content="ssh-agent - менеджер ключей для SSH. Он хранит ваши ключи и сертификаты в памяти, незашифрованные и готовые к использованию ssh.">
+    <meta property="og:url" content="https://i4ox.github.io/retype-i4ox-notes/admin/почтовые-сервера/">
+    <meta property="og:title" content="Почтовые серверы | i4ox Docs">
+    <meta property="og:description" content="Почтовая система состоит из нескольких компонентов:">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/шпаргалки/ssh/">
-    <meta property="twitter:title" content="SSH | i4ox Docs">
-    <meta property="twitter:description" content="ssh-agent - менеджер ключей для SSH. Он хранит ваши ключи и сертификаты в памяти, незашифрованные и готовые к использованию ssh.">
+    <meta property="twitter:url" content="https://i4ox.github.io/retype-i4ox-notes/admin/почтовые-сервера/">
+    <meta property="twitter:title" content="Почтовые серверы | i4ox Docs">
+    <meta property="twitter:description" content="Почтовая система состоит из нескольких компонентов:">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -156,138 +156,189 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="ssh" class="break-words">
+<doc-anchor-target id="почтовые-серверы" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#ssh">#</doc-anchor-trigger>
-        <span>SSH</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#почтовые-серверы">#</doc-anchor-trigger>
+        <span>Почтовые серверы</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="генерация-ssh-ключей">
+<p>Почтовая система состоит из нескольких компонентов:</p>
+<ul>
+<li><strong>MTA(Mail Transfer Agent)</strong> - передает почту между серверами(Postfix, Exim).</li>
+<li><strong>MDA(Mail Delivery Agent)</strong> - доставляет почту пользователям(Dovecot).</li>
+<li><strong>Webmail &amp; Управление</strong> - управление почтой и пользователями(Mailcow).</li>
+</ul>
+<doc-anchor-target id="почтовые-протоколы">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#генерация-ssh-ключей">#</doc-anchor-trigger>
-        <span>Генерация ssh-ключей</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#почтовые-протоколы">#</doc-anchor-trigger>
+        <span>Почтовые протоколы</span>
     </h2>
 </doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">ssh-keygen -t ed25519 -f ~/.ssh/key -C &quot;comment&quot;</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="подключение-по-ssh">
+<p>...</p>
+<doc-anchor-target id="postfix">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#подключение-по-ssh">#</doc-anchor-trigger>
-        <span>Подключение по SSH</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#postfix">#</doc-anchor-trigger>
+        <span>Postfix</span>
     </h2>
 </doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">ssh -i ~/.ssh/key user@host</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="ssh-agent">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#ssh-agent">#</doc-anchor-trigger>
-        <span>SSH-agent</span>
-    </h2>
-</doc-anchor-target>
-<p>ssh-agent - менеджер ключей для SSH. Он хранит ваши ключи и сертификаты в памяти, незашифрованные и готовые к использованию ssh. Это избавляет вас от необходимости вводить пароль каждый раз, когда вы подключаетесь к серверу. Он работает в фоновом режиме в вашей системе, отдельно от ssh, и обычно запускается при первом запуске ssh.</p>
-<p>Чтобы добавить пароль от приватного ключа:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">ssh-add ~/.ssh/key</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="ssh-copy-id">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#ssh-copy-id">#</doc-anchor-trigger>
-        <span>SSH-copy-id</span>
-    </h2>
-</doc-anchor-target>
-<p>Чтобы скопировать ключ на сервер используем комманду ниже:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">ssh-copy-id -i ~/.ssh/key user@host</code></pre>
-</doc-codeblock></div>
-<p>Не забываем про выдачу необходимых прав.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">chown -R user:user /home/user/.ssh
-chmod 700 ~/.ssh
-chmod 644 ~/.ssh/*
-chmod 600 ~/.ssh/id_* ~/.ssh/authorized_keys</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="sshd_config">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#sshd_config">#</doc-anchor-trigger>
-        <span>sshd_config</span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="лучшие-практики">
+<p><strong>Postfix</strong> - надежный и производительный почтовый сервер(SMTP).</p>
+<doc-anchor-target id="установка">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#лучшие-практики">#</doc-anchor-trigger>
-        <span>Лучшие практики</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#установка">#</doc-anchor-trigger>
+        <span>Установка</span>
     </h3>
 </doc-anchor-target>
-<ol>
-<li>Меняем порт с 22 на любой другой</li>
-<li>PermitRootLogin no</li>
-<li>PubkeyAuthentication yes</li>
-<li>PasswordAuthencication no (исключительно после настройки ключей)</li>
-<li>PermitEmptyPasswords no (не имеет смысла, если соблюдать 4 пункт)</li>
-</ol>
-<doc-anchor-target id="настройки-клиента">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#настройки-клиента">#</doc-anchor-trigger>
-        <span>Настройки клиента</span>
-    </h2>
-</doc-anchor-target>
-<p>Клиент SSH настраивается через файл ~/.ssh/config.</p>
-<p>Пример настроек:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">Host server
-        StrictHostKeyChecking no
-        User sampleuser
-        ForwardAgent yes
-        IdentityFile /Users/username/.ssh/id_rsa
-        IdentitiesOnly yes
-        UserKnownHostsFile=/dev/null
-        UseKeychain yes
-        AddKeysToAgent yes
-        ServerAliveInterval 60
-        ServerAliveCountMax 1200</code></pre>
-</doc-codeblock></div>
-<p>Далее делается подключение через команду ниже:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">ssh server</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="пробрасывание-портов">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#пробрасывание-портов">#</doc-anchor-trigger>
-        <span>Пробрасывание портов</span>
-    </h2>
-</doc-anchor-target>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">ssh -L 9000:localhost:8000 user@server</code></pre>
-</doc-codeblock></div>
-<p>Командой выше мы создали подключение через SSH-туннель, с пробросом внешнего 8000 порта на локальный 9000 порт. И после этого <em><strong>НЕ ЗАКРЫВАЯ</strong></em> соединения, в другой вкладке терминала мы сможет обращаться по этому порту.</p>
-<doc-anchor-target id="моя-конфигурация-клиента-ssh">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#моя-конфигурация-клиента-ssh">#</doc-anchor-trigger>
-        <span>Моя конфигурация клиента SSH</span>
-    </h2>
-</doc-anchor-target>
-<p>Ниже расположен пример моей конфигурации Linux</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">Host github
-  HostName www.github.com
-  Port 22
-  User git
-  IdentityFile ~/.ssh/github
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt install postfix # Debian/Ubuntu
+sudo dnf install postfix # RHEL/CentOS
 
-Host forgejo
-  HostName git.adevteam.com
-  Port 22
-  User git
-  IdentityFile ~/.ssh/forgejo
-
-Host *
-  AddKeysToAgent yes
-  IgnoreUnknown UseKeychain
-  UseKeychain yes
-  IdentityFile ~/.ssh/id_ed25519</code></pre>
+sudo systemctl enable postfix
+sudo systemctl start postfix</code></pre>
 </doc-codeblock></div>
+<doc-anchor-target id="основные-конфигурационные-файлы">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#основные-конфигурационные-файлы">#</doc-anchor-trigger>
+        <span>Основные конфигурационные файлы</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><code v-pre>/etc/postfix/main.cf</code> - основная конфигурация.</li>
+<li><code v-pre>/etc/postfix/master.cf</code> - управление сервисами.</li>
+</ul>
+<p>Базовая настройка в файле <code v-pre>/etc/postfix/main.cf</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-ini"><code v-pre class="language-ini">myhostname = mail.example.com
+mydomain = example.com
+myorigin = $mydomain
+inet_interfaces = all
+mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+relayhost =
+mynetworks = 127.0.0.0/8, [ваша локальная сеть]
+home_mailbox = Maildir/
+smtpd_banner = $myhostname ESMTP $mail_name (Debian/GNU)</code></pre>
+</doc-codeblock></div>
+<p>Подводные файлы в настройке:</p>
+<ul>
+<li>Открытый релей: убедитесь, что <code v-pre>mynetworks</code> не слишком широкий, иначе сервер станет спам-ретранслятором.</li>
+<li><code v-pre>SPF</code>, <code v-pre>DKIM</code>, <code v-pre>DMARC</code>: без них письма могут попадать в спам.</li>
+</ul>
+<doc-anchor-target id="exim">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#exim">#</doc-anchor-trigger>
+        <span>Exim</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Exim</strong> - гибкий MTA, но сложнее в настройке, чем Postfix.</p>
+<doc-anchor-target id="установка-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-1">#</doc-anchor-trigger>
+        <span>Установка</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt install exim4 # Debian/Ubuntu
+
+sudo systemctl enable exim4
+sudo systemctl start exim4</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="конфигурация-exim">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#конфигурация-exim">#</doc-anchor-trigger>
+        <span>Конфигурация Exim</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo dpkg-reconfigure exim4-config</code></pre>
+</doc-codeblock></div>
+<p>Далее выберите:</p>
+<ul>
+<li><strong>Internet Site</strong> - если сервер принимает и отправляет почту.</li>
+<li><strong>Smarthost</strong> - если отправляет почту через другой сервер.</li>
+</ul>
+<doc-anchor-target id="проверка-работы">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#проверка-работы">#</doc-anchor-trigger>
+        <span>Проверка работы</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">echo &quot;Test email from Exim&quot; | mail -s &quot;Test&quot; user@example.com</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="подводные-камни">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#подводные-камни">#</doc-anchor-trigger>
+        <span>Подводные камни</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Сложность конфигурации</strong> - Exim использует свои файлы <code v-pre>/etc/exim4/update-exim4.conf.conf</code>, которые сложно менять вручную.</li>
+<li><strong>SPF, DKIM, DMARC</strong> - без них письма могут попадать в спам.</li>
+</ul>
+<doc-anchor-target id="dovecot">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dovecot">#</doc-anchor-trigger>
+        <span>Dovecot</span>
+    </h2>
+</doc-anchor-target>
+<p><strong>Dovecot</strong> занимается обработкой входящей почты для пользователей.</p>
+<doc-anchor-target id="установка-2">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-2">#</doc-anchor-trigger>
+        <span>Установка</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">sudo apt install dovecot-core dovecot-imapd dovecot-pop3d # Debian/Ubuntu
+sudo dnf install dovecot # RHEL/CentOS
+
+sudo systemctl enable dovecot
+sudo systemctl start dovecot</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="конфигурация">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#конфигурация">#</doc-anchor-trigger>
+        <span>Конфигурация</span>
+    </h3>
+</doc-anchor-target>
+<p>Настройка в файле <code v-pre>/etc/dovecot/dovecot.conf</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-ini"><code v-pre class="language-ini">protocols = imap pop3 lmtp
+mail_location = maildir:~/Maildir</code></pre>
+</doc-codeblock></div>
+<p>Подводные файлы в настройке:</p>
+<ul>
+<li><strong>Права доступа</strong> - убедитесь, что почтовые ящики имеют права <code v-pre>600</code>.</li>
+<li><strong>Шифрование</strong> - IMAP должен работать по SSL.</li>
+</ul>
+<doc-anchor-target id="mailcow">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mailcow">#</doc-anchor-trigger>
+        <span>Mailcow</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Mailcow</strong> - это почтовый сервер на базе <code v-pre>Postfix</code>, <code v-pre>Dovecot</code>, <code v-pre>ClamAV</code>.</p>
+<doc-anchor-target id="установка-3">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#установка-3">#</doc-anchor-trigger>
+        <span>Установка</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">git clone https://github.com/mailcow/mailcow-dockerized
+cd mailcow-dockerized
+./generate-config.sh
+docker-compose up -d</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="подводные-камни-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#подводные-камни-1">#</doc-anchor-trigger>
+        <span>Подводные камни</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Требует Docker</strong> - работает только в контейнерах.</li>
+<li><strong>Ресурсоемкость</strong> - Минимум 2 ГБ RAM.</li>
+</ul>
 
                                 
                                 <!-- Required only on API pages -->
@@ -297,20 +348,20 @@ Host *
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../шпаргалки/git/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../admin/networks/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Git</span>
+                                                <span class="block mt-1">Полное руководство по сетям</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../шпаргалки/обоснование-требований-к-программной-системе/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../admin/файловые-сервера/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Обоснование требований к программной системе</span>
+                                                <span class="block mt-1">Файловые сервера</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -354,6 +405,6 @@ Host *
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "SSH", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Почтовые серверы", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
